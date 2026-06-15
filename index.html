@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayner Moraes | Portfólio</title>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    
+    <style>
+        /* Fundo Principal e Configurações Gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #05000a, #10002b, #240046, #000000);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- A SUA MARCA REGISTRADA (12) --- */
+        .brand-logo {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 80px;
+            z-index: 999;
+            filter: drop-shadow(0 0 15px rgba(157, 78, 221, 0.9));
+            transition: transform 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .brand-logo:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* --- DECORAÇÕES CARTUNESCAS FLUTUANTES --- */
+        .cartoon-deco {
+            position: fixed; 
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: 0; 
+            filter: drop-shadow(0px 0px 15px rgba(157, 78, 221, 0.6));
+        }
+
+        /* Posições e Animações com tempos variados */
+        .deco-angus     { top: 5%; left: 3%; width: 180px; animation: floatX 6s ease-in-out infinite; }
+        .deco-guitarra  { top: 15%; right: 5%; width: 220px; animation: floatY 8s ease-in-out infinite; transform: rotate(15deg); }
+        .deco-pc        { top: 40%; left: 2%; width: 200px; animation: floatY 7s ease-in-out infinite; }
+        .deco-amp       { top: 50%; right: 3%; width: 170px; animation: floatX 9s ease-in-out infinite; }
+        .deco-nintendo  { bottom: 15%; left: 5%; width: 160px; animation: floatY 6.5s ease-in-out infinite; transform: rotate(-15deg); }
+        .deco-raquete   { bottom: 5%; right: 15%; width: 140px; animation: floatX 7.5s ease-in-out infinite; transform: rotate(20deg); }
+        
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes floatX {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(-15px); }
+        }
+
+        /* Cabeçalho */
+        header {
+            text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid #9d4edd;
+            box-shadow: 0 0 30px rgba(157, 78, 221, 0.8);
+            object-fit: cover;
+            margin-bottom: 20px;
+            animation: floatY 5s ease-in-out infinite;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin: 10px 0;
+            font-size: 3.5em;
+            text-shadow: 0 0 15px rgba(157, 78, 221, 0.6);
+        }
+
+        /* --- ESTILO DOS LINKS SOCIAIS (BOTÕES NEON ROXOS) --- */
+        .social-links {
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            background: rgba(157, 78, 221, 0.15);
+            border: 1px solid #9d4edd;
+            color: #e0aaff;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(157, 78, 221, 0.2);
+        }
+
+        .social-links a:hover {
+            background: #9d4edd;
+            color: #ffffff;
+            box-shadow: 0 0 25px #9d4edd, 0 0 10px #ffffff;
+            transform: scale(1.1) translateY(-3px); /* Aumenta e sobe ligeiramente */
+        }
+
+        h2 { color: #c77dff; border-bottom: 2px solid rgba(157, 78, 221, 0.3); padding-bottom: 10px; }
+        
+        /* Estrutura Central */
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Efeito de Vidro Profissional */
+        .section {
+            background: rgba(15, 15, 20, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(157, 78, 221, 0.4);
+            margin: 40px 0;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .section.show { opacity: 1; transform: translateY(0); }
+
+        /* Logos das Tecnologias */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .skill-box {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 12px;
+            border-top: 3px solid #9d4edd;
+            transition: transform 0.3s;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(157, 78, 221, 0.4);
+        }
+
+        .tech-icons i {
+            font-size: 3.5em;
+            margin: 10px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .tech-icons i:hover { transform: scale(1.3) rotate(10deg); }
+
+        /* Cards do GitHub */
+        .project-card {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            border-left: 4px solid #9d4edd;
+            transition: all 0.4s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateX(15px) scale(1.02);
+            border-left: 8px solid #c77dff;
+            box-shadow: -10px 0 20px rgba(157, 78, 221, 0.2);
+        }
+
+        .project-card a { color: #e0aaff; text-decoration: none; font-weight: bold; font-size: 1.4em; }
+
+        .tags span {
+            background: rgba(157, 78, 221, 0.15);
+            color: #c77dff;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-right: 8px;
+            border: 1px solid rgba(157, 78, 221, 0.5);
+            display: inline-block;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="12.png" alt="Marca Wayner" class="brand-logo" title="Wayner Moraes">
+
+    <img src="angus.png" alt="Angus" class="cartoon-deco deco-angus">
+    <img src="guitarra.png" alt="Guitarra" class="cartoon-deco deco-guitarra">
+    <img src="pc.png" alt="PC" class="cartoon-deco deco-pc">
+    <img src="amp.png" alt="Amplificador" class="cartoon-deco deco-amp">
+    <img src="nintendo.png" alt="Nintendo" class="cartoon-deco deco-nintendo">
+    <img src="raquete.png" alt="Raquete" class="cartoon-deco deco-raquete">
+
+    <header>
+        <img src="foto.jpg" alt="Wayner Moraes" class="profile-img">
+        <h1>Wayner Moraes</h1>
+        <p>Desenvolvedor de Software | Criador do Projeto MAW | Apaixonado por Inovação</p>
+        
+        <div class="social-links">
+            <a href="https://github.com/WaynerMoraes12" target="_blank">🐙 GitHub</a>
+            <a href="https://www.linkedin.com/in/wayner-moraes-8494451a3/" target="_blank">💼 LinkedIn</a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div class="section" id="sobre">
+            <h2>👨‍💻 A Jornada</h2>
+            <p>Engenheiro de Computação em formação pela FHO. Especialista em resolver problemas unindo lógica avançada e criatividade.</p>
+            <p>O maior reflexo disso é o meu projeto <strong>MAW</strong>, um sistema que nasceu da minha conexão profunda com a música, provando que o código é apenas uma ferramenta para expressar nossas paixões.</p>
+        </div>
+
+        <div class="section" id="habilidades">
+            <h2>⚡ Arsenal Técnico</h2>
+            <div class="skills-grid">
+                
+                <div class="skill-box">
+                    <h3>Back-end</h3>
+                    <div class="tech-icons">
+                        <i class="devicon-cplusplus-plain colored" title="C++"></i>
+                        <i class="devicon-python-plain colored" title="Python"></i>
+                        <i class="devicon-c-plain colored" title="C"></i>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <h3>Front-end</h3>
+                    <div class="tech-icons">
+                        <i class="devicon-html5-plain colored" title="HTML5"></i>
+                        <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+                        <i class="devicon-typescript-plain colored" title="TypeScript"></i>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <h3>Dados</h3>
+                    <div class="tech-icons">
+                        <i class="devicon-mysql-plain colored" title="MySQL"></i>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <h3>Ferramentas</h3>
+                    <div class="tech-icons">
+                        <i class="devicon-git-plain colored" title="Git"></i>
+                        <i class="devicon-github-original colored" title="GitHub"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section" id="interesses">
+            <h2>🌀 O Homem por Trás do Código</h2>
+            <ul>
+                <li><strong>🏓 O Atleta de Tênis de Mesa:</strong> Mais da metade da minha vida dedicada a este esporte, competindo no Brasileiro e representando Araras, Rio Claro e Santa Gertrudes.</li>
+                <li><strong>🎸 O Músico:</strong> Há 16 anos, a guitarra é minha voz. Sou movido a riffs pesados de Rock (AC/DC, Slipknot) e Rap/Hip Hop (Eminem, Travis Scott). A música é a alma do meu TCC!</li>
+            </ul>
+        </div>
+
+        <div class="section" id="projetos">
+            <h2>🚀 Laboratório de Projetos</h2>
+            <div id="github-projects"><p>Sincronizando dados com a API do GitHub...</p></div>
+        </div>
+
+    </div>
+
+    <script>
+        const githubUsername = 'WaynerMoraes12';
+
+        async function carregarProjetos() {
+            try {
+                const resposta = await fetch(`https://api.github.com/users/${githubUsername}/starred`);
+                const projetos = await resposta.json();
+                const containerProjetos = document.getElementById('github-projects');
+                containerProjetos.innerHTML = ''; 
+
+                if (projetos.length === 0) {
+                    containerProjetos.innerHTML = '<p>Ainda não há projetos favoritados no radar.</p>';
+                    return;
+                }
+
+                projetos.forEach(projeto => {
+                    const card = document.createElement('div');
+                    card.className = 'project-card';
+                    card.innerHTML = `
+                        <a href="${projeto.html_url}" target="_blank">${projeto.name}</a>
+                        <p>${projeto.description ? projeto.description : 'Projeto desenvolvido com dedicação!'}</p>
+                        <div class="tags">
+                            <span>⭐ ${projeto.stargazers_count} Stars</span>
+                            <span>💻 ${projeto.language ? projeto.language : 'Múltiplo'}</span>
+                        </div>
+                    `;
+                    containerProjetos.appendChild(card);
+                });
+            } catch (erro) {
+                document.getElementById('github-projects').innerHTML = '<p>Erro de conexão com o GitHub.</p>';
+            }
+        }
+
+        carregarProjetos();
+
+        const radarDeTela = new IntersectionObserver((elementosVistos) => {
+            elementosVistos.forEach((elemento) => {
+                if (elemento.isIntersecting) {
+                    elemento.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section').forEach((secao) => {
+            radarDeTela.observe(secao);
+        });
+    </script>
+</body>
+</html>
