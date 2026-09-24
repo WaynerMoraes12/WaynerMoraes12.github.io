@@ -1,0 +1,386 @@
+{
+ "generated_at": "2026-09-24T17:42:13.474613+00:00",
+ "username": "WaynerMoraes12",
+ "threshold": 3,
+ "feed": [
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/clerk-estudo",
+   "kind": "Documentação",
+   "title": "Registra como o projeto foi construido",
+   "description": "Documentação em clerk-estudo: 1 arquivo alterado.",
+   "additions": 211,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/clerk-estudo/commit/253a1c1f81f35d0d564df4ecea05ece708b65c14",
+   "date": "2026-08-17T18:03:16Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/clerk-estudo",
+   "kind": "Atualização",
+   "title": "First commit",
+   "description": "Atualização em clerk-estudo: 9 arquivos alterados.",
+   "additions": 733,
+   "deletions": 0,
+   "techs": [
+    "fastapi",
+    "python"
+   ],
+   "url": "https://github.com/WaynerMoraes12/clerk-estudo/commit/28bc05aef4ee1bd80f5f7d8b26f4b0c516fa1074",
+   "date": "2026-08-17T17:57:02Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/cls-outlet-v2",
+   "kind": "Nova funcionalidade",
+   "title": "Finalizacao do layout da landing page e build de producao",
+   "description": "Nova funcionalidade em cls-outlet-v2: 2 arquivos alterados.",
+   "additions": 403,
+   "deletions": 361,
+   "techs": [
+    "javascript"
+   ],
+   "url": "https://github.com/WaynerMoraes12/cls-outlet-v2/commit/33710b1abaa27486751583490eba8ee86613d289",
+   "date": "2026-07-17T18:33:13Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/mngt-rag-challenge",
+   "kind": "Atualização",
+   "title": "Readme final",
+   "description": "Atualização em mngt-rag-challenge: 1 arquivo alterado.",
+   "additions": 11,
+   "deletions": 8,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/mngt-rag-challenge/commit/9dc2e464eb85aa245bf80cb6ad179afcc4a2376e",
+   "date": "2026-06-29T00:25:07Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/mngt-rag-challenge",
+   "kind": "Atualização",
+   "title": "Atualização no código",
+   "description": "Atualização em mngt-rag-challenge: 4 arquivos alterados.",
+   "additions": 5,
+   "deletions": 1,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/mngt-rag-challenge/commit/c5a148b135053f247304386d34622f43a036c7fd",
+   "date": "2026-06-29T00:01:06Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/mngt-rag-challenge",
+   "kind": "Atualização",
+   "title": "Create README.md",
+   "description": "Atualização em mngt-rag-challenge: 1 arquivo alterado.",
+   "additions": 171,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/mngt-rag-challenge/commit/c57a1b81c6e6b1b17cf39ecf7ebd4b7d477d8c90",
+   "date": "2026-06-28T21:03:16Z"
+  }
+ ],
+ "skills": [
+  {
+   "id": "html",
+   "name": "HTML",
+   "group": "Front-end",
+   "icon": "html5",
+   "uses": 14,
+   "promoted": true,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2026-06-27T23:59:14Z"
+  },
+  {
+   "id": "javascript",
+   "name": "JavaScript",
+   "group": "Linguagens",
+   "icon": "javascript",
+   "uses": 11,
+   "promoted": true,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-07-17T18:33:13Z"
+  },
+  {
+   "id": "python",
+   "name": "Python",
+   "group": "Linguagens",
+   "icon": "python",
+   "uses": 11,
+   "promoted": true,
+   "first_seen": "2025-11-09T23:36:48Z",
+   "last_seen": "2026-08-17T17:57:02Z"
+  },
+  {
+   "id": "nodejs",
+   "name": "Node.js",
+   "group": "Back-end e IA",
+   "icon": "nodedotjs",
+   "uses": 10,
+   "promoted": true,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-06-27T23:59:14Z"
+  },
+  {
+   "id": "css",
+   "name": "CSS",
+   "group": "Front-end",
+   "icon": "css",
+   "uses": 5,
+   "promoted": true,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2026-06-28T21:00:00Z"
+  },
+  {
+   "id": "react",
+   "name": "React",
+   "group": "Front-end",
+   "icon": "react",
+   "uses": 5,
+   "promoted": true,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2026-06-27T23:59:14Z"
+  },
+  {
+   "id": "fastapi",
+   "name": "FastAPI",
+   "group": "Back-end e IA",
+   "icon": "fastapi",
+   "uses": 4,
+   "promoted": true,
+   "first_seen": "2026-06-05T18:56:55Z",
+   "last_seen": "2026-08-17T17:57:02Z"
+  },
+  {
+   "id": "pandas",
+   "name": "Pandas",
+   "group": "Back-end e IA",
+   "icon": "pandas",
+   "uses": 3,
+   "promoted": true,
+   "first_seen": "2026-04-02T13:53:52Z",
+   "last_seen": "2026-06-05T18:56:55Z"
+  },
+  {
+   "id": "pydantic",
+   "name": "Pydantic",
+   "group": "Back-end e IA",
+   "icon": "pydantic",
+   "uses": 3,
+   "promoted": true,
+   "first_seen": "2026-06-05T18:56:55Z",
+   "last_seen": "2026-06-27T23:59:14Z"
+  },
+  {
+   "id": "tailwind",
+   "name": "Tailwind CSS",
+   "group": "Front-end",
+   "icon": "tailwindcss",
+   "uses": 3,
+   "promoted": true,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2026-04-05T02:15:24Z"
+  },
+  {
+   "id": "typescript",
+   "name": "TypeScript",
+   "group": "Linguagens",
+   "icon": "typescript",
+   "uses": 3,
+   "promoted": true,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-06-27T23:59:14Z"
+  },
+  {
+   "id": "vite",
+   "name": "Vite",
+   "group": "Front-end",
+   "icon": "vite",
+   "uses": 3,
+   "promoted": true,
+   "first_seen": "2026-04-05T01:28:12Z",
+   "last_seen": "2026-06-27T23:59:14Z"
+  },
+  {
+   "id": "docker",
+   "name": "Docker",
+   "group": "Dados e infra",
+   "icon": "docker",
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2026-06-20T18:42:43Z",
+   "last_seen": "2026-06-27T23:59:14Z"
+  },
+  {
+   "id": "express",
+   "name": "Express",
+   "group": "Back-end e IA",
+   "icon": "express",
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2025-11-09T23:36:48Z",
+   "last_seen": "2026-06-20T18:42:43Z"
+  },
+  {
+   "id": "gemini",
+   "name": "Gemini API",
+   "group": "Back-end e IA",
+   "icon": "googlegemini",
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2025-11-09T23:36:48Z",
+   "last_seen": "2026-06-27T23:59:14Z"
+  },
+  {
+   "id": "httpx",
+   "name": "HTTPX",
+   "group": "Back-end e IA",
+   "icon": null,
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2026-06-05T18:56:55Z",
+   "last_seen": "2026-06-27T23:59:14Z"
+  },
+  {
+   "id": "numpy",
+   "name": "NumPy",
+   "group": "Back-end e IA",
+   "icon": "numpy",
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2026-06-02T19:05:33Z",
+   "last_seen": "2026-06-05T18:56:55Z"
+  },
+  {
+   "id": "playwright",
+   "name": "Playwright",
+   "group": "Back-end e IA",
+   "icon": null,
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-06-02T19:05:33Z"
+  },
+  {
+   "id": "streamlit",
+   "name": "Streamlit",
+   "group": "Front-end",
+   "icon": "streamlit",
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2026-06-02T19:05:33Z",
+   "last_seen": "2026-06-05T18:56:55Z"
+  },
+  {
+   "id": "cpp",
+   "name": "C++",
+   "group": "Linguagens",
+   "icon": "cplusplus",
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-06-01T17:08:52Z",
+   "last_seen": "2026-06-01T17:08:52Z"
+  },
+  {
+   "id": "flask",
+   "name": "Flask",
+   "group": "Back-end e IA",
+   "icon": "flask",
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2025-11-09T23:36:48Z",
+   "last_seen": "2025-11-09T23:36:48Z"
+  },
+  {
+   "id": "postgresql",
+   "name": "PostgreSQL",
+   "group": "Dados e infra",
+   "icon": "postgresql",
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-06-05T17:34:57Z",
+   "last_seen": "2026-06-05T17:34:57Z"
+  },
+  {
+   "id": "powershell",
+   "name": "PowerShell",
+   "group": "Linguagens",
+   "icon": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2025-10-05T01:28:30Z"
+  },
+  {
+   "id": "recharts",
+   "name": "Recharts",
+   "group": "Front-end",
+   "icon": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2025-10-05T02:03:27Z"
+  },
+  {
+   "id": "redis",
+   "name": "Redis",
+   "group": "Dados e infra",
+   "icon": "redis",
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-06-20T18:42:43Z",
+   "last_seen": "2026-06-20T18:42:43Z"
+  },
+  {
+   "id": "sqlserver",
+   "name": "SQL Server",
+   "group": "Dados e infra",
+   "icon": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2025-10-05T05:47:22Z",
+   "last_seen": "2025-10-05T05:47:22Z"
+  },
+  {
+   "id": "socketio",
+   "name": "Socket.IO",
+   "group": "Back-end e IA",
+   "icon": "socketdotio",
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-06-20T18:42:43Z",
+   "last_seen": "2026-06-20T18:42:43Z"
+  },
+  {
+   "id": "vitest",
+   "name": "Vitest",
+   "group": "Dados e infra",
+   "icon": "vitest",
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2025-10-05T01:28:30Z"
+  },
+  {
+   "id": "aiohttp",
+   "name": "aiohttp",
+   "group": "Back-end e IA",
+   "icon": "aiohttp",
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-06-01T18:16:52Z",
+   "last_seen": "2026-06-01T18:16:52Z"
+  },
+  {
+   "id": "pytest",
+   "name": "pytest",
+   "group": "Dados e infra",
+   "icon": "pytest",
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-06-27T23:59:14Z",
+   "last_seen": "2026-06-27T23:59:14Z"
+  }
+ ]
+}

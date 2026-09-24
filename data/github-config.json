@@ -1,0 +1,11 @@
+{
+  "username": "WaynerMoraes12",
+  "skill_threshold": 3,
+  "feed_size": 6,
+  "backfill_days": 365,
+  "max_commit_details_per_run": 250,
+  "excluded_repos": [
+    "WaynerMoraes12/WaynerMoraes12"
+  ],
+  "_como_usar": "excluded_repos: repositórios (dono/nome) que nunca aparecem no site nem contam para as competências. skill_threshold: quantos usos uma ferramenta precisa para entrar no Stack."
+}

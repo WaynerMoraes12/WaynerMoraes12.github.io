@@ -1,0 +1,50 @@
+name: Atividade do GitHub
+
+# Atualiza data/activity.json (feed "Direto do GitHub" e competências automáticas).
+# Usa só o GITHUB_TOKEN deste repositório, que enxerga apenas dados públicos de
+# outros repositórios. Nenhum repositório privado é lido.
+on:
+  schedule:
+    - cron: "17 * * * *"   # de hora em hora
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/github_activity.py"
+      - "data/tech-catalog.json"
+      - "data/github-config.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-activity
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Gerar atividade
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/github_activity.py
+
+      - name: Publicar se mudou
+        run: |
+          if git diff --quiet -- data/; then
+            echo "Nada novo."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/activity.json data/github-state.json
+          git commit -m "chore: atualiza atividade do GitHub"
+          git push
