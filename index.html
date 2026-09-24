@@ -1,347 +1,1403 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wayner Moraes | Portfólio</title>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    
-    <style>
-        /* Fundo Principal e Configurações Gerais */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(-45deg, #05000a, #10002b, #240046, #000000);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wayner Moraes</title>
+<meta name="description" content="Wayner Moraes — desenvolvedor C++, Python e full stack. Sistemas multiagente, workflows duráveis e integrações com ERPs na Área Incrível.">
+<meta property="og:title" content="Wayner Moraes — Desenvolvedor C++, Python e full stack">
+<meta property="og:description" content="Sistemas multiagente com CrewAI, workflows com Temporal e integrações MCP com ERPs. Engenharia de Computação, FHO.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://waynermoraes12.github.io/">
+<meta name="theme-color" content="#121018">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d0271d'/%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial' font-weight='900' font-size='34' text-anchor='middle' fill='%23fff'%3E12%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #121018;     /* fundo: preto arroxeado */
+  --panel: #1a1723;     /* cartões */
+  --ink: #ece9f4;       /* texto */
+  --graphite: #a39db3;  /* texto secundário */
+  --rule: #2c2839;      /* linhas */
+  --violet: #a974ff;    /* detalhe principal */
+  --violet-deep: #7c3aed;
+  --signal: #ff4d3d;    /* vermelho do 12 */
+  --wood: #1f140f;
+  --wood-2: #2b1c15;
+  --focus: #c4a1ff;
+  color-scheme: dark;
+}
+::selection { background: var(--violet-deep); color: #fff; }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Archivo", system-ui, sans-serif;
+  font-variation-settings: "wdth" 100;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: inherit; }
+/* Cursor em forma de palheta: roxa no geral, vermelha em links, botões e áreas interativas */
+html, body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath transform='rotate(135 16 16)' d='M16 30C9 23 3 15 3.5 8.5 4 3.5 9 1.5 16 1.5s12 2 12.5 7C29 15 23 23 16 30z' fill='%23a974ff' stroke='white' stroke-width='1.6'/%3E%3Cpath transform='rotate(135 16 16)' d='M9 7c3-2 11-2 14 0' stroke='white' stroke-opacity='.45' stroke-width='1.4' fill='none'/%3E%3C/svg%3E") 6 6, auto; }
+a, button, .neck, .pong canvas { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath transform='rotate(135 16 16)' d='M16 30C9 23 3 15 3.5 8.5 4 3.5 9 1.5 16 1.5s12 2 12.5 7C29 15 23 23 16 30z' fill='%23ff4d3d' stroke='white' stroke-width='1.6'/%3E%3Cpath transform='rotate(135 16 16)' d='M9 7c3-2 11-2 14 0' stroke='white' stroke-opacity='.45' stroke-width='1.4' fill='none'/%3E%3C/svg%3E") 6 6, pointer; }
+code { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .86em; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+.wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--paper); padding: 8px 14px; z-index: 10; }
+.skip:focus { left: 16px; }
 
-        /* --- A SUA MARCA REGISTRADA (12) --- */
-        .brand-logo {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 80px;
-            z-index: 999;
-            filter: drop-shadow(0 0 15px rgba(157, 78, 221, 0.9));
-            transition: transform 0.4s ease;
-            cursor: pointer;
-        }
-        
-        .brand-logo:hover {
-            transform: scale(1.2) rotate(10deg);
-        }
+/* ---------- Nav ---------- */
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px; }
+.mark {
+  display: inline-grid; place-items: center;
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--signal); color: #fff; text-decoration: none;
+  font-weight: 900; font-size: 1.05rem; font-variation-settings: "wdth" 75;
+}
+.nav ul { list-style: none; display: flex; gap: 26px; margin: 0; padding: 0; }
+.nav ul a { text-decoration: none; color: var(--graphite); font-size: .95rem; font-weight: 500; }
+.nav ul a:hover { color: var(--violet); }
+.nav-right { display: flex; align-items: center; gap: 22px; }
+@media (max-width: 720px) { .nav ul { display: none; } }
 
-        /* --- DECORAÇÕES CARTUNESCAS FLUTUANTES --- */
-        .cartoon-deco {
-            position: fixed; 
-            opacity: 0.25;
-            pointer-events: none;
-            z-index: 0; 
-            filter: drop-shadow(0px 0px 15px rgba(157, 78, 221, 0.6));
-        }
+/* ---------- Hero ---------- */
+.hero { padding-top: clamp(28px, 6vw, 72px); }
+.hero h1 {
+  margin: 0;
+  font-weight: 850;
+  font-variation-settings: "wdth" 62;
+  font-size: clamp(4.2rem, 15.5vw, 12.5rem);
+  line-height: .86;
+  letter-spacing: -.01em;
+}
+.hero-meta {
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px;
+  align-items: end; margin-top: clamp(22px, 3vw, 36px);
+}
+.hero-lede { margin: 0; font-size: clamp(1.15rem, 1.8vw, 1.4rem); line-height: 1.45; max-width: 34ch; }
+.hero-lede strong { font-weight: 650; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 22px; border-radius: 999px; text-decoration: none;
+  font-weight: 600; font-size: 1rem; border: 1.5px solid var(--ink);
+}
+.btn-solid { background: var(--violet-deep); border-color: var(--violet-deep); color: #fff; }
+.btn-solid:hover { background: var(--signal); border-color: var(--signal); }
+.btn-line { border-color: var(--rule); }
+.btn-line:hover { border-color: var(--violet); color: var(--violet); }
+@media (max-width: 760px) {
+  .hero-meta { grid-template-columns: 1fr; }
+  .actions { justify-content: flex-start; }
+}
 
-        /* Posições e Animações com tempos variados */
-        .deco-angus     { top: 5%; left: 3%; width: 180px; animation: floatX 6s ease-in-out infinite; }
-        .deco-guitarra  { top: 15%; right: 5%; width: 220px; animation: floatY 8s ease-in-out infinite; transform: rotate(15deg); }
-        .deco-pc        { top: 40%; left: 2%; width: 200px; animation: floatY 7s ease-in-out infinite; }
-        .deco-amp       { top: 50%; right: 3%; width: 170px; animation: floatX 9s ease-in-out infinite; }
-        .deco-nintendo  { bottom: 15%; left: 5%; width: 160px; animation: floatY 6.5s ease-in-out infinite; transform: rotate(-15deg); }
-        .deco-raquete   { bottom: 5%; right: 15%; width: 140px; animation: floatX 7.5s ease-in-out infinite; transform: rotate(20deg); }
-        
-        @keyframes floatY {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        @keyframes floatX {
-            0%, 100% { transform: translateX(0px); }
-            50% { transform: translateX(-15px); }
-        }
+/* ---------- Fretboard ---------- */
+.neck-wrap { margin-top: clamp(36px, 5vw, 56px); }
+.neck {
+  position: relative;
+  height: clamp(150px, 20vw, 210px);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), transparent 18%, transparent 82%, rgba(0,0,0,.25)),
+    repeating-linear-gradient(90deg, var(--wood) 0 3px, var(--wood-2) 3px 7px, var(--wood) 7px 11px);
+  border-top: 5px solid #e9e2d4;
+  border-bottom: 5px solid #e9e2d4;
+  touch-action: pan-y;
+  overflow: hidden;
+}
+.neck canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.neck-caption {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  padding-top: 12px; color: var(--graphite); font-size: .92rem;
+}
+.sound-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: none; border: 1px solid var(--rule); color: var(--ink);
+  padding: 7px 14px; border-radius: 999px; font: inherit; font-size: .9rem; cursor: pointer;
+}
+.sound-btn[aria-pressed="true"] { border-color: var(--signal); color: var(--signal); }
+.sound-btn .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rule); }
+.sound-btn[aria-pressed="true"] .dot { background: var(--signal); }
 
-        /* Cabeçalho */
-        header {
-            text-align: center;
-            padding: 100px 20px 60px;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 4px solid #9d4edd;
-            box-shadow: 0 0 30px rgba(157, 78, 221, 0.8);
-            object-fit: cover;
-            margin-bottom: 20px;
-            animation: floatY 5s ease-in-out infinite;
-        }
+/* ---------- Sections ---------- */
+section { padding-block: clamp(72px, 10vw, 128px) 0; }
+.sec-head { display: grid; grid-template-columns: 220px 1fr; gap: 32px; margin-bottom: 44px; }
+.sec-head h2 {
+  margin: 0; font-weight: 800; font-variation-settings: "wdth" 75;
+  font-size: clamp(2.2rem, 4.6vw, 3.4rem); line-height: 1; letter-spacing: -.005em;
+}
+.sec-head p { margin: 0; color: var(--graphite); max-width: 60ch; align-self: end; }
+.sec-head .kicker { color: var(--violet); font-weight: 600; font-size: .95rem; }
+@media (max-width: 760px) { .sec-head { grid-template-columns: 1fr; gap: 12px; } }
 
-        h1 {
-            color: #ffffff;
-            margin: 10px 0;
-            font-size: 3.5em;
-            text-shadow: 0 0 15px rgba(157, 78, 221, 0.6);
-        }
+/* ---------- Agora (SIGESCON) ---------- */
+.now { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+.now h3 { font-size: clamp(1.6rem, 2.6vw, 2rem); line-height: 1.15; margin: 0 0 6px; font-weight: 750; }
+.now .role { color: var(--graphite); margin: 0 0 22px; }
+.now p { max-width: 60ch; }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 30px 0; }
+.fact { background: var(--panel); padding: 16px 14px; }
+.fact b { display: block; font-size: 2rem; font-weight: 800; font-variation-settings: "wdth" 70; line-height: 1; }
+.fact span { color: var(--graphite); font-size: .9rem; line-height: 1.3; display: block; margin-top: 6px; }
+.stack-line { color: var(--graphite); font-size: .95rem; }
+.stack-line b { color: var(--ink); font-weight: 600; }
 
-        /* --- ESTILO DOS LINKS SOCIAIS (BOTÕES NEON ROXOS) --- */
-        .social-links {
-            margin-top: 25px;
-        }
+.flow { background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; padding: 26px 24px; }
+.flow-title { margin: 0 0 18px; font-weight: 650; font-size: 1rem; }
+.flow ol { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+.flow li { position: relative; padding: 0 0 22px 44px; counter-increment: step; }
+.flow li:last-child { padding-bottom: 0; }
+.flow li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: 0;
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1.5px solid var(--violet); color: var(--violet); display: grid; place-items: center;
+  font-weight: 700; font-size: .85rem; background: var(--panel);
+}
+.flow li::after { content: ""; position: absolute; left: 13.5px; top: 30px; bottom: 2px; width: 1.5px; background: var(--rule); }
+.flow li:last-child::after { display: none; }
+.flow li b { display: block; font-weight: 650; line-height: 1.3; padding-top: 2px; }
+.flow li span { color: var(--graphite); font-size: .93rem; line-height: 1.45; display: block; margin-top: 2px; }
+.flow li.hl::before { background: var(--violet-deep); border-color: var(--violet-deep); color: #fff; }
+@media (max-width: 860px) { .now { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .facts { grid-template-columns: 1fr 1fr; } .fact:last-child { grid-column: span 2; } }
 
-        .social-links a {
-            display: inline-block;
-            background: rgba(157, 78, 221, 0.15);
-            border: 1px solid #9d4edd;
-            color: #e0aaff;
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(157, 78, 221, 0.2);
-        }
+/* ---------- Projects ---------- */
+.featured { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.proj {
+  display: flex; flex-direction: column;
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 14px;
+  padding: 24px; text-decoration: none; color: inherit;
+}
+.proj:hover { border-color: var(--violet); }
+.proj:hover .open { color: var(--violet); }
+.proj .lang { font-size: .88rem; font-weight: 600; color: var(--graphite); display: flex; align-items: center; gap: 8px; }
+.proj .lang i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.proj h3 { margin: 14px 0 8px; font-size: 1.45rem; line-height: 1.15; font-weight: 750; }
+.proj p { margin: 0 0 18px; color: var(--graphite); font-size: .98rem; }
+.proj .metric { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--rule); display: flex; align-items: baseline; gap: 10px; }
+.proj .metric b { font-size: 1.9rem; font-weight: 800; font-variation-settings: "wdth" 70; line-height: 1; color: var(--signal); white-space: nowrap; }
+.proj .metric span { color: var(--graphite); font-size: .9rem; line-height: 1.3; }
+.proj .open { font-size: .9rem; font-weight: 600; margin-top: 14px; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 900px) { .featured { grid-template-columns: 1fr; } }
 
-        .social-links a:hover {
-            background: #9d4edd;
-            color: #ffffff;
-            box-shadow: 0 0 25px #9d4edd, 0 0 10px #ffffff;
-            transform: scale(1.1) translateY(-3px); /* Aumenta e sobe ligeiramente */
-        }
+.more { margin-top: 44px; border-top: 1.5px solid var(--violet-deep); }
+.row {
+  display: grid; grid-template-columns: 250px 1fr 190px; gap: 24px; align-items: baseline;
+  padding: 18px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: inherit;
+}
+.row:hover .row-name { color: var(--violet); }
+.row-name { font-weight: 700; font-size: 1.1rem; }
+.row-desc { color: var(--graphite); font-size: .98rem; }
+.row-tech { font-size: .9rem; color: var(--graphite); text-align: right; }
+@media (max-width: 760px) {
+  .row { grid-template-columns: 1fr; gap: 4px; }
+  .row-tech { text-align: left; }
+}
+.gh-all { display: inline-block; margin-top: 22px; font-weight: 600; text-underline-offset: 3px; color: var(--violet); }
 
-        h2 { color: #c77dff; border-bottom: 2px solid rgba(157, 78, 221, 0.3); padding-bottom: 10px; }
-        
-        /* Estrutura Central */
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 20px;
-            position: relative;
-            z-index: 10;
-        }
-        
-        /* Efeito de Vidro Profissional */
-        .section {
-            background: rgba(15, 15, 20, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(157, 78, 221, 0.4);
-            margin: 40px 0;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.7);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
-        }
+/* MAW callout */
+.maw {
+  margin-top: 44px; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center;
+  background: radial-gradient(120% 140% at 0% 0%, #3a1d6e 0%, #1d1233 55%, #160f26 100%);
+  border: 1px solid #4b2a8a; color: #f1ecfa; border-radius: 14px; padding: 28px clamp(22px, 4vw, 40px);
+}
+.maw-tag {
+  font-weight: 900; font-variation-settings: "wdth" 62; font-size: clamp(3.4rem, 8vw, 5.4rem); line-height: .9;
+  color: var(--violet); text-shadow: 0 0 28px rgba(169,116,255,.45);
+  border-bottom: 5px solid var(--signal); padding-bottom: 4px;
+}
+.maw h3 { margin: 0 0 6px; font-size: 1.35rem; font-weight: 700; }
+.maw p { margin: 0; color: #cdc3e3; max-width: 64ch; }
+.maw code { font-family: "JetBrains Mono", monospace; font-size: .88em; color: #f1ebe2; }
+@media (max-width: 620px) { .maw { grid-template-columns: 1fr; gap: 10px; } }
 
-        .section.show { opacity: 1; transform: translateY(0); }
+/* ---------- Stack ---------- */
+.stack { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.stack h3 { margin: 0 0 14px; font-size: 1rem; font-weight: 700; padding-bottom: 10px; border-bottom: 1.5px solid var(--violet-deep); }
+.stack ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.stack li {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 12px; background: var(--panel); border: 1px solid var(--rule); border-radius: 10px;
+}
+.stack li:hover { border-color: var(--violet); }
+.stack li:hover .ic { background: var(--violet); }
+.stack .ic {
+  flex: none; width: 22px; height: 22px; background: var(--ink);
+  -webkit-mask: var(--i) center / contain no-repeat; mask: var(--i) center / contain no-repeat;
+}
+.stack li small { color: var(--graphite); font-size: .85rem; margin-left: auto; }
+@media (max-width: 900px) { .stack { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .stack { grid-template-columns: 1fr; } }
 
-        /* Logos das Tecnologias */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            text-align: center;
-        }
+/* ---------- Timeline ---------- */
+.timeline { list-style: none; margin: 0; padding: 0; }
+.tl { display: grid; grid-template-columns: 220px 1fr; gap: 32px; padding: 26px 0; border-top: 1px solid var(--rule); }
+.tl:last-child { border-bottom: 1px solid var(--rule); }
+.tl-when { color: var(--graphite); font-size: .95rem; font-variant-numeric: tabular-nums; }
+.tl h3 { margin: 0; font-size: 1.25rem; font-weight: 700; line-height: 1.25; }
+.tl .where { color: var(--graphite); margin: 2px 0 10px; }
+.tl p { margin: 0; max-width: 64ch; }
+.tl.current .tl-when { color: var(--violet); font-weight: 600; }
+.edu { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px 40px; }
+.edu div { max-width: 44ch; }
+.edu b { display: block; font-weight: 700; }
+.edu span { color: var(--graphite); font-size: .95rem; }
+@media (max-width: 760px) { .tl { grid-template-columns: 1fr; gap: 6px; } }
 
-        .skill-box {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 12px;
-            border-top: 3px solid #9d4edd;
-            transition: transform 0.3s;
-        }
+/* ---------- Personal ---------- */
+.me { display: grid; grid-template-columns: 300px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+.me figure { margin: 0; }
+.me img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 14px; display: block; filter: saturate(.9); }
+.me figcaption { color: var(--graphite); font-size: .9rem; margin-top: 10px; }
+.hobbies { display: grid; gap: 0; }
+.hobby { padding: 22px 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 110px 1fr; gap: 22px; }
+.hobby:last-child { border-bottom: 1px solid var(--rule); }
+.hobby .big { font-weight: 850; font-variation-settings: "wdth" 62; font-size: 3.2rem; line-height: .9; }
+.hobby .big small { display: block; font-size: .85rem; font-weight: 500; font-variation-settings: "wdth" 100; color: var(--graphite); margin-top: 6px; line-height: 1.2; }
+.hobby h3 { margin: 0 0 6px; font-size: 1.15rem; font-weight: 700; }
+.hobby p { margin: 0; color: var(--graphite); max-width: 60ch; }
+.hobby.twelve .big { color: var(--signal); }
+@media (max-width: 800px) { .me { grid-template-columns: 1fr; } .me figure { max-width: 260px; } }
+@media (max-width: 440px) { .hobby { grid-template-columns: 1fr; gap: 8px; } }
 
-        .skill-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(157, 78, 221, 0.4);
-        }
+/* ---------- Contact ---------- */
+.contact { padding-bottom: 40px; }
+.contact-mail {
+  display: inline-block; margin: 8px 0 28px;
+  font-weight: 800; font-variation-settings: "wdth" 68;
+  font-size: clamp(1.9rem, 6.4vw, 4.6rem); line-height: 1; text-decoration: none;
+  border-bottom: 4px solid var(--violet-deep); overflow-wrap: anywhere;
+}
+.contact-mail:hover { color: var(--violet); border-color: var(--signal); }
+.contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
+.contact-note { color: var(--graphite); margin-top: 22px; }
+/* ---------- Rodapé ---------- */
+.site-foot { margin-top: 96px; background: #0d0b12; border-top: 1px solid var(--rule); position: relative; overflow: hidden; }
+.site-foot::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: linear-gradient(90deg, transparent, var(--violet-deep) 20%, var(--violet) 50%, var(--signal) 80%, transparent); }
+.foot-grid { position: relative; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 36px; padding: 56px 0 40px; }
+.foot-brand { display: flex; gap: 14px; align-items: flex-start; }
+.foot-brand .mark { flex: none; }
+.foot-brand b { display: block; font-size: 1.25rem; font-weight: 800; font-variation-settings: "wdth" 80; }
+.foot-brand span { color: var(--graphite); font-size: .95rem; }
+.site-foot h2 { font-size: .95rem; font-weight: 700; margin: 0 0 12px; color: var(--violet); }
+.site-foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.site-foot ul a { color: var(--graphite); text-decoration: none; font-size: .95rem; }
+.site-foot ul a:hover { color: var(--ink); }
+.foot-biz p { margin: 0 0 4px; color: var(--graphite); font-size: .95rem; }
+.foot-biz .cnpj { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 600; }
+.foot-bottom { position: relative; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 20px 0 32px; border-top: 1px solid var(--rule); color: var(--graphite); font-size: .88rem; }
+.foot-bottom a { color: var(--violet); text-decoration: none; font-weight: 600; }
+.foot-big { position: absolute; right: -10px; bottom: -60px; font-weight: 900; font-variation-settings: "wdth" 62; font-size: 17rem; line-height: 1; color: rgba(169,116,255,.06); pointer-events: none; user-select: none; }
+@media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .foot-grid { grid-template-columns: 1fr; } }
 
-        .tech-icons i {
-            font-size: 3.5em;
-            margin: 10px;
-            display: inline-block;
-            transition: transform 0.3s;
-        }
+/* ---------- Empresa ---------- */
+.company { display: flex; gap: 16px; align-items: flex-start; }
+.company img { flex: none; width: 58px; height: 58px; border-radius: 12px; background: #fff; padding: 4px; object-fit: contain; }
+.company p { margin: 0; color: var(--graphite); max-width: 60ch; }
+.delivered { margin-top: 64px; }
+.delivered-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
+.delivered-head h3 { margin: 0; font-size: clamp(1.5rem, 2.4vw, 1.9rem); font-weight: 750; line-height: 1.15; }
+.delivered-head p { margin: 0; color: var(--graphite); }
+.delivered-head p b { color: var(--violet); }
+.deliv-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
+.deliv { background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; padding: 24px; }
+.deliv header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+.deliv h4 { margin: 0; font-size: 1.3rem; font-weight: 800; }
+.deliv header span { color: var(--signal); font-weight: 600; font-size: .9rem; white-space: nowrap; }
+.deliv > p { margin: 0 0 8px; color: var(--graphite); }
+.deliv ul { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.deliv li { padding-left: 18px; position: relative; color: var(--graphite); font-size: .97rem; line-height: 1.5; }
+.deliv li::before { content: ""; position: absolute; left: 0; top: .6em; width: 7px; height: 7px; border-radius: 2px; background: var(--violet); transform: rotate(45deg); }
+.deliv li b { color: var(--ink); font-weight: 650; }
+.note { color: var(--graphite); font-size: .88rem; margin: 14px 0 0; }
+@media (max-width: 860px) { .deliv-grid { grid-template-columns: 1fr; } }
 
-        .tech-icons i:hover { transform: scale(1.3) rotate(10deg); }
+/* ---------- Feed ao vivo ---------- */
+.live { margin-top: 56px; border-top: 1.5px solid var(--violet-deep); padding-top: 22px; }
+.live-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.live-head h3 { margin: 0; font-size: 1.3rem; font-weight: 750; display: flex; align-items: center; gap: 10px; }
+.live-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--signal); animation: live 2s infinite; }
+@keyframes live { 0% { box-shadow: 0 0 0 0 rgba(255,77,61,.6); } 70%, 100% { box-shadow: 0 0 0 9px rgba(255,77,61,0); } }
+@media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
+.live-head p { margin: 0; color: var(--graphite); font-size: .9rem; }
+.live-list { list-style: none; margin: 14px 0 0; padding: 0; }
+.live-list li { border-bottom: 1px solid var(--rule); }
+.live-list a { display: grid; grid-template-columns: 120px 1fr auto; gap: 18px; padding: 14px 0; text-decoration: none; align-items: baseline; }
+.live-list a:hover .lv-title { color: var(--violet); }
+.lv-type { font-size: .82rem; font-weight: 700; color: var(--violet); }
+.lv-type.pr { color: var(--signal); }
+.lv-title { font-weight: 650; display: block; }
+.lv-desc { color: var(--graphite); font-size: .93rem; display: block; }
+.lv-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.lv-tags span { font-size: .78rem; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--rule); color: var(--graphite); }
+.lv-when { color: var(--graphite); font-size: .85rem; white-space: nowrap; }
+@media (max-width: 640px) { .live-list a { grid-template-columns: 1fr; gap: 2px; } }
 
-        /* Cards do GitHub */
-        .project-card {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 25px;
-            margin: 20px 0;
-            border-radius: 12px;
-            border-left: 4px solid #9d4edd;
-            transition: all 0.4s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateX(15px) scale(1.02);
-            border-left: 8px solid #c77dff;
-            box-shadow: -10px 0 20px rgba(157, 78, 221, 0.2);
-        }
+/* ---------- Stack automático ---------- */
+.stack li.auto { border-style: dashed; border-color: #5b34a3; }
+.stack li.auto small { color: var(--violet); }
+.watch { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; color: var(--graphite); font-size: .92rem; }
+.watch[hidden] { display: none; }
+.watch b { color: var(--ink); font-weight: 650; margin-right: 4px; }
+.watch span { border: 1px solid var(--rule); border-radius: 999px; padding: 3px 10px; font-size: .85rem; }
+.watch span i { font-style: normal; color: var(--violet); margin-left: 6px; font-variant-numeric: tabular-nums; }
 
-        .project-card a { color: #e0aaff; text-decoration: none; font-weight: bold; font-size: 1.4em; }
+/* ---------- Rosa costurando o fundo ---------- */
+.seam { position: relative; height: 190px; margin-bottom: 8px; }
+.seam svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+/* a costura avança da flor até a ponta, uma vez, quando a seção entra na tela */
+.seam.armed svg { clip-path: inset(-60px calc(100% - 215px) -60px -60px); }
+.seam.sew svg { clip-path: inset(-60px -60px -60px -60px); transition: clip-path 2.6s cubic-bezier(.45,.05,.3,1); }
 
-        .tags span {
-            background: rgba(157, 78, 221, 0.15);
-            color: #c77dff;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            margin-right: 8px;
-            border: 1px solid rgba(157, 78, 221, 0.5);
-            display: inline-block;
-            margin-top: 8px;
-        }
-    </style>
+/* ---------- Tênis de mesa ---------- */
+.pong { margin-top: 48px; }
+.pong-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+.pong-head h3 { margin: 0; font-size: 1.3rem; font-weight: 750; }
+.pong-head p { margin: 2px 0 0; color: var(--graphite); font-size: .93rem; max-width: 60ch; }
+.score { display: flex; align-items: flex-start; gap: 14px; font-weight: 850; font-variation-settings: "wdth" 70; font-size: 2.2rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.score .you { color: var(--signal); }
+.score small { font-size: .8rem; font-weight: 500; color: var(--graphite); font-variation-settings: "wdth" 100; display: block; text-align: center; margin-top: 4px; }
+.pong-frame { position: relative; border-radius: 14px; overflow: hidden; background: #0b1424; border: 1px solid var(--rule); }
+.pong canvas { display: block; width: 100%; aspect-ratio: 16 / 7; max-height: 440px; touch-action: none; }
+@media (max-width: 640px) { .pong canvas { aspect-ratio: 16 / 10; } }
+.pong canvas:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+.pong-msg { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.pong-msg span { background: rgba(18,16,24,.85); border: 1px solid #4b2a8a; padding: 10px 18px; border-radius: 999px; font-weight: 600; }
+.pong-msg[hidden] { display: none; }
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
 </head>
 <body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
-    <img src="12.png" alt="Marca Wayner" class="brand-logo" title="Wayner Moraes">
+<header class="wrap nav">
+  <a class="mark" href="#topo" aria-label="Wayner Moraes, início">12</a>
+  <div class="nav-right">
+    <nav aria-label="Seções">
+      <ul>
+        <li><a href="#agora">Agora</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#trajetoria">Trajetória</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <img src="angus.png" alt="Angus" class="cartoon-deco deco-angus">
-    <img src="guitarra.png" alt="Guitarra" class="cartoon-deco deco-guitarra">
-    <img src="pc.png" alt="PC" class="cartoon-deco deco-pc">
-    <img src="amp.png" alt="Amplificador" class="cartoon-deco deco-amp">
-    <img src="nintendo.png" alt="Nintendo" class="cartoon-deco deco-nintendo">
-    <img src="raquete.png" alt="Raquete" class="cartoon-deco deco-raquete">
+<main id="conteudo">
+  <div class="wrap hero" id="topo">
+    <h1>Wayner<br>Moraes</h1>
+    <div class="hero-meta">
+      <p class="hero-lede">Desenvolvedor <strong>C++, Python e full stack</strong>. Hoje construo sistemas de IA multiagente para empresas na Área Incrível.</p>
+      <div class="actions">
+        <a class="btn btn-solid" href="#projetos">Ver projetos</a>
+        <a class="btn btn-line" href="https://www.linkedin.com/in/wayner-moraes-8494451a3/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-line" href="https://github.com/WaynerMoraes12" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
 
-    <header>
-        <img src="foto.jpg" alt="Wayner Moraes" class="profile-img">
-        <h1>Wayner Moraes</h1>
-        <p>Desenvolvedor de Software | Criador do Projeto MAW | Apaixonado por Inovação</p>
-        
-        <div class="social-links">
-            <a href="https://github.com/WaynerMoraes12" target="_blank">🐙 GitHub</a>
-            <a href="https://www.linkedin.com/in/wayner-moraes-8494451a3/" target="_blank">💼 LinkedIn</a>
-        </div>
-    </header>
+  <div class="neck-wrap">
+    <div class="neck" id="neck" role="img" aria-label="Braço de guitarra interativo com seis cordas. As marcações da casa 12 estão em vermelho.">
+      <canvas id="neckCanvas"></canvas>
+    </div>
+    <div class="wrap neck-caption">
+      <span id="neckHint">Passe a palheta pelas cordas. O som sai de um amp de metal sintetizado no navegador: Karplus-Strong, distorção e gabinete.</span>
+      <button class="sound-btn" id="soundBtn" type="button" aria-pressed="false"><span class="dot" aria-hidden="true"></span><span id="soundLabel">Ativar som</span></button>
+    </div>
+  </div>
 
-    <div class="container">
-        
-        <div class="section" id="sobre">
-            <h2>👨‍💻 A Jornada</h2>
-            <p>Engenheiro de Computação em formação pela FHO. Especialista em resolver problemas unindo lógica avançada e criatividade.</p>
-            <p>O maior reflexo disso é o meu projeto <strong>MAW</strong>, um sistema que nasceu da minha conexão profunda com a música, provando que o código é apenas uma ferramenta para expressar nossas paixões.</p>
-        </div>
-
-        <div class="section" id="habilidades">
-            <h2>⚡ Arsenal Técnico</h2>
-            <div class="skills-grid">
-                
-                <div class="skill-box">
-                    <h3>Back-end</h3>
-                    <div class="tech-icons">
-                        <i class="devicon-cplusplus-plain colored" title="C++"></i>
-                        <i class="devicon-python-plain colored" title="Python"></i>
-                        <i class="devicon-c-plain colored" title="C"></i>
-                    </div>
-                </div>
-
-                <div class="skill-box">
-                    <h3>Front-end</h3>
-                    <div class="tech-icons">
-                        <i class="devicon-html5-plain colored" title="HTML5"></i>
-                        <i class="devicon-javascript-plain colored" title="JavaScript"></i>
-                        <i class="devicon-typescript-plain colored" title="TypeScript"></i>
-                    </div>
-                </div>
-
-                <div class="skill-box">
-                    <h3>Dados</h3>
-                    <div class="tech-icons">
-                        <i class="devicon-mysql-plain colored" title="MySQL"></i>
-                    </div>
-                </div>
-
-                <div class="skill-box">
-                    <h3>Ferramentas</h3>
-                    <div class="tech-icons">
-                        <i class="devicon-git-plain colored" title="Git"></i>
-                        <i class="devicon-github-original colored" title="GitHub"></i>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="section" id="interesses">
-            <h2>🌀 O Homem por Trás do Código</h2>
-            <ul>
-                <li><strong>🏓 O Atleta de Tênis de Mesa:</strong> Mais da metade da minha vida dedicada a este esporte, competindo no Brasileiro e representando Araras, Rio Claro e Santa Gertrudes.</li>
-                <li><strong>🎸 O Músico:</strong> Há 16 anos, a guitarra é minha voz. Sou movido a riffs pesados de Rock (AC/DC, Slipknot) e Rap/Hip Hop (Eminem, Travis Scott). A música é a alma do meu TCC!</li>
-            </ul>
-        </div>
-
-        <div class="section" id="projetos">
-            <h2>🚀 Laboratório de Projetos</h2>
-            <div id="github-projects"><p>Sincronizando dados com a API do GitHub...</p></div>
-        </div>
-
+  <!-- AGORA -->
+  <section id="agora" class="wrap">
+    <div class="sec-head">
+      <h2>Agora</h2>
+      <div class="company"><img src="assets/area-incrivel.png" alt="Logo da Área Incrível" width="58" height="58"><p><span class="kicker">Desenvolvedor Júnior na Área Incrível, desde agosto de 2026.</span><br>Incorporadora do Grupo MNGT, em Rio Claro. Trabalho no SIGESCON, uma plataforma que troca o preenchimento de formulários corporativos por uma conversa em linguagem natural.</p></div>
     </div>
 
-    <script>
-        const githubUsername = 'WaynerMoraes12';
+    <div class="now">
+      <div>
+        <h3>SIGESCON: o funcionário descreve o que precisa e a IA abre o processo certo.</h3>
+        <p class="role">RH, TI, Jurídico, Compras e outros departamentos numa única conversa.</p>
+        <p>Participo da arquitetura de um sistema multiagente com CrewAI, dos workflows duráveis em Temporal e das integrações via MCP (Model Context Protocol) com os sistemas que a empresa já usa: Sankhya, ELO/OpenProject e Sienge, além de armazenamento em Nextcloud e MinIO/Backblaze B2.</p>
+        <p>Também ajudo na modelagem de processos e na curadoria de campos obrigatórios, que é o que faz a IA pedir exatamente a informação que cada departamento precisa.</p>
+        <div class="facts">
+          <div class="fact"><b>16</b><span>agentes especializados</span></div>
+          <div class="fact"><b>350+</b><span>processos mapeados em 10 departamentos</span></div>
+          <div class="fact"><b>240</b><span>cargos organizacionais analisados</span></div>
+        </div>
+        <p class="stack-line"><b>Stack:</b> Python, FastAPI, SQLAlchemy assíncrono, PostgreSQL, Redis, Next.js e TypeScript. TDD com pytest e testcontainers.</p>
+      </div>
 
-        async function carregarProjetos() {
-            try {
-                const resposta = await fetch(`https://api.github.com/users/${githubUsername}/starred`);
-                const projetos = await resposta.json();
-                const containerProjetos = document.getElementById('github-projects');
-                containerProjetos.innerHTML = ''; 
+      <div class="flow" aria-label="Caminho de uma solicitação no SIGESCON">
+        <p class="flow-title">O caminho de uma solicitação</p>
+        <ol>
+          <li><b>Mensagem em linguagem natural</b><span>“Preciso de um notebook para o novo analista.”</span></li>
+          <li><b>Agente de roteamento</b><span>Identifica o departamento responsável entre os 10 mapeados.</span></li>
+          <li><b>Triagem e mapeamento de campos</b><span>Agentes extraem o que já foi dito e perguntam só o que falta.</span></li>
+          <li class="hl"><b>Workflow durável no Temporal</b><span>Aprovações humanas com <code>wait_condition</code> e <code>signal</code>, sem perder estado.</span></li>
+          <li><b>Integração via MCP</b><span>O pedido chega ao ERP ou à ferramenta de gestão: Sankhya, OpenProject, Sienge.</span></li>
+        </ol>
+      </div>
+    </div>
 
-                if (projetos.length === 0) {
-                    containerProjetos.innerHTML = '<p>Ainda não há projetos favoritados no radar.</p>';
-                    return;
-                }
+    <div class="delivered">
+      <div class="delivered-head">
+        <h3>O que ajudei a construir lá</h3>
+        <p>Levantado dos meus commits e PRs: <b>150 commits</b> e <b>14 pull requests mergeadas</b> desde agosto.</p>
+      </div>
+      <div class="deliv-grid">
+        <article class="deliv">
+          <header><h4>SIGESCON</h4><span>146 commits, 10 PRs</span></header>
+          <ul>
+            <li><b>Módulo de Solicitações.</b> Os 353 processos mapeados rodando pelo fluxo, com ficha editável, arquivos por etapa, apoio da IA no preenchimento e notificações.</li>
+            <li><b>Integração com o Sankhya.</b> Quem responde cada solicitação passou a vir do cadastro oficial de pessoas, com dados reais do ERP no lugar do fluxo legado de Compras.</li>
+            <li><b>Academia interna.</b> Mentoria por rodízio entre desenvolvedores, com regras de quem mentora e quem é mentorado.</li>
+            <li><b>Servidor de arquivos.</b> Uma pasta por empresa, criada a partir do cadastro.</li>
+            <li><b>Agentes e qualidade.</b> Troca do formato da conversa com o modelo para JSON, correção de rascunhos duplicados e manutenção das migrations do banco.</li>
+          </ul>
+        </article>
+        <article class="deliv">
+          <header><h4>SISCAPE</h4><span>4 commits, 4 PRs</span></header>
+          <p>Plataforma de pessoas e papéis do grupo.</p>
+          <ul>
+            <li><b>Navegação.</b> Barra lateral nas telas de pessoas.</li>
+            <li><b>MCP de pessoas.</b> Dados simulados para o servidor MCP do hub de pessoas, usados no desenvolvimento dos agentes.</li>
+            <li><b>Catálogo de papéis.</b> Migration que adiciona o papel de Desenvolvedor.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="note">Os repositórios da empresa são privados. Aqui aparece só um resumo do que entreguei, sem código nem dados internos.</p>
+    </div>
 
-                projetos.forEach(projeto => {
-                    const card = document.createElement('div');
-                    card.className = 'project-card';
-                    card.innerHTML = `
-                        <a href="${projeto.html_url}" target="_blank">${projeto.name}</a>
-                        <p>${projeto.description ? projeto.description : 'Projeto desenvolvido com dedicação!'}</p>
-                        <div class="tags">
-                            <span>⭐ ${projeto.stargazers_count} Stars</span>
-                            <span>💻 ${projeto.language ? projeto.language : 'Múltiplo'}</span>
-                        </div>
-                    `;
-                    containerProjetos.appendChild(card);
-                });
-            } catch (erro) {
-                document.getElementById('github-projects').innerHTML = '<p>Erro de conexão com o GitHub.</p>';
-            }
+    <div class="live" id="live">
+      <div class="live-head">
+        <h3><span class="live-dot" aria-hidden="true"></span>Direto do GitHub</h3>
+        <p id="liveMeta">Carregando a atividade mais recente...</p>
+      </div>
+      <ol class="live-list" id="liveList"></ol>
+      <p class="note">Commits e pull requests dos meus repositórios públicos, atualizados sozinhos de hora em hora. Mensagens que pareçam ter dados sensíveis viram um resumo genérico.</p>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos" class="wrap">
+    <div class="sec-head">
+      <h2>Projetos</h2>
+      <p>Do C++ puro com concorrência a pipelines de IA com Docker. Todos têm código aberto no GitHub.</p>
+    </div>
+
+    <div class="featured">
+      <a class="proj" href="https://github.com/WaynerMoraes12/FastParse-CLI" target="_blank" rel="noopener">
+        <span class="lang"><i style="background:#f34b7d"></i>C++17</span>
+        <h3>FastParse-CLI</h3>
+        <p>Ferramenta de linha de comando que varre diretórios grandes e extrai métricas de palavras-chave em paralelo. Usa <code>std::async</code>, <code>std::mutex</code> com RAII e <code>std::string_view</code> para evitar alocações.</p>
+        <div class="metric"><b>~1,7 s</b><span>para processar milhares de ocorrências em vários arquivos</span></div>
+        <span class="open">Ver repositório</span>
+      </a>
+      <a class="proj" href="https://github.com/WaynerMoraes12/mngt-rag-challenge" target="_blank" rel="noopener">
+        <span class="lang"><i style="background:#3572a5"></i>Python, RAG</span>
+        <h3>MNGT RAG Engine</h3>
+        <p>Consulta a contratos imobiliários em PDF por linguagem natural. Cada resposta aponta o trecho e o contrato de origem, sem inventar informação. FastAPI, banco vetorial, Gemini e Docker Compose.</p>
+        <div class="metric"><b>1</b><span>comando para subir tudo: <code>docker compose up</code></span></div>
+        <span class="open">Ver repositório</span>
+      </a>
+      <a class="proj" href="https://github.com/WaynerMoraes12/logistrack-ia" target="_blank" rel="noopener">
+        <span class="lang"><i style="background:#f1e05a"></i>Node.js, Python, Redis</span>
+        <h3>LogisTrack IA</h3>
+        <p>Pipeline orientado a eventos: telemetria de caminhões entra por webhook, passa pelo Redis Pub/Sub e um worker de IA em Python detecta anomalias e sugere ações. Dashboard em tempo real com Socket.io.</p>
+        <div class="metric"><b>4</b><span>serviços desacoplados, do webhook ao dashboard</span></div>
+        <span class="open">Ver repositório</span>
+      </a>
+    </div>
+
+    <div class="more">
+      <a class="row" href="https://github.com/WaynerMoraes12/HighFreqTracker" target="_blank" rel="noopener">
+        <span class="row-name">HighFreqTracker</span>
+        <span class="row-desc">Scanner assíncrono de mercado com asyncio e aiohttp. Várias requisições concorrentes à API do Steam Market em cerca de 295 ms.</span>
+        <span class="row-tech">Python, asyncio</span>
+      </a>
+      <a class="row" href="https://github.com/WaynerMoraes12/ecommerce-tracker-etl" target="_blank" rel="noopener">
+        <span class="row-name">E-commerce Tracker ETL</span>
+        <span class="row-desc">Coleta preços de sites dinâmicos com Playwright, trata com Pandas, guarda histórico no PostgreSQL e mostra tudo num dashboard Streamlit.</span>
+        <span class="row-tech">Python, Playwright, PostgreSQL</span>
+      </a>
+      <a class="row" href="https://github.com/WaynerMoraes12/riot-analytics-api" target="_blank" rel="noopener">
+        <span class="row-name">Riot Analytics</span>
+        <span class="row-desc">API em FastAPI que consome a Riot Games API e entrega estatísticas ranqueadas de jogadores para um dashboard interativo.</span>
+        <span class="row-tech">FastAPI, HTTPX, Streamlit</span>
+      </a>
+      <a class="row" href="https://github.com/WaynerMoraes12/GeradorDeTreinos-FitLang" target="_blank" rel="noopener">
+        <span class="row-name">FitLang</span>
+        <span class="row-desc">Uma linguagem própria para escrever rotinas de treino, com analisador léxico, sintático e semântico, interface em Tkinter e exportação para PDF.</span>
+        <span class="row-tech">Python, compiladores</span>
+      </a>
+      <a class="row" href="https://github.com/WaynerMoraes12/AnaliseDeCashBack_ComBancoDeDados" target="_blank" rel="noopener">
+        <span class="row-name">Análise de Cashback</span>
+        <span class="row-desc">Case técnico de performance de e-commerce: API em Express sobre SQL Server e dashboard em React com Recharts.</span>
+        <span class="row-tech">React, Node.js, SQL Server</span>
+      </a>
+      <a class="row" href="https://github.com/WaynerMoraes12/cls-outlet-v2" target="_blank" rel="noopener">
+        <span class="row-name">CLS Outlet</span>
+        <span class="row-desc">Landing page mobile-first da loja em que trabalhei, com foco em levar o cliente direto ao Mercado Livre, às lojas físicas e ao WhatsApp.</span>
+        <span class="row-tech">React, Vite, Tailwind</span>
+      </a>
+    </div>
+    <a class="gh-all" href="https://github.com/WaynerMoraes12?tab=repositories" target="_blank" rel="noopener">Ver todos os repositórios no GitHub</a>
+
+    <div class="maw">
+      <div class="maw-tag" aria-hidden="true">MAW</div>
+      <div>
+        <h3>Em desenvolvimento: MAW, uma DAW com IA</h3>
+        <p>Meu TCC junta as duas coisas que mais faço na vida: código e guitarra. É uma estação de áudio digital em C++ com processamento lock-free, para que a thread de áudio nunca espere, e redes neurais aplicadas ao som.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack" class="wrap">
+    <div class="sec-head">
+      <h2>Stack</h2>
+      <p>O que uso no dia a dia e nos projetos pessoais. As peças tracejadas entraram sozinhas: o site conta as ferramentas dos meus commits e PRs e adiciona cada uma depois do terceiro uso.</p>
+    </div>
+    <div class="stack">
+      <div>
+        <h3>Linguagens</h3>
+        <ul>
+          <li data-skill="cpp"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/cplusplus.svg)" aria-hidden="true"></span>C++ <small>17, concorrência</small></li>
+          <li data-skill="python"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/python.svg)" aria-hidden="true"></span>Python <small>async</small></li>
+          <li data-skill="typescript"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/typescript.svg)" aria-hidden="true"></span>TypeScript</li>
+          <li data-skill="javascript"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/javascript.svg)" aria-hidden="true"></span>JavaScript</li>
+          <li data-skill="c"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/c.svg)" aria-hidden="true"></span>C</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Back-end e IA</h3>
+        <ul>
+          <li data-skill="fastapi"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/fastapi.svg)" aria-hidden="true"></span>FastAPI</li>
+          <li data-skill="crewai"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/crewai.svg)" aria-hidden="true"></span>CrewAI <small>multiagente</small></li>
+          <li data-skill="temporal"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/temporal.svg)" aria-hidden="true"></span>Temporal <small>workflows</small></li>
+          <li data-skill="mcp"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/modelcontextprotocol.svg)" aria-hidden="true"></span>MCP</li>
+          <li data-skill="sqlalchemy"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/sqlalchemy.svg)" aria-hidden="true"></span>SQLAlchemy <small>async</small></li>
+          <li data-skill="nodejs express"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/nodedotjs.svg)" aria-hidden="true"></span>Node.js e Express</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Front-end</h3>
+        <ul>
+          <li data-skill="nextjs"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/nextdotjs.svg)" aria-hidden="true"></span>Next.js</li>
+          <li data-skill="react"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/react.svg)" aria-hidden="true"></span>React</li>
+          <li data-skill="tailwind"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/tailwindcss.svg)" aria-hidden="true"></span>Tailwind CSS</li>
+          <li data-skill="html"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/html5.svg)" aria-hidden="true"></span>HTML</li>
+          <li data-skill="css"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/css.svg)" aria-hidden="true"></span>CSS</li>
+          <li data-skill="streamlit"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/streamlit.svg)" aria-hidden="true"></span>Streamlit</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Dados e infra</h3>
+        <ul>
+          <li data-skill="postgresql"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/postgresql.svg)" aria-hidden="true"></span>PostgreSQL</li>
+          <li data-skill="mysql"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/mysql.svg)" aria-hidden="true"></span>MySQL</li>
+          <li data-skill="redis"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/redis.svg)" aria-hidden="true"></span>Redis</li>
+          <li data-skill="docker"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/docker.svg)" aria-hidden="true"></span>Docker</li>
+          <li data-skill="pytest testcontainers"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/pytest.svg)" aria-hidden="true"></span>pytest <small>TDD</small></li>
+          <li data-skill="git githubactions"><span class="ic" style="--i:url(https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/git.svg)" aria-hidden="true"></span>Git e GitHub</li>
+        </ul>
+      </div>
+    </div>
+    <div class="watch" id="watch" hidden></div>
+  </section>
+
+  <!-- TRAJETÓRIA -->
+  <section id="trajetoria" class="wrap">
+    <div class="sec-head">
+      <h2>Trajetória</h2>
+      <p>Comecei em rotinas administrativas, passei por operação e e-commerce, e hoje estou na engenharia de software. Essa passagem me ajuda a entender os processos que eu automatizo.</p>
+    </div>
+    <ol class="timeline" reversed>
+      <li class="tl current">
+        <span class="tl-when">Ago 2026 até hoje</span>
+        <div>
+          <h3>Desenvolvedor Júnior</h3>
+          <p class="where">Área Incrível</p>
+          <p>SIGESCON: agentes CrewAI, workflows em Temporal com aprovação humana e integrações MCP com ERPs e armazenamento de documentos.</p>
+        </div>
+      </li>
+      <li class="tl">
+        <span class="tl-when">Out 2025 a Ago 2026</span>
+        <div>
+          <h3>Analista de E-commerce</h3>
+          <p class="where">CLS Outlet</p>
+          <p>Operação no Mercado Livre, com cerca de 30 anúncios criados e publicados por dia, controle de envios e devoluções e atendimento. Também desenvolvi a landing page da loja e automações de relatório em Python.</p>
+        </div>
+      </li>
+      <li class="tl">
+        <span class="tl-when">Jan 2024 a Mar 2025</span>
+        <div>
+          <h3>Estagiário</h3>
+          <p class="where">Nestlé, CDI Cordeirópolis</p>
+          <p>Gestão do arquivo morto, estoque de EPIs e correspondência. Passagem pelas áreas de Pilar Digital, Back Office e Conciliação de Inventário.</p>
+        </div>
+      </li>
+      <li class="tl">
+        <span class="tl-when">Out 2022 a Jan 2024</span>
+        <div>
+          <h3>Jovem Aprendiz, Assistente Administrativo</h3>
+          <p class="where">Santa Casa de Misericórdia de Araras</p>
+          <p>Rotinas administrativas no SESMT e no RH.</p>
+        </div>
+      </li>
+    </ol>
+    <div class="edu">
+      <div><b>Engenharia de Computação, FHO</b><span>12º semestre, conclusão em dezembro de 2026.</span></div>
+      <div><b>Cursos</b><span>Introduction to Cybersecurity e Cybersecurity Essentials (Cisco), Git e GitHub (Udemy).</span></div>
+      <div><b>Idiomas</b><span>Português nativo, inglês intermediário/avançado.</span></div>
+    </div>
+  </section>
+
+  <!-- FORA DO CÓDIGO -->
+  <section id="fora" class="wrap">
+    <div class="seam" id="seam" aria-hidden="true"><svg id="seamSvg" xmlns="http://www.w3.org/2000/svg"></svg></div>
+    <div class="sec-head">
+      <h2>Fora do código</h2>
+      <p>Disciplina de treino e ouvido de músico aparecem no meu jeito de programar.</p>
+    </div>
+    <div class="me">
+      <figure>
+        <img src="foto.jpg" alt="Wayner Moraes sorrindo" width="400" height="400" loading="lazy">
+        <figcaption>Araras, SP</figcaption>
+      </figure>
+      <div class="hobbies">
+        <div class="hobby">
+          <div class="big">16<small>anos de guitarra</small></div>
+          <div>
+            <h3>Guitarra</h3>
+            <p>Cresci com riffs de AC/DC e Avenged Sevenfold, de Angus Young a Synyster Gates, e ouço muito rap, de Eminem a Travis Scott. Foi a música que me levou a estudar processamento de áudio e a criar o MAW.</p>
+          </div>
+        </div>
+        <div class="hobby">
+          <div class="big">½<small>da vida no esporte</small></div>
+          <div>
+            <h3>Tênis de mesa</h3>
+            <p>Atleta há mais da metade da minha vida. Joguei o Campeonato Brasileiro e representei Araras, Rio Claro e Santa Gertrudes.</p>
+          </div>
+        </div>
+        <div class="hobby twelve">
+          <div class="big">12<small>meu número</small></div>
+          <div>
+            <h3>A marca</h3>
+            <p>O 12 me acompanha em tudo, e é também a casa da oitava no braço da guitarra, a que está marcada em vermelho lá em cima.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pong" id="pong">
+      <div class="pong-head">
+        <div>
+          <h3>Uma partida rápida?</h3>
+          <p>Você joga com a raquete vermelha, do lado esquerdo. Mexa o mouse ou o dedo sobre a mesa, ou use as setas. Quem fizer 11 primeiro vence.</p>
+        </div>
+        <div class="score" aria-live="polite"><div><span class="you" id="scoreYou">0</span><small>você</small></div><span aria-hidden="true">:</span><div><span id="scoreCpu">0</span><small>CPU</small></div></div>
+      </div>
+      <div class="pong-frame">
+        <canvas id="pongCanvas" tabindex="0" aria-label="Mesa de tênis de mesa. Clique ou pressione espaço para sacar e use as setas para mover sua raquete."></canvas>
+        <div class="pong-msg" id="pongMsg"><span id="pongMsgText">Clique na mesa para sacar</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="wrap contact">
+    <div class="sec-head">
+      <h2>Contato</h2>
+      <p>Estou aberto a vagas de desenvolvedor júnior e pleno. O jeito mais rápido de falar comigo é por e-mail ou LinkedIn.</p>
+    </div>
+    <a class="contact-mail" href="mailto:waynerbusiness@outlook.com">waynerbusiness@outlook.com</a>
+    <div class="contact-links">
+      <a class="btn btn-solid" href="mailto:waynerbusiness@outlook.com">Enviar e-mail</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/wayner-moraes-8494451a3/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-line" href="https://github.com/WaynerMoraes12" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="foot-big" aria-hidden="true">12</div>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a class="mark" href="#topo" aria-label="Voltar ao início">12</a>
+      <div><b>Wayner Moraes</b><span>Desenvolvedor C++, Python e full stack. Sistemas de IA, integrações e áudio.</span></div>
+    </div>
+    <div>
+      <h2>Navegar</h2>
+      <ul>
+        <li><a href="#agora">Agora</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#trajetoria">Trajetória</a></li>
+        <li><a href="#fora">Fora do código</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Contato</h2>
+      <ul>
+        <li><a href="mailto:waynerbusiness@outlook.com">E-mail</a></li>
+        <li><a href="https://www.linkedin.com/in/wayner-moraes-8494451a3/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/WaynerMoraes12" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div class="foot-biz">
+      <h2>Empresa</h2>
+      <p>Wayner Pires de Moraes</p>
+      <p>CNPJ <span class="cnpj">68.401.902/0001-73</span></p>
+      <p>Araras, SP</p>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© <span id="year">2026</span> Wayner Pires de Moraes. Feito à mão em HTML, CSS e JavaScript. Foto da rosa: <a href="https://commons.wikimedia.org/wiki/File:Red_rose_in_white_background.jpg" target="_blank" rel="noopener">George E. Koronaios, CC BY-SA 4.0</a>, recortada.</span>
+    <a href="#topo">Voltar ao topo</a>
+  </div>
+</footer>
+
+<script>
+/* ---------- Ano ---------- */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* ---------- Braço da guitarra ---------- */
+(function () {
+  const neck = document.getElementById("neck");
+  const canvas = document.getElementById("neckCanvas");
+  const ctx = canvas.getContext("2d");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (matchMedia("(pointer: coarse)").matches) {
+    document.getElementById("neckHint").textContent = "Toque nas cordas. O som sai de um amp de metal sintetizado no navegador: Karplus-Strong, distorção e gabinete.";
+  }
+
+  // Afinação padrão vista por quem toca: Mizona (E2) em cima, Mizinha (E4) embaixo
+  const tuning = [82.41, 110.0, 146.83, 196.0, 246.94, 329.63];
+  const gauges = [3.2, 2.6, 2.1, 1.5, 1.2, 1];
+  const FRETS = 15;
+  const strings = tuning.map((f, i) => ({ f, amp: 0, phase: 0, w: gauges[i], y: 0 }));
+  let W = 0, H = 0, dpr = 1, frets = [];
+
+  function layout() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = neck.clientWidth; H = neck.clientHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // Espaçamento real de trastes (regra 2^(1/12)), da casa 0 à 15, esticado na largura
+    const scale = W / (1 - Math.pow(2, -FRETS / 12)) * 1.0;
+    frets = [];
+    for (let n = 0; n <= FRETS; n++) frets.push(scale * (1 - Math.pow(2, -n / 12)));
+    const pad = H * 0.12;
+    strings.forEach((s, i) => { s.y = pad + (H - 2 * pad) * (i / (strings.length - 1)); });
+    draw(performance.now());
+  }
+
+  function fretMid(n) { return (frets[n - 1] + frets[n]) / 2; }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    // trastes
+    for (let n = 1; n <= FRETS; n++) {
+      ctx.fillStyle = "#9aa1aa";
+      ctx.fillRect(frets[n] - 1.5, 0, 3, H);
+      ctx.fillStyle = "rgba(255,255,255,.35)";
+      ctx.fillRect(frets[n] - 1.5, 0, 1, H);
+    }
+    // pestana
+    ctx.fillStyle = "#e9e2d4";
+    ctx.fillRect(0, 0, 6, H);
+    // marcações
+    const r = Math.max(5, H * 0.045);
+    [3, 5, 7, 9, 15].forEach(n => {
+      if (n > FRETS) return;
+      ctx.fillStyle = "#efe6d6";
+      ctx.beginPath(); ctx.arc(fretMid(n), H / 2, r, 0, Math.PI * 2); ctx.fill();
+    });
+    const red = getComputedStyle(document.documentElement).getPropertyValue("--signal").trim() || "#ff4d3d";
+    ctx.fillStyle = red;
+    [H * 0.3, H * 0.7].forEach(y => { ctx.beginPath(); ctx.arc(fretMid(12), y, r * 1.15, 0, Math.PI * 2); ctx.fill(); });
+
+    // cordas
+    strings.forEach((s, i) => {
+      const wound = i <= 2;
+      ctx.lineWidth = s.w;
+      ctx.strokeStyle = s.amp > 0.3 ? "#ffffff" : (wound ? "#c9c2b4" : "#dfe2e6");
+      ctx.beginPath();
+      if (s.amp < 0.05) {
+        ctx.moveTo(0, s.y); ctx.lineTo(W, s.y);
+      } else {
+        // modo fundamental: senoide presa nas duas pontas, oscilando no tempo
+        const osc = Math.sin(t * 0.06 * (1 + i * 0.18) + s.phase);
+        for (let x = 0; x <= W; x += 6) {
+          ctx.lineTo(x, s.y + s.amp * osc * Math.sin(Math.PI * x / W));
         }
+      }
+      ctx.stroke();
+      // sombra da corda
+      ctx.strokeStyle = "rgba(0,0,0,.35)";
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(0, s.y + s.w + 1.5); ctx.lineTo(W, s.y + s.w + 1.5); ctx.stroke();
+    });
+  }
 
-        carregarProjetos();
+  let running = false;
+  function loop(t) {
+    let active = false;
+    strings.forEach(s => { s.amp *= 0.955; if (s.amp > 0.05) active = true; else s.amp = 0; });
+    draw(t);
+    if (active) requestAnimationFrame(loop); else running = false;
+  }
+  function kick() { if (!running && !reduced) { running = true; requestAnimationFrame(loop); } }
 
-        const radarDeTela = new IntersectionObserver((elementosVistos) => {
-            elementosVistos.forEach((elemento) => {
-                if (elemento.isIntersecting) {
-                    elemento.target.classList.add('show');
-                }
-            });
-        }, { threshold: 0.1 });
+  /* ---- Som: Karplus-Strong passando por um amp de metal ----
+     corda -> ganho -> distorção (waveshaper) -> equalização com médios cavados
+     -> simulação de gabinete 4x12 -> delay curto -> saída */
+  let audio = null, soundOn = false;
+  const soundBtn = document.getElementById("soundBtn");
+  const soundLabel = document.getElementById("soundLabel");
 
-        document.querySelectorAll('.section').forEach((secao) => {
-            radarDeTela.observe(secao);
-        });
-    </script>
+  function distortionCurve(amount) {
+    const n = 2048, curve = new Float32Array(n);
+    for (let i = 0; i < n; i++) {
+      const x = (i / (n - 1)) * 2 - 1;
+      // assimétrico, como um pré de válvula saturado
+      curve[i] = Math.tanh(amount * x + 0.25 * amount * x * x * (x > 0 ? 1 : 0.6)) / Math.tanh(amount);
+    }
+    return curve;
+  }
+
+  function buildAmp() {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return null;
+    const ctx = new AC();
+    const input = ctx.createGain();
+    const tight = ctx.createBiquadFilter(); tight.type = "highpass"; tight.frequency.value = 110;
+    const drive = ctx.createGain(); drive.gain.value = 26;
+    const shaper = ctx.createWaveShaper(); shaper.curve = distortionCurve(9); shaper.oversample = "4x";
+    const scoop = ctx.createBiquadFilter(); scoop.type = "peaking"; scoop.frequency.value = 650; scoop.Q.value = 0.9; scoop.gain.value = -7;
+    const low = ctx.createBiquadFilter(); low.type = "lowshelf"; low.frequency.value = 180; low.gain.value = 5;
+    const presence = ctx.createBiquadFilter(); presence.type = "peaking"; presence.frequency.value = 2600; presence.Q.value = 1.2; presence.gain.value = 5;
+    const cab1 = ctx.createBiquadFilter(); cab1.type = "lowpass"; cab1.frequency.value = 5200; cab1.Q.value = 0.8;
+    const cab2 = ctx.createBiquadFilter(); cab2.type = "lowpass"; cab2.frequency.value = 6500; cab2.Q.value = 0.5;
+    const post = ctx.createGain(); post.gain.value = 0.16;
+    // delay estilo solo: repetições discretas
+    const delay = ctx.createDelay(1); delay.delayTime.value = 0.34;
+    const fb = ctx.createGain(); fb.gain.value = 0.28;
+    const wet = ctx.createGain(); wet.gain.value = 0.2;
+    const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -14; comp.ratio.value = 4;
+    input.connect(tight).connect(drive).connect(shaper).connect(scoop).connect(low).connect(presence).connect(cab1).connect(cab2).connect(post);
+    post.connect(comp);
+    post.connect(delay); delay.connect(fb).connect(delay); delay.connect(wet).connect(comp);
+    comp.connect(ctx.destination);
+    ctx.amp = input;
+    return ctx;
+  }
+
+  soundBtn.addEventListener("click", () => {
+    soundOn = !soundOn;
+    window.portfolioSound = soundOn;
+    soundBtn.setAttribute("aria-pressed", String(soundOn));
+    soundLabel.textContent = soundOn ? "Som ativado" : "Ativar som";
+    if (soundOn) {
+      if (!audio) audio = buildAmp();
+      if (!audio) return;
+      window.portfolioAudio = audio;
+      audio.resume();
+      // power chord de Mi na abertura: E2 + B2 + E3
+      pluck(0, 0, 0.9); pluck(1, 2, 0.9); pluck(2, 2, 0.9);
+    }
+  });
+
+  function pluck(stringIdx, fret, vel) {
+    if (!soundOn || !audio) return;
+    const freq = tuning[stringIdx] * Math.pow(2, fret / 12);
+    const sr = audio.sampleRate;
+    const N = Math.max(2, Math.round(sr / freq));
+    const len = Math.floor(sr * 2.6);
+    const buf = audio.createBuffer(1, len, sr);
+    const out = buf.getChannelData(0);
+    const ring = new Float32Array(N);
+    // ataque de palheta: ruído levemente filtrado
+    let lp = 0;
+    for (let i = 0; i < N; i++) { lp = lp * 0.35 + (Math.random() * 2 - 1) * 0.65; ring[i] = lp * vel; }
+    const decay = 0.9985 - (5 - stringIdx) * 0.0003;
+    let p = 0;
+    for (let i = 0; i < len; i++) {
+      const next = (p + 1) % N;
+      const v = ring[p];
+      out[i] = v;
+      ring[p] = decay * 0.5 * (v + ring[next]);
+      p = next;
+    }
+    // fade no fim para não estalar
+    const fade = Math.floor(sr * 0.05);
+    for (let i = 0; i < fade; i++) out[len - 1 - i] *= i / fade;
+    const src = audio.createBufferSource();
+    src.buffer = buf;
+    src.connect(audio.amp);
+    src.start();
+  }
+
+  function fretAt(x) {
+    for (let n = 1; n <= FRETS; n++) if (x < frets[n]) return n;
+    return FRETS;
+  }
+
+  function hit(i, x, strength) {
+    const s = strings[i];
+    s.amp = Math.min(H * 0.06, s.amp + H * 0.05 * strength);
+    s.phase = Math.random() * 6.28;
+    pluck(i, fretAt(x), 0.5 + 0.5 * strength);
+    if (reduced) draw(performance.now()); else kick();
+  }
+
+  // Detecta quando o ponteiro cruza uma corda
+  let lastY = null, lastT = 0;
+  function onMove(clientX, clientY) {
+    const rect = neck.getBoundingClientRect();
+    const x = clientX - rect.left, y = clientY - rect.top;
+    const now = performance.now();
+    if (lastY !== null) {
+      const lo = Math.min(lastY, y), hi = Math.max(lastY, y);
+      const speed = Math.min(1, Math.abs(y - lastY) / Math.max(1, now - lastT) / 1.5);
+      strings.forEach((s, i) => {
+        if (s.y > lo && s.y <= hi) hit(i, x, 0.35 + 0.65 * speed);
+      });
+    }
+    lastY = y; lastT = now;
+  }
+  neck.addEventListener("pointermove", e => onMove(e.clientX, e.clientY));
+  neck.addEventListener("pointerleave", () => { lastY = null; });
+  neck.addEventListener("pointerdown", e => {
+    const rect = neck.getBoundingClientRect();
+    const y = e.clientY - rect.top, x = e.clientX - rect.left;
+    let best = 0, d = Infinity;
+    strings.forEach((s, i) => { const dd = Math.abs(s.y - y); if (dd < d) { d = dd; best = i; } });
+    hit(best, x, 0.9);
+  });
+
+  // Palhetada inicial da Mizona até a Mizinha, só visual
+  window.addEventListener("resize", layout);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+  layout();
+  if (!reduced) {
+    strings.forEach((s, k) => setTimeout(() => {
+      s.amp = H * 0.045; s.phase = Math.random() * 6.28; kick();
+    }, 500 + k * 70));
+  }
+})();
+
+/* ---------- Atividade do GitHub e competências automáticas ---------- */
+(function () {
+  const list = document.getElementById("liveList");
+  const meta = document.getElementById("liveMeta");
+  const watch = document.getElementById("watch");
+  const ICONS = "https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/";
+  const rtf = new Intl.RelativeTimeFormat("pt-BR", { numeric: "auto" });
+
+  function ago(iso) {
+    const s = (new Date(iso) - Date.now()) / 1000;
+    const steps = [[60, "second"], [3600, "minute"], [86400, "hour"], [2592000, "day"], [31536000, "month"], [Infinity, "year"]];
+    let prev = 1;
+    for (const [lim, unit] of steps) {
+      if (Math.abs(s) < lim) return rtf.format(Math.round(s / prev), unit);
+      prev = lim;
+    }
+  }
+  function el(tag, cls, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  function renderFeed(d, names) {
+    list.replaceChildren();
+    if (!d.feed.length) {
+      meta.textContent = "Nenhuma atividade pública recente.";
+      return;
+    }
+    meta.textContent = "Atualizado " + ago(d.generated_at);
+    for (const it of d.feed) {
+      const li = el("li");
+      const a = el("a");
+      if (/^https:\/\/github\.com\//.test(it.url || "")) { a.href = it.url; a.target = "_blank"; a.rel = "noopener"; }
+      a.append(el("span", "lv-type" + (it.type === "pr" ? " pr" : ""), it.type === "pr" ? "PR mergeada" : "Commit"));
+      const body = el("span");
+      body.append(el("span", "lv-title", it.title), el("span", "lv-desc", it.description));
+      if (it.techs && it.techs.length) {
+        const tags = el("span", "lv-tags");
+        it.techs.slice(0, 5).forEach(t => tags.append(el("span", null, names[t] || t)));
+        body.append(tags);
+      }
+      a.append(body, el("span", "lv-when", ago(it.date)));
+      li.append(a);
+      list.append(li);
+    }
+  }
+
+  function renderSkills(d) {
+    const manual = new Set();
+    document.querySelectorAll("[data-skill]").forEach(li => li.dataset.skill.split(" ").forEach(id => manual.add(id)));
+    const columns = {};
+    document.querySelectorAll(".stack > div").forEach(col => { columns[col.querySelector("h3").textContent.trim()] = col.querySelector("ul"); });
+    document.querySelectorAll(".stack li.auto").forEach(li => li.remove());
+    const pending = [];
+    for (const sk of d.skills) {
+      if (manual.has(sk.id)) continue;
+      if (!sk.promoted) { pending.push(sk); continue; }
+      const ul = columns[sk.group];
+      if (!ul) continue;
+      const li = el("li", "auto");
+      li.dataset.skill = sk.id;
+      li.title = `Adicionada automaticamente: usada em ${sk.uses} commits ou PRs`;
+      const ic = el("span", "ic");
+      ic.setAttribute("aria-hidden", "true");
+      if (sk.icon) ic.style.setProperty("--i", `url(${ICONS}${sk.icon}.svg)`);
+      else { ic.style.background = "none"; ic.style.border = "2px solid var(--violet)"; ic.style.borderRadius = "6px"; ic.style.width = ic.style.height = "18px"; }
+      li.append(ic, document.createTextNode(sk.name), el("small", null, `${sk.uses} usos`));
+      ul.append(li);
+    }
+    pending.sort((a, b) => b.uses - a.uses);
+    watch.replaceChildren();
+    if (pending.length) {
+      watch.append(el("b", null, "Em observação:"));
+      pending.slice(0, 10).forEach(sk => {
+        const chip = el("span", null, sk.name);
+        chip.append(el("i", null, `${sk.uses}/${d.threshold}`));
+        watch.append(chip);
+      });
+      watch.hidden = false;
+    }
+  }
+
+  async function load() {
+    try {
+      const r = await fetch("data/activity.json?t=" + Date.now(), { cache: "no-store" });
+      if (!r.ok) throw new Error(r.status);
+      const d = await r.json();
+      const names = Object.fromEntries(d.skills.map(s => [s.id, s.name]));
+      renderFeed(d, names);
+      renderSkills(d);
+    } catch (e) {
+      meta.textContent = "Não consegui carregar a atividade agora.";
+      if (!list.children.length) {
+        const li = el("li"), a = el("a");
+        a.href = "https://github.com/WaynerMoraes12"; a.target = "_blank"; a.rel = "noopener";
+        a.append(el("span", "lv-type", "GitHub"), el("span", "lv-title", "Ver a atividade direto no meu perfil"));
+        li.append(a); list.append(li);
+      }
+    }
+  }
+  load();
+  setInterval(load, 10 * 60 * 1000);
+})();
+
+/* ---------- Tênis de mesa ---------- */
+(function () {
+  const cv = document.getElementById("pongCanvas");
+  const ctx = cv.getContext("2d");
+  const msg = document.getElementById("pongMsg");
+  const msgText = document.getElementById("pongMsgText");
+  const elYou = document.getElementById("scoreYou");
+  const elCpu = document.getElementById("scoreCpu");
+
+  // Mundo em centímetros: mesa oficial de 274 x 152,5
+  const TW = 274, TH = 152.5, NET = TW / 2;
+  const PX = -16, CX = TW + 16;      // posição das raquetes, atrás de cada fundo
+  const REACH = 17;                   // meia-altura da área de rebatida
+  let W = 0, H = 0, sc = 1, ox = 0, oy = 0;
+  const you = { y: TH / 2, target: TH / 2, v: 0 };
+  const cpu = { y: TH / 2, v: 0, err: 0 };
+  const ball = { x: 0, y: 0, vx: 0, vy: 0 };
+  let score = [0, 0], server = 0, servesLeft = 2, state = "idle", visible = false, last = 0, raf = 0;
+
+  function layout() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    sc = Math.min((W * 0.8) / TW, (H * 0.78) / TH);
+    ox = (W - TW * sc) / 2; oy = (H - TH * sc) / 2;
+    draw();
+  }
+  const X = x => ox + x * sc, Y = y => oy + y * sc;
+
+  function blip(freq) {
+    const a = window.portfolioAudio;
+    if (!window.portfolioSound || !a) return;
+    const o = a.createOscillator(), g = a.createGain();
+    o.frequency.value = freq; o.type = "triangle";
+    g.gain.setValueAtTime(0.12, a.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001, a.currentTime + 0.06);
+    o.connect(g).connect(a.destination); o.start(); o.stop(a.currentTime + 0.07);
+  }
+
+  function paddle(x, y, side, red) {
+    const r = 8.5 * sc;
+    ctx.save();
+    ctx.translate(X(x), Y(y));
+    // cabo
+    ctx.fillStyle = "#c89a62";
+    ctx.fillRect(side < 0 ? -r - 9 * sc : r - 1, -2.2 * sc, 10 * sc, 4.4 * sc);
+    ctx.fillStyle = "rgba(0,0,0,.25)";
+    ctx.fillRect(side < 0 ? -r - 9 * sc : r - 1, 0.6 * sc, 10 * sc, 1.6 * sc);
+    // lâmina
+    ctx.beginPath(); ctx.ellipse(0, 0, r * 0.92, r, 0, 0, Math.PI * 2);
+    ctx.fillStyle = red ? "#d81f2f" : "#1c1c22"; ctx.fill();
+    ctx.lineWidth = Math.max(1.5, 1.2 * sc); ctx.strokeStyle = red ? "#8e0f1b" : "#5b5b66"; ctx.stroke();
+    ctx.fillStyle = "rgba(255,255,255,.12)";
+    ctx.beginPath(); ctx.ellipse(-r * 0.25, -r * 0.3, r * 0.35, r * 0.22, -0.6, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    // piso
+    ctx.fillStyle = "#0b1424"; ctx.fillRect(0, 0, W, H);
+    // sombra e mesa
+    ctx.fillStyle = "rgba(0,0,0,.45)"; ctx.fillRect(X(0) + 6, Y(0) + 10, TW * sc, TH * sc);
+    ctx.fillStyle = "#1f4f8f"; ctx.fillRect(X(0), Y(0), TW * sc, TH * sc);
+    const line = Math.max(1.5, 2 * sc);
+    ctx.strokeStyle = "#f4f6fa"; ctx.lineWidth = line;
+    ctx.strokeRect(X(0) + line / 2, Y(0) + line / 2, TW * sc - line, TH * sc - line);
+    ctx.lineWidth = Math.max(1, 0.6 * sc);
+    ctx.beginPath(); ctx.moveTo(X(0), Y(TH / 2)); ctx.lineTo(X(TW), Y(TH / 2)); ctx.stroke();
+    // rede
+    ctx.fillStyle = "rgba(0,0,0,.35)"; ctx.fillRect(X(NET) + 3, Y(-8), 3, (TH + 16) * sc);
+    ctx.fillStyle = "#e9ecf2"; ctx.fillRect(X(NET) - 1.5, Y(-8), 3, (TH + 16) * sc);
+    ctx.fillStyle = "#2a2a33"; ctx.fillRect(X(NET) - 3, Y(-10), 6, 5); ctx.fillRect(X(NET) - 3, Y(TH + 8) - 3, 6, 5);
+    // bola: altura visual quica uma vez em cada lado da mesa
+    if (state === "rally" || state === "serve") {
+      const z = Math.abs(Math.sin(((ball.x + 34) / NET) * Math.PI)) * 14;
+      const br = 2 * sc * (1 + z / 30);
+      ctx.fillStyle = "rgba(0,0,0,.35)";
+      ctx.beginPath(); ctx.ellipse(X(ball.x) + z * sc * 0.5, Y(ball.y) + z * sc * 0.7, 2 * sc, 1.4 * sc, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#fbf7ee";
+      ctx.beginPath(); ctx.arc(X(ball.x), Y(ball.y), Math.max(3, br), 0, Math.PI * 2); ctx.fill();
+    }
+    paddle(PX, you.y, -1, true);
+    paddle(CX, cpu.y, 1, false);
+  }
+
+  function setMsg(t) { if (t) { msgText.textContent = t; msg.hidden = false; } else msg.hidden = true; }
+
+  function readyServe() {
+    state = "serve";
+    ball.x = server === 0 ? PX + 6 : CX - 6;
+    ball.vx = ball.vy = 0;
+    if (server === 0) setMsg("Seu saque: clique na mesa ou aperte espaço");
+    else { setMsg(null); setTimeout(() => { if (state === "serve" && server === 1) launch(); }, 900); }
+  }
+
+  function launch() {
+    const dir = server === 0 ? 1 : -1;
+    ball.vx = dir * 150;
+    ball.vy = (Math.random() - 0.5) * 90;
+    state = "rally";
+    setMsg(null);
+    blip(1500);
+  }
+
+  function point(winner) {
+    score[winner]++;
+    elYou.textContent = score[0]; elCpu.textContent = score[1];
+    const [a, b] = score;
+    if ((a >= 11 || b >= 11) && Math.abs(a - b) >= 2) {
+      state = "over";
+      setMsg(a > b ? `Você venceu por ${a} a ${b}! Clique para jogar de novo` : `A CPU venceu por ${b} a ${a}. Clique para a revanche`);
+      return;
+    }
+    // troca de saque a cada 2 pontos, e a cada ponto no 10 a 10
+    servesLeft--;
+    if (servesLeft <= 0 || (a >= 10 && b >= 10)) { server = 1 - server; servesLeft = 2; }
+    readyServe();
+  }
+
+  function step(dt) {
+    // sua raquete segue o alvo
+    const prev = you.y;
+    you.y += (you.target - you.y) * Math.min(1, dt * 18);
+    you.v = (you.y - prev) / Math.max(dt, 0.001);
+    // CPU: acompanha com velocidade limitada e um erro que muda a cada rebatida
+    const aim = ball.vx > 0 ? ball.y + cpu.err : TH / 2;
+    const maxV = 150;
+    cpu.y += Math.max(-maxV * dt, Math.min(maxV * dt, aim - cpu.y));
+    if (state === "serve") { ball.y = server === 0 ? you.y : cpu.y; return; }
+    if (state !== "rally") return;
+    ball.x += ball.vx * dt; ball.y += ball.vy * dt;
+    if (ball.y < 2 && ball.vy < 0) { ball.y = 2; ball.vy *= -1; }
+    if (ball.y > TH - 2 && ball.vy > 0) { ball.y = TH - 2; ball.vy *= -1; }
+    if (ball.vx < 0 && ball.x <= PX + 4 && ball.x > PX - 6) {
+      if (Math.abs(ball.y - you.y) < REACH) {
+        ball.x = PX + 4;
+        ball.vx = Math.min(380, -ball.vx * 1.05);
+        ball.vy = (ball.y - you.y) * 5 + you.v * 0.25;
+        cpu.err = (Math.random() - 0.5) * 34;
+        blip(1300);
+      }
+    } else if (ball.vx > 0 && ball.x >= CX - 4 && ball.x < CX + 6) {
+      if (Math.abs(ball.y - cpu.y) < REACH) {
+        ball.x = CX - 4;
+        ball.vx = Math.max(-380, -ball.vx * 1.04);
+        ball.vy = (ball.y - cpu.y) * 5 + (Math.random() - 0.5) * 40;
+        blip(1100);
+      }
+    }
+    if (ball.x < PX - 40) point(1);
+    else if (ball.x > CX + 40) point(0);
+  }
+
+  function frame(t) {
+    const dt = Math.min(0.05, (t - last) / 1000);
+    last = t;
+    step(dt);
+    draw();
+    if (visible && state !== "idle" && state !== "over") raf = requestAnimationFrame(frame);
+    else raf = 0;
+  }
+  function run() { if (!raf && visible) { last = performance.now(); raf = requestAnimationFrame(frame); } }
+
+  function start() {
+    if (state === "idle" || state === "over") {
+      score = [0, 0]; elYou.textContent = elCpu.textContent = "0";
+      server = 0; servesLeft = 2; readyServe(); run();
+    } else if (state === "serve" && server === 0) { launch(); run(); }
+  }
+
+  function toWorldY(clientY) {
+    const r = cv.getBoundingClientRect();
+    return Math.max(0, Math.min(TH, ((clientY - r.top) - oy) / sc));
+  }
+  cv.addEventListener("pointermove", e => {
+    you.target = toWorldY(e.clientY);
+    if (!raf) { you.y = you.target; draw(); }  // fora do rali a raquete acompanha mesmo parada
+  });
+  cv.addEventListener("pointerdown", e => { you.target = toWorldY(e.clientY); cv.focus({ preventScroll: true }); start(); });
+  cv.addEventListener("keydown", e => {
+    if (e.key === "ArrowUp" || e.key === "w") { you.target = Math.max(0, you.target - 14); e.preventDefault(); }
+    else if (e.key === "ArrowDown" || e.key === "s") { you.target = Math.min(TH, you.target + 14); e.preventDefault(); }
+    else if (e.key === " " || e.key === "Enter") { start(); e.preventDefault(); }
+  });
+
+  new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; if (visible) run(); }, { threshold: 0.2 }).observe(cv);
+  window.addEventListener("resize", layout);
+  layout();
+})();
+/* ---------- Rosa costurando ----------
+   Uma rosa de verdade (foto) deitada na página. O próprio caule é a linha e a agulha:
+   entra e sai do fundo em poucos pontos e a ponta fura o tecido no fim. */
+(function () {
+  const seam = document.getElementById("seam");
+  const svg = document.getElementById("seamSvg");
+  if (!seam || !svg) return;
+  const H = 190, Y = 100;
+  const TEX_W = 72.5, TEX_H = 16;            // textura real do caule (assets/caule.webp, em 2x)
+  const BUD_W = 210, BUD_H = 186, BUD_STEM_Y = 87.4;
+
+  const hole = x => `<ellipse cx="${x}" cy="${Y + 1.5}" rx="10" ry="4.2" fill="url(#holeG)"/>`;
+
+  // trecho reto do caule, preenchido com a textura da foto
+  function straight(x1, x2, mask) {
+    return `<rect x="${x1}" y="0" width="${x2 - x1}" height="${TEX_H}" fill="url(#stemTex)" mask="url(#${mask})" transform="translate(0 ${Y - TEX_H / 2})"/>`;
+  }
+  // trecho curvo: fatias finas da mesma textura seguindo a curva, afinando até virar agulha
+  function needle(x1, x2) {
+    const n = 44, c1x = x1 + 18, c2x = x2 - 70, cy = Y - 34;
+    const pt = t => {
+      const u = 1 - t;
+      return [u * u * u * x1 + 3 * u * u * t * c1x + 3 * u * t * t * c2x + t * t * t * x2,
+              u * u * u * Y + 3 * u * u * t * cy + 3 * u * t * t * cy + t * t * t * Y];
+    };
+    let out = "", L = 0, prev = pt(0);
+    for (let i = 0; i < n; i++) {
+      const t0 = i / n, t1 = (i + 1) / n, p0 = prev, p1 = pt(t1);
+      const len = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]);
+      const ang = Math.atan2(p1[1] - p0[1], p1[0] - p0[0]) * 180 / Math.PI;
+      const tm = (t0 + t1) / 2;
+      const k = tm < .5 ? 1 : Math.max(.08, Math.pow(1 - (tm - .5) / .5, 1.15));  // afina
+      const op = Math.min(1, Math.pow(tm / .14, 1.4));                              // sai do furo aos poucos
+      out += `<rect x="${L.toFixed(2)}" y="0" width="${(len + .9).toFixed(2)}" height="${TEX_H}" fill="url(#stemTex)" opacity="${op.toFixed(2)}"
+        transform="translate(${p0[0].toFixed(2)} ${p0[1].toFixed(2)}) rotate(${ang.toFixed(2)}) scale(1 ${k.toFixed(3)}) translate(${(-L).toFixed(2)} ${-TEX_H / 2})"/>`;
+      L += len; prev = p1;
+    }
+    return out;
+  }
+  // espinho pequeno, discreto, nas cores de um espinho de rosa
+  function thorn(x, y, flip, s) {
+    return `<path d="M-4 0C-3 -3 .5 -6.5 5.5 -8C3.5 -5 3 -2.5 3.5 0Z" fill="url(#thornG)" transform="translate(${x} ${y}) scale(${s} ${flip ? -s : s})"/>`;
+  }
+
+  function build() {
+    const W = seam.clientWidth;
+    if (!W) return;
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    const small = W < 600;
+    const budW = small ? 150 : BUD_W, k = budW / BUD_W;
+    const budH = BUD_H * k, stemY = BUD_STEM_Y * k;
+    const G = 34, F = small ? 120 : 190, L0 = small ? 70 : 130;
+    const start = budW - 4;
+    const avail = W - 12 - start - L0 - F;
+    const stitches = avail > 3 * G + 2 * 90 ? 2 : avail > 2 * G + 70 ? 1 : 0;
+    const V = stitches ? (avail - (stitches + 1) * G) / stitches : 0;
+
+    let holes = "", stem = "", thorns = "";
+    let x = start;
+    stem += straight(x, x + L0, "fadeRight");
+    thorns += thorn(x + L0 * .55, Y - 6, false, 1.25);
+    x += L0; holes += hole(x);
+    for (let i = 0; i < stitches; i++) {
+      x += G; holes += hole(x);
+      stem += straight(x, x + V, "fadeBoth");
+      thorns += thorn(x + V * (i % 2 ? .35 : .6), i % 2 ? Y + 6 : Y - 6, i % 2 === 1, 1.15);
+      x += V; holes += hole(x);
+    }
+    x += stitches ? G : G;
+    holes += hole(x) + hole(W - 12);
+    stem += needle(x, W - 12);
+
+    svg.innerHTML = `
+      <defs>
+        <pattern id="stemTex" patternUnits="userSpaceOnUse" width="${TEX_W}" height="${TEX_H}">
+          <image href="assets/caule.webp" width="${TEX_W}" height="${TEX_H}" preserveAspectRatio="none"/>
+        </pattern>
+        <linearGradient id="fadeBothG"><stop offset="0" stop-color="#000"/><stop offset=".07" stop-color="#fff"/><stop offset=".93" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
+        <linearGradient id="fadeRightG"><stop offset="0" stop-color="#fff"/><stop offset=".93" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
+        <mask id="fadeBoth" maskContentUnits="objectBoundingBox"><rect width="1" height="1" fill="url(#fadeBothG)"/></mask>
+        <mask id="fadeRight" maskContentUnits="objectBoundingBox"><rect width="1" height="1" fill="url(#fadeRightG)"/></mask>
+        <linearGradient id="thornG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#8ea13d"/><stop offset=".5" stop-color="#8a5a34"/><stop offset="1" stop-color="#d9b48c"/></linearGradient>
+        <radialGradient id="holeG"><stop offset="0" stop-color="#000" stop-opacity=".9"/><stop offset=".6" stop-color="#000" stop-opacity=".45"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+      </defs>
+      <g>${holes}</g>
+      <g style="filter: drop-shadow(0 3px 3px rgba(0,0,0,.55))">${stem}${thorns}</g>
+      <image href="assets/rosa-botao.webp" x="0" y="${(Y - stemY).toFixed(1)}" width="${budW}" height="${budH.toFixed(1)}" style="filter: drop-shadow(0 10px 12px rgba(0,0,0,.5))"/>`;
+  }
+
+  build();
+  let rt;
+  window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(build, 150); });
+
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+  seam.classList.add("armed");
+  new IntersectionObserver((entries, obs) => {
+    if (entries[0].isIntersecting) {
+      seam.classList.add("sew");
+      obs.disconnect();
+    }
+  }, { threshold: 0.6 }).observe(seam);
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,1199 @@
+{
+ "processed_commits": [
+  "0b1c9ad797f3c0f4cd946df7906495118231bc19",
+  "0b3ed465895918acd01e7a2e7caf009bdfa00389",
+  "0d465a2b205de10b14a9027e833d3084d1b896b0",
+  "0d7b742283480362b1ee431a80e5eed9f41b3a3d",
+  "149986e33f75e9a5076150ac80b460402caf8a5f",
+  "1d08644603d54ffdfd2ca0c065dd3127651a0e74",
+  "1f3c6ba952b0b2f6d8ce41d8f59de2acd01d9342",
+  "20af76ecabc0580e13c1b5d4ee41ccb9fa1f28eb",
+  "2176bd93ea800e251a024eb6113586f71bee23f0",
+  "253a1c1f81f35d0d564df4ecea05ece708b65c14",
+  "277e2f0d4e9a516e9ba2e2fa3b041fe06fc12353",
+  "28bc05aef4ee1bd80f5f7d8b26f4b0c516fa1074",
+  "29127a4b160196b56a5b2ca40902d36ccace0813",
+  "32c55754beb3779ed3682b0ba802b59104a006d4",
+  "33710b1abaa27486751583490eba8ee86613d289",
+  "385ba7da33dbfea5e630307aef787aae4b9897f9",
+  "3d636aff70a4a2ee5cf967c6b10e95b1716086a5",
+  "4713796077687d244894aa906fb4c06f3436a2f1",
+  "4c83aeb6deb451e94aa88a359ef1d0fd697978b9",
+  "4d7faef9fde92aca01d1edf781cbcc89612dcf1f",
+  "4d8ecaa2bd69e5c991783f043c773eac6944bb3a",
+  "4df3c3bfbf31d0618487925e1130bd529753ada1",
+  "503e705c3115a09400946f5422c17fe6a469f934",
+  "57832f66ca9386076e6933b8075df078c699e842",
+  "592ac8b5a1785a2a93c04bbdb275ab0e4beaf47d",
+  "5ac7f95d7e1308a5810bcafb6292572e152a96ca",
+  "5b1a58f54c38f741c2381879ac6f990e3b9dbfc9",
+  "60101afeb32d7505b78589ef96a174a4bd7741a8",
+  "6645ce159825f44370cc3726abdbd146b2cd1dd6",
+  "6b4a04ec65602db6de6bfab2396488497a737944",
+  "6b521c2dd149c4e208584b5a120dadded1278b7e",
+  "6bacf6f485fff2e1ccb385e9c8e6688b191496fa",
+  "70f325bdece70412cb743ec9a98cfe4744648523",
+  "70f41d0a61cfd18e9baccfb7c1eec380424ab5c2",
+  "721fd6f20ce63f88a33deafde3a736b476798164",
+  "73979ccd4f5d770336bcc913526c900f01050ed7",
+  "7bcaa64d2e58e4a1c60bbe4a8d6f130b46a92fb9",
+  "7bcf02b1064fa86c602a329c9c563ab3f0d044a0",
+  "84e29e994023a4284a626d27562b9555126ce40b",
+  "8745d782cbb025180ad701df07eb96f0760a5a08",
+  "88a2854bec48f4db2b3d6b016e62f2470e633c97",
+  "89101d36c1acaac5b9194eac3c7b8254d56ffa76",
+  "8b606379b4bc783b0759bcb77cd1a1df9e135b6e",
+  "8da694976e71a07512f1b58e35d90f41c908a8f2",
+  "90e620d0197713175557f4c68697dc3bd2d5b2bf",
+  "929d2f1653d12a3933625209136eac3eb4f3f3fa",
+  "94e7768472c8461107b68a02941e619509ccc040",
+  "96fa835d4097a3de64da7dbf9a5e822f192de1d7",
+  "9dc2e464eb85aa245bf80cb6ad179afcc4a2376e",
+  "a03b8e6e35fb6d1f753a99115755ae64618dde95",
+  "ad05b97298a8cdd6ae6dc53b633fa9ce4cdb97a4",
+  "b08b1442c712ae8cac4073600e6f217cf75aeb03",
+  "c2e175ffb551ab53de92c3ad79ee34ec10eab3d6",
+  "c57a1b81c6e6b1b17cf39ecf7ebd4b7d477d8c90",
+  "c5a148b135053f247304386d34622f43a036c7fd",
+  "c5f1349f68bcd2f0dde352f1df933f35c8530608",
+  "c7b140bfbbeb739453ce17be6c8ddbfc7e9280c9",
+  "c8f998868dc8abb4206fab057b30d9868610a6e3",
+  "c9792925bc6e03e8b23e38bb4b3ffc2c44f74adc",
+  "da6ce8d435efe2e4cbfa95f6bb7fb24c5fb172a2",
+  "e016b158d7d1bf173465d26ba7a67667b8d5b3d9",
+  "e40d439fb33b73a52d15113892d623f90bd4f5a3",
+  "e4f3400fffb8c2b8c0860fc7c678a3382a5e57c6",
+  "e6c6bc4efc3709183345ca0c54613dd6e2b9d906",
+  "e8676de15b49d636710a1caffd9da2e8226f9492",
+  "ea793f0bfddfd57ff0994bd6c33e0032709e54b7",
+  "f16f080d0b2577d3cad9485e7274de6241a76281",
+  "f8569318a65e22b9e0dcf93bacd6c821fe26d676"
+ ],
+ "processed_prs": [],
+ "counts": {
+  "python": {
+   "count": 11,
+   "first_seen": "2025-11-09T23:36:48Z",
+   "last_seen": "2026-08-17T17:57:02Z",
+   "repos": [
+    "WaynerMoraes12/clerk-estudo",
+    "WaynerMoraes12/mngt-rag-challenge",
+    "WaynerMoraes12/logistrack-ia",
+    "WaynerMoraes12/riot-analytics-api",
+    "WaynerMoraes12/ecommerce-tracker-etl",
+    "WaynerMoraes12/HighFreqTracker",
+    "WaynerMoraes12/Relatorio_Diario_CLS",
+    "WaynerMoraes12/Task-Manager-App"
+   ]
+  },
+  "fastapi": {
+   "count": 4,
+   "first_seen": "2026-06-05T18:56:55Z",
+   "last_seen": "2026-08-17T17:57:02Z",
+   "repos": [
+    "WaynerMoraes12/clerk-estudo",
+    "WaynerMoraes12/mngt-rag-challenge",
+    "WaynerMoraes12/riot-analytics-api"
+   ]
+  },
+  "nodejs": {
+   "count": 10,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-06-27T23:59:14Z",
+   "repos": [
+    "WaynerMoraes12/cls-outlet-v2",
+    "WaynerMoraes12/mngt-rag-challenge",
+    "WaynerMoraes12/logistrack-ia",
+    "WaynerMoraes12/do-sofa-a-medalha",
+    "WaynerMoraes12/Task-Manager-App",
+    "WaynerMoraes12/AnaliseDeCashBack_ComBancoDeDados",
+    "WaynerMoraes12/Dashboard-de-Performance---E-Commerce-M-liuz"
+   ]
+  },
+  "javascript": {
+   "count": 11,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-07-17T18:33:13Z",
+   "repos": [
+    "WaynerMoraes12/cls-outlet-v2",
+    "WaynerMoraes12/mngt-rag-challenge",
+    "WaynerMoraes12/logistrack-ia",
+    "WaynerMoraes12/do-sofa-a-medalha",
+    "WaynerMoraes12/Task-Manager-App",
+    "WaynerMoraes12/AnaliseDeCashBack_ComBancoDeDados",
+    "WaynerMoraes12/Dashboard-de-Performance---E-Commerce-M-liuz"
+   ]
+  },
+  "html": {
+   "count": 14,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2026-06-27T23:59:14Z",
+   "repos": [
+    "WaynerMoraes12/cls-outlet-v2",
+    "WaynerMoraes12/mngt-rag-challenge",
+    "WaynerMoraes12/logistrack-ia",
+    "WaynerMoraes12/WaynerMoraes12.github.io",
+    "WaynerMoraes12/do-sofa-a-medalha",
+    "WaynerMoraes12/cls-outlet",
+    "WaynerMoraes12/Do_Sofa_a_Medalha",
+    "WaynerMoraes12/AnaliseDeCashBack_ComBancoDeDados",
+    "WaynerMoraes12/Dashboard-de-Performance---E-Commerce-M-liuz"
+   ]
+  },
+  "vite": {
+   "count": 3,
+   "first_seen": "2026-04-05T01:28:12Z",
+   "last_seen": "2026-06-27T23:59:14Z",
+   "repos": [
+    "WaynerMoraes12/cls-outlet-v2",
+    "WaynerMoraes12/mngt-rag-challenge",
+    "WaynerMoraes12/do-sofa-a-medalha"
+   ]
+  },
+  "react": {
+   "count": 5,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2026-06-27T23:59:14Z",
+   "repos": [
+    "WaynerMoraes12/cls-outlet-v2",
+    "WaynerMoraes12/mngt-rag-challenge",
+    "WaynerMoraes12/do-sofa-a-medalha",
+    "WaynerMoraes12/Task-Manager-App",
+    "WaynerMoraes12/Dashboard-de-Performance---E-Commerce-M-liuz"
+   ]
+  },
+  "css": {
+   "count": 5,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2026-06-28T21:00:00Z",
+   "repos": [
+    "WaynerMoraes12/cls-outlet-v2",
+    "WaynerMoraes12/mngt-rag-challenge",
+    "WaynerMoraes12/do-sofa-a-medalha",
+    "WaynerMoraes12/Dashboard-de-Performance---E-Commerce-M-liuz"
+   ]
+  },
+  "tailwind": {
+   "count": 3,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2026-04-05T02:15:24Z",
+   "repos": [
+    "WaynerMoraes12/cls-outlet-v2",
+    "WaynerMoraes12/do-sofa-a-medalha",
+    "WaynerMoraes12/Dashboard-de-Performance---E-Commerce-M-liuz"
+   ]
+  },
+  "pydantic": {
+   "count": 3,
+   "first_seen": "2026-06-05T18:56:55Z",
+   "last_seen": "2026-06-27T23:59:14Z",
+   "repos": [
+    "WaynerMoraes12/mngt-rag-challenge",
+    "WaynerMoraes12/riot-analytics-api"
+   ]
+  },
+  "docker": {
+   "count": 2,
+   "first_seen": "2026-06-20T18:42:43Z",
+   "last_seen": "2026-06-27T23:59:14Z",
+   "repos": [
+    "WaynerMoraes12/mngt-rag-challenge",
+    "WaynerMoraes12/logistrack-ia"
+   ]
+  },
+  "httpx": {
+   "count": 2,
+   "first_seen": "2026-06-05T18:56:55Z",
+   "last_seen": "2026-06-27T23:59:14Z",
+   "repos": [
+    "WaynerMoraes12/mngt-rag-challenge",
+    "WaynerMoraes12/riot-analytics-api"
+   ]
+  },
+  "pytest": {
+   "count": 1,
+   "first_seen": "2026-06-27T23:59:14Z",
+   "last_seen": "2026-06-27T23:59:14Z",
+   "repos": [
+    "WaynerMoraes12/mngt-rag-challenge"
+   ]
+  },
+  "typescript": {
+   "count": 3,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-06-27T23:59:14Z",
+   "repos": [
+    "WaynerMoraes12/mngt-rag-challenge",
+    "WaynerMoraes12/Task-Manager-App",
+    "WaynerMoraes12/AnaliseDeCashBack_ComBancoDeDados"
+   ]
+  },
+  "gemini": {
+   "count": 2,
+   "first_seen": "2025-11-09T23:36:48Z",
+   "last_seen": "2026-06-27T23:59:14Z",
+   "repos": [
+    "WaynerMoraes12/mngt-rag-challenge",
+    "WaynerMoraes12/Task-Manager-App"
+   ]
+  },
+  "socketio": {
+   "count": 1,
+   "first_seen": "2026-06-20T18:42:43Z",
+   "last_seen": "2026-06-20T18:42:43Z",
+   "repos": [
+    "WaynerMoraes12/logistrack-ia"
+   ]
+  },
+  "express": {
+   "count": 2,
+   "first_seen": "2025-11-09T23:36:48Z",
+   "last_seen": "2026-06-20T18:42:43Z",
+   "repos": [
+    "WaynerMoraes12/logistrack-ia",
+    "WaynerMoraes12/Task-Manager-App"
+   ]
+  },
+  "redis": {
+   "count": 1,
+   "first_seen": "2026-06-20T18:42:43Z",
+   "last_seen": "2026-06-20T18:42:43Z",
+   "repos": [
+    "WaynerMoraes12/logistrack-ia"
+   ]
+  },
+  "cpp": {
+   "count": 1,
+   "first_seen": "2026-06-01T17:08:52Z",
+   "last_seen": "2026-06-01T17:08:52Z",
+   "repos": [
+    "WaynerMoraes12/riot-analytics-api"
+   ]
+  },
+  "pandas": {
+   "count": 3,
+   "first_seen": "2026-04-02T13:53:52Z",
+   "last_seen": "2026-06-05T18:56:55Z",
+   "repos": [
+    "WaynerMoraes12/riot-analytics-api",
+    "WaynerMoraes12/ecommerce-tracker-etl",
+    "WaynerMoraes12/Relatorio_Diario_CLS"
+   ]
+  },
+  "numpy": {
+   "count": 2,
+   "first_seen": "2026-06-02T19:05:33Z",
+   "last_seen": "2026-06-05T18:56:55Z",
+   "repos": [
+    "WaynerMoraes12/riot-analytics-api",
+    "WaynerMoraes12/ecommerce-tracker-etl"
+   ]
+  },
+  "streamlit": {
+   "count": 2,
+   "first_seen": "2026-06-02T19:05:33Z",
+   "last_seen": "2026-06-05T18:56:55Z",
+   "repos": [
+    "WaynerMoraes12/riot-analytics-api",
+    "WaynerMoraes12/ecommerce-tracker-etl"
+   ]
+  },
+  "playwright": {
+   "count": 2,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-06-02T19:05:33Z",
+   "repos": [
+    "WaynerMoraes12/ecommerce-tracker-etl",
+    "WaynerMoraes12/AnaliseDeCashBack_ComBancoDeDados"
+   ]
+  },
+  "postgresql": {
+   "count": 1,
+   "first_seen": "2026-06-05T17:34:57Z",
+   "last_seen": "2026-06-05T17:34:57Z",
+   "repos": [
+    "WaynerMoraes12/ecommerce-tracker-etl"
+   ]
+  },
+  "aiohttp": {
+   "count": 1,
+   "first_seen": "2026-06-01T18:16:52Z",
+   "last_seen": "2026-06-01T18:16:52Z",
+   "repos": [
+    "WaynerMoraes12/HighFreqTracker"
+   ]
+  },
+  "flask": {
+   "count": 1,
+   "first_seen": "2025-11-09T23:36:48Z",
+   "last_seen": "2025-11-09T23:36:48Z",
+   "repos": [
+    "WaynerMoraes12/Task-Manager-App"
+   ]
+  },
+  "powershell": {
+   "count": 1,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2025-10-05T01:28:30Z",
+   "repos": [
+    "WaynerMoraes12/AnaliseDeCashBack_ComBancoDeDados"
+   ]
+  },
+  "vitest": {
+   "count": 1,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2025-10-05T01:28:30Z",
+   "repos": [
+    "WaynerMoraes12/AnaliseDeCashBack_ComBancoDeDados"
+   ]
+  },
+  "sqlserver": {
+   "count": 1,
+   "first_seen": "2025-10-05T05:47:22Z",
+   "last_seen": "2025-10-05T05:47:22Z",
+   "repos": [
+    "WaynerMoraes12/AnaliseDeCashBack_ComBancoDeDados"
+   ]
+  },
+  "recharts": {
+   "count": 1,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2025-10-05T02:03:27Z",
+   "repos": [
+    "WaynerMoraes12/Dashboard-de-Performance---E-Commerce-M-liuz"
+   ]
+  }
+ },
+ "recent": [
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/clerk-estudo",
+   "kind": "Documentação",
+   "title": "Registra como o projeto foi construido",
+   "description": "Documentação em clerk-estudo: 1 arquivo alterado.",
+   "additions": 211,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/clerk-estudo/commit/253a1c1f81f35d0d564df4ecea05ece708b65c14",
+   "date": "2026-08-17T18:03:16Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/clerk-estudo",
+   "kind": "Atualização",
+   "title": "First commit",
+   "description": "Atualização em clerk-estudo: 9 arquivos alterados.",
+   "additions": 733,
+   "deletions": 0,
+   "techs": [
+    "fastapi",
+    "python"
+   ],
+   "url": "https://github.com/WaynerMoraes12/clerk-estudo/commit/28bc05aef4ee1bd80f5f7d8b26f4b0c516fa1074",
+   "date": "2026-08-17T17:57:02Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/cls-outlet-v2",
+   "kind": "Nova funcionalidade",
+   "title": "Finalizacao do layout da landing page e build de producao",
+   "description": "Nova funcionalidade em cls-outlet-v2: 2 arquivos alterados.",
+   "additions": 403,
+   "deletions": 361,
+   "techs": [
+    "javascript"
+   ],
+   "url": "https://github.com/WaynerMoraes12/cls-outlet-v2/commit/33710b1abaa27486751583490eba8ee86613d289",
+   "date": "2026-07-17T18:33:13Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/mngt-rag-challenge",
+   "kind": "Atualização",
+   "title": "Readme final",
+   "description": "Atualização em mngt-rag-challenge: 1 arquivo alterado.",
+   "additions": 11,
+   "deletions": 8,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/mngt-rag-challenge/commit/9dc2e464eb85aa245bf80cb6ad179afcc4a2376e",
+   "date": "2026-06-29T00:25:07Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/mngt-rag-challenge",
+   "kind": "Atualização",
+   "title": "Atualização no código",
+   "description": "Atualização em mngt-rag-challenge: 4 arquivos alterados.",
+   "additions": 5,
+   "deletions": 1,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/mngt-rag-challenge/commit/c5a148b135053f247304386d34622f43a036c7fd",
+   "date": "2026-06-29T00:01:06Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/mngt-rag-challenge",
+   "kind": "Atualização",
+   "title": "Create README.md",
+   "description": "Atualização em mngt-rag-challenge: 1 arquivo alterado.",
+   "additions": 171,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/mngt-rag-challenge/commit/c57a1b81c6e6b1b17cf39ecf7ebd4b7d477d8c90",
+   "date": "2026-06-28T21:03:16Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/mngt-rag-challenge",
+   "kind": "Manutenção",
+   "title": "Configuração final do .gitignore e fix: resolução de importação css no frontend",
+   "description": "Manutenção em mngt-rag-challenge: 2 arquivos alterados.",
+   "additions": 153,
+   "deletions": 2,
+   "techs": [
+    "css"
+   ],
+   "url": "https://github.com/WaynerMoraes12/mngt-rag-challenge/commit/57832f66ca9386076e6933b8075df078c699e842",
+   "date": "2026-06-28T21:00:00Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/mngt-rag-challenge",
+   "kind": "Nova funcionalidade",
+   "title": "Versão final do desafio técnico MNGT",
+   "description": "Nova funcionalidade em mngt-rag-challenge: 7 arquivos alterados.",
+   "additions": 0,
+   "deletions": 175,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/mngt-rag-challenge/commit/e8676de15b49d636710a1caffd9da2e8226f9492",
+   "date": "2026-06-28T00:47:19Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/mngt-rag-challenge",
+   "kind": "Manutenção",
+   "title": "Remover arquivos temporarios do rastreamento",
+   "description": "Manutenção em mngt-rag-challenge: 4 arquivos alterados.",
+   "additions": 0,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/mngt-rag-challenge/commit/88a2854bec48f4db2b3d6b016e62f2470e633c97",
+   "date": "2026-06-28T00:09:50Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/mngt-rag-challenge",
+   "kind": "Correção",
+   "title": "Alterações necessarias",
+   "description": "Correção em mngt-rag-challenge: 5 arquivos alterados.",
+   "additions": 2,
+   "deletions": 1,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/mngt-rag-challenge/commit/73979ccd4f5d770336bcc913526c900f01050ed7",
+   "date": "2026-06-28T00:06:50Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/mngt-rag-challenge",
+   "kind": "Nova funcionalidade",
+   "title": "Terminado aletrações",
+   "description": "Nova funcionalidade em mngt-rag-challenge: 31 arquivos alterados.",
+   "additions": 3595,
+   "deletions": 164,
+   "techs": [
+    "css",
+    "docker",
+    "fastapi",
+    "gemini",
+    "html",
+    "httpx",
+    "javascript",
+    "nodejs",
+    "pydantic",
+    "pytest",
+    "python",
+    "react",
+    "typescript",
+    "vite"
+   ],
+   "url": "https://github.com/WaynerMoraes12/mngt-rag-challenge/commit/c8f998868dc8abb4206fab057b30d9868610a6e3",
+   "date": "2026-06-27T23:59:14Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/mngt-rag-challenge",
+   "kind": "Nova funcionalidade",
+   "title": "Implementacao do core do RAG com FastAPI e LLM",
+   "description": "Nova funcionalidade em mngt-rag-challenge: 2 arquivos alterados.",
+   "additions": 2,
+   "deletions": 2,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/mngt-rag-challenge/commit/2176bd93ea800e251a024eb6113586f71bee23f0",
+   "date": "2026-06-26T01:52:13Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/mngt-rag-challenge",
+   "kind": "Nova funcionalidade",
+   "title": "Implementacao do core do RAG com FastAPI e LLM",
+   "description": "Nova funcionalidade em mngt-rag-challenge: 6 arquivos alterados.",
+   "additions": 251,
+   "deletions": 0,
+   "techs": [
+    "fastapi",
+    "pydantic",
+    "python"
+   ],
+   "url": "https://github.com/WaynerMoraes12/mngt-rag-challenge/commit/96fa835d4097a3de64da7dbf9a5e822f192de1d7",
+   "date": "2026-06-26T01:51:13Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/logistrack-ia",
+   "kind": "Atualização",
+   "title": "Update README.md",
+   "description": "Atualização em logistrack-ia: 1 arquivo alterado.",
+   "additions": 28,
+   "deletions": 156,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/logistrack-ia/commit/6645ce159825f44370cc3726abdbd146b2cd1dd6",
+   "date": "2026-06-22T01:28:53Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/logistrack-ia",
+   "kind": "Atualização",
+   "title": "Update README.md",
+   "description": "Atualização em logistrack-ia: 1 arquivo alterado.",
+   "additions": 199,
+   "deletions": 9,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/logistrack-ia/commit/70f325bdece70412cb743ec9a98cfe4744648523",
+   "date": "2026-06-20T18:47:21Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/logistrack-ia",
+   "kind": "Atualização",
+   "title": "Fix title formatting in README.md",
+   "description": "Atualização em logistrack-ia: 1 arquivo alterado.",
+   "additions": 1,
+   "deletions": 1,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/logistrack-ia/commit/0b3ed465895918acd01e7a2e7caf009bdfa00389",
+   "date": "2026-06-20T18:46:14Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/logistrack-ia",
+   "kind": "Atualização",
+   "title": "Refactor README.md for clarity and formatting",
+   "description": "Atualização em logistrack-ia: 1 arquivo alterado.",
+   "additions": 9,
+   "deletions": 199,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/logistrack-ia/commit/da6ce8d435efe2e4cbfa95f6bb7fb24c5fb172a2",
+   "date": "2026-06-20T18:45:41Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/logistrack-ia",
+   "kind": "Nova funcionalidade",
+   "title": "Lançamento da arquitetura orientada a eventos LogisTrack",
+   "description": "Nova funcionalidade em logistrack-ia: 9 arquivos alterados.",
+   "additions": 1677,
+   "deletions": 0,
+   "techs": [
+    "docker",
+    "express",
+    "html",
+    "javascript",
+    "nodejs",
+    "python",
+    "redis",
+    "socketio"
+   ],
+   "url": "https://github.com/WaynerMoraes12/logistrack-ia/commit/385ba7da33dbfea5e630307aef787aae4b9897f9",
+   "date": "2026-06-20T18:42:43Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/WaynerMoraes12.github.io",
+   "kind": "Atualização",
+   "title": "Lançamento inicial do Portfólio Surreal",
+   "description": "Atualização em WaynerMoraes12.github.io: 9 arquivos alterados.",
+   "additions": 347,
+   "deletions": 0,
+   "techs": [
+    "html"
+   ],
+   "url": "https://github.com/WaynerMoraes12/WaynerMoraes12.github.io/commit/b08b1442c712ae8cac4073600e6f217cf75aeb03",
+   "date": "2026-06-15T19:06:27Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/riot-analytics-api",
+   "kind": "Atualização",
+   "title": "Update README.md",
+   "description": "Atualização em riot-analytics-api: 1 arquivo alterado.",
+   "additions": 232,
+   "deletions": 17,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/riot-analytics-api/commit/3d636aff70a4a2ee5cf967c6b10e95b1716086a5",
+   "date": "2026-06-05T19:15:57Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/riot-analytics-api",
+   "kind": "Manutenção",
+   "title": "Limpeza de arquivos binarios e logs do repositorio",
+   "description": "Manutenção em riot-analytics-api: 12 arquivos alterados.",
+   "additions": 0,
+   "deletions": 150,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/riot-analytics-api/commit/7bcaa64d2e58e4a1c60bbe4a8d6f130b46a92fb9",
+   "date": "2026-06-05T18:59:50Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/riot-analytics-api",
+   "kind": "Manutenção",
+   "title": "Ignora arquivos temporarios e binarios do Visual Studio",
+   "description": "Manutenção em riot-analytics-api: 1 arquivo alterado.",
+   "additions": 4,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/riot-analytics-api/commit/4c83aeb6deb451e94aa88a359ef1d0fd697978b9",
+   "date": "2026-06-05T18:59:29Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/riot-analytics-api",
+   "kind": "Nova funcionalidade",
+   "title": "Implementacao full-stack de analytics e-sports (FastAPI + Streamlit)",
+   "description": "Nova funcionalidade em riot-analytics-api: 33 arquivos alterados.",
+   "additions": 370,
+   "deletions": 17,
+   "techs": [
+    "fastapi",
+    "httpx",
+    "numpy",
+    "pandas",
+    "pydantic",
+    "python",
+    "streamlit"
+   ],
+   "url": "https://github.com/WaynerMoraes12/riot-analytics-api/commit/c2e175ffb551ab53de92c3ad79ee34ec10eab3d6",
+   "date": "2026-06-05T18:56:55Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/ecommerce-tracker-etl",
+   "kind": "Atualização",
+   "title": "Update README.md",
+   "description": "Atualização em ecommerce-tracker-etl: 1 arquivo alterado.",
+   "additions": 103,
+   "deletions": 191,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/ecommerce-tracker-etl/commit/4d7faef9fde92aca01d1edf781cbcc89612dcf1f",
+   "date": "2026-06-05T17:40:23Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/ecommerce-tracker-etl",
+   "kind": "Nova funcionalidade",
+   "title": "Integracao de persistencia relacional com PostgreSQL e sistema evasivo anti-bot",
+   "description": "Nova funcionalidade em ecommerce-tracker-etl: 2 arquivos alterados.",
+   "additions": 74,
+   "deletions": 14,
+   "techs": [
+    "postgresql",
+    "python"
+   ],
+   "url": "https://github.com/WaynerMoraes12/ecommerce-tracker-etl/commit/c7b140bfbbeb739453ce17be6c8ddbfc7e9280c9",
+   "date": "2026-06-05T17:34:57Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/ecommerce-tracker-etl",
+   "kind": "Atualização",
+   "title": "Update README.md",
+   "description": "Atualização em ecommerce-tracker-etl: 1 arquivo alterado.",
+   "additions": 266,
+   "deletions": 23,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/ecommerce-tracker-etl/commit/ea793f0bfddfd57ff0994bd6c33e0032709e54b7",
+   "date": "2026-06-02T19:33:35Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/ecommerce-tracker-etl",
+   "kind": "Atualização",
+   "title": "Create README.md",
+   "description": "Atualização em ecommerce-tracker-etl: 1 arquivo alterado.",
+   "additions": 35,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/ecommerce-tracker-etl/commit/8da694976e71a07512f1b58e35d90f41c908a8f2",
+   "date": "2026-06-02T19:15:10Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/ecommerce-tracker-etl",
+   "kind": "Nova funcionalidade",
+   "title": "Motor ETL hibrido real-time com Streamlit e Playwright",
+   "description": "Nova funcionalidade em ecommerce-tracker-etl: 6 arquivos alterados.",
+   "additions": 283,
+   "deletions": 0,
+   "techs": [
+    "numpy",
+    "pandas",
+    "playwright",
+    "python",
+    "streamlit"
+   ],
+   "url": "https://github.com/WaynerMoraes12/ecommerce-tracker-etl/commit/0d465a2b205de10b14a9027e833d3084d1b896b0",
+   "date": "2026-06-02T19:05:33Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/HighFreqTracker",
+   "kind": "Atualização",
+   "title": "Create README.md",
+   "description": "Atualização em HighFreqTracker: 1 arquivo alterado.",
+   "additions": 28,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/HighFreqTracker/commit/8b606379b4bc783b0759bcb77cd1a1df9e135b6e",
+   "date": "2026-06-01T18:17:49Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/HighFreqTracker",
+   "kind": "Nova funcionalidade",
+   "title": "Async core and aiohttp network engine implementation",
+   "description": "Nova funcionalidade em HighFreqTracker: 3 arquivos alterados.",
+   "additions": 82,
+   "deletions": 0,
+   "techs": [
+    "aiohttp",
+    "python"
+   ],
+   "url": "https://github.com/WaynerMoraes12/HighFreqTracker/commit/503e705c3115a09400946f5422c17fe6a469f934",
+   "date": "2026-06-01T18:16:52Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/riot-analytics-api",
+   "kind": "Atualização",
+   "title": "Update README.md",
+   "description": "Atualização em riot-analytics-api: 1 arquivo alterado.",
+   "additions": 1,
+   "deletions": 1,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/riot-analytics-api/commit/7bcf02b1064fa86c602a329c9c563ab3f0d044a0",
+   "date": "2026-06-01T17:26:03Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/FastParse-CLI",
+   "kind": "Atualização",
+   "title": "Update README.md",
+   "description": "Atualização em FastParse-CLI: 1 arquivo alterado.",
+   "additions": 1,
+   "deletions": 1,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/FastParse-CLI/commit/20af76ecabc0580e13c1b5d4ee41ccb9fa1f28eb",
+   "date": "2026-06-01T17:26:03Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/riot-analytics-api",
+   "kind": "Atualização",
+   "title": "Update README.md",
+   "description": "Atualização em riot-analytics-api: 1 arquivo alterado.",
+   "additions": 2,
+   "deletions": 1,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/riot-analytics-api/commit/0d7b742283480362b1ee431a80e5eed9f41b3a3d",
+   "date": "2026-06-01T17:22:24Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/FastParse-CLI",
+   "kind": "Atualização",
+   "title": "Update README.md",
+   "description": "Atualização em FastParse-CLI: 1 arquivo alterado.",
+   "additions": 2,
+   "deletions": 1,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/FastParse-CLI/commit/149986e33f75e9a5076150ac80b460402caf8a5f",
+   "date": "2026-06-01T17:22:24Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/riot-analytics-api",
+   "kind": "Atualização",
+   "title": "Update README.md",
+   "description": "Atualização em riot-analytics-api: 1 arquivo alterado.",
+   "additions": 26,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/riot-analytics-api/commit/5b1a58f54c38f741c2381879ac6f990e3b9dbfc9",
+   "date": "2026-06-01T17:20:48Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/FastParse-CLI",
+   "kind": "Atualização",
+   "title": "Update README.md",
+   "description": "Atualização em FastParse-CLI: 1 arquivo alterado.",
+   "additions": 26,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/FastParse-CLI/commit/c9792925bc6e03e8b23e38bb4b3ffc2c44f74adc",
+   "date": "2026-06-01T17:20:48Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/riot-analytics-api",
+   "kind": "Nova funcionalidade",
+   "title": "Core architecture and multithreading engine implementation",
+   "description": "Nova funcionalidade em riot-analytics-api: 8 arquivos alterados.",
+   "additions": 316,
+   "deletions": 0,
+   "techs": [
+    "cpp"
+   ],
+   "url": "https://github.com/WaynerMoraes12/riot-analytics-api/commit/29127a4b160196b56a5b2ca40902d36ccace0813",
+   "date": "2026-06-01T17:08:52Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/cls-outlet-v2",
+   "kind": "Atualização",
+   "title": "Update project files and add agent scaffold",
+   "description": "Atualização em cls-outlet-v2: 8 arquivos alterados.",
+   "additions": 351,
+   "deletions": 336,
+   "techs": [
+    "javascript"
+   ],
+   "url": "https://github.com/WaynerMoraes12/cls-outlet-v2/commit/e016b158d7d1bf173465d26ba7a67667b8d5b3d9",
+   "date": "2026-05-18T13:44:46Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/cls-outlet-v2",
+   "kind": "Atualização",
+   "title": "Atualiza link do Instagram",
+   "description": "Atualização em cls-outlet-v2: 2 arquivos alterados.",
+   "additions": 3,
+   "deletions": 3,
+   "techs": [
+    "javascript",
+    "nodejs"
+   ],
+   "url": "https://github.com/WaynerMoraes12/cls-outlet-v2/commit/4713796077687d244894aa906fb4c06f3436a2f1",
+   "date": "2026-05-08T16:10:07Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/do-sofa-a-medalha",
+   "kind": "Atualização",
+   "title": "Update README.md",
+   "description": "Atualização em do-sofa-a-medalha: 1 arquivo alterado.",
+   "additions": 28,
+   "deletions": 9,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/do-sofa-a-medalha/commit/6b521c2dd149c4e208584b5a120dadded1278b7e",
+   "date": "2026-04-05T02:27:40Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/do-sofa-a-medalha",
+   "kind": "Correção",
+   "title": "Correcao do autoprefixer e validacao do pixel no html",
+   "description": "Correção em do-sofa-a-medalha: 3 arquivos alterados.",
+   "additions": 63,
+   "deletions": 4,
+   "techs": [
+    "html",
+    "nodejs"
+   ],
+   "url": "https://github.com/WaynerMoraes12/do-sofa-a-medalha/commit/c5f1349f68bcd2f0dde352f1df933f35c8530608",
+   "date": "2026-04-05T02:21:18Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/do-sofa-a-medalha",
+   "kind": "Correção",
+   "title": "Arquivos finais de conversao",
+   "description": "Correção em do-sofa-a-medalha: 18 arquivos alterados.",
+   "additions": 3482,
+   "deletions": 0,
+   "techs": [
+    "css",
+    "html",
+    "javascript",
+    "nodejs",
+    "react",
+    "tailwind",
+    "vite"
+   ],
+   "url": "https://github.com/WaynerMoraes12/do-sofa-a-medalha/commit/1f3c6ba952b0b2f6d8ce41d8f59de2acd01d9342",
+   "date": "2026-04-05T02:15:24Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/do-sofa-a-medalha",
+   "kind": "Atualização",
+   "title": "First commit",
+   "description": "Atualização em do-sofa-a-medalha: 1 arquivo alterado.",
+   "additions": 16,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/do-sofa-a-medalha/commit/4df3c3bfbf31d0618487925e1130bd529753ada1",
+   "date": "2026-04-05T01:58:37Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/cls-outlet-v2",
+   "kind": "Atualização",
+   "title": "Update README.md",
+   "description": "Atualização em cls-outlet-v2: 1 arquivo alterado.",
+   "additions": 25,
+   "deletions": 9,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/cls-outlet-v2/commit/8745d782cbb025180ad701df07eb96f0760a5a08",
+   "date": "2026-04-05T01:30:34Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/cls-outlet-v2",
+   "kind": "Nova funcionalidade",
+   "title": "Arquitetura responsiva e focada em conversao da nova landing page",
+   "description": "Nova funcionalidade em cls-outlet-v2: 22 arquivos alterados.",
+   "additions": 3653,
+   "deletions": 0,
+   "techs": [
+    "css",
+    "html",
+    "javascript",
+    "nodejs",
+    "react",
+    "tailwind",
+    "vite"
+   ],
+   "url": "https://github.com/WaynerMoraes12/cls-outlet-v2/commit/4d8ecaa2bd69e5c991783f043c773eac6944bb3a",
+   "date": "2026-04-05T01:28:12Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/Relatorio_Diario_CLS",
+   "kind": "Atualização",
+   "title": "Ajustando layout",
+   "description": "Atualização em Relatorio_Diario_CLS: 2 arquivos alterados.",
+   "additions": 8,
+   "deletions": 8,
+   "techs": [
+    "python"
+   ],
+   "url": "https://github.com/WaynerMoraes12/Relatorio_Diario_CLS/commit/ad05b97298a8cdd6ae6dc53b633fa9ce4cdb97a4",
+   "date": "2026-04-02T17:21:01Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/Relatorio_Diario_CLS",
+   "kind": "Nova funcionalidade",
+   "title": "Versão final do BI automatizado (código limpo e seguro)",
+   "description": "Nova funcionalidade em Relatorio_Diario_CLS: 4 arquivos alterados.",
+   "additions": 189,
+   "deletions": 0,
+   "techs": [
+    "pandas",
+    "python"
+   ],
+   "url": "https://github.com/WaynerMoraes12/Relatorio_Diario_CLS/commit/94e7768472c8461107b68a02941e619509ccc040",
+   "date": "2026-04-02T13:53:52Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/cls-outlet",
+   "kind": "Atualização",
+   "title": "Adiciona favicon e atualiza index",
+   "description": "Atualização em cls-outlet: 1 arquivo alterado.",
+   "additions": 0,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/cls-outlet/commit/e40d439fb33b73a52d15113892d623f90bd4f5a3",
+   "date": "2026-03-10T19:38:38Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/cls-outlet",
+   "kind": "Atualização",
+   "title": "Adiciona favicon icone.ico",
+   "description": "Atualização em cls-outlet: 1 arquivo alterado.",
+   "additions": 1,
+   "deletions": 0,
+   "techs": [
+    "html"
+   ],
+   "url": "https://github.com/WaynerMoraes12/cls-outlet/commit/1d08644603d54ffdfd2ca0c065dd3127651a0e74",
+   "date": "2026-03-10T19:37:06Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/cls-outlet",
+   "kind": "Atualização",
+   "title": "Adiciona README do projeto",
+   "description": "Atualização em cls-outlet: 1 arquivo alterado.",
+   "additions": 119,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/cls-outlet/commit/90e620d0197713175557f4c68697dc3bd2d5b2bf",
+   "date": "2026-03-10T18:43:49Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/cls-outlet",
+   "kind": "Atualização",
+   "title": "Primeiro commit - site CLS Outlet",
+   "description": "Atualização em cls-outlet: 6 arquivos alterados.",
+   "additions": 611,
+   "deletions": 0,
+   "techs": [
+    "html"
+   ],
+   "url": "https://github.com/WaynerMoraes12/cls-outlet/commit/84e29e994023a4284a626d27562b9555126ce40b",
+   "date": "2026-03-10T18:38:16Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/Task-Manager-App",
+   "kind": "Atualização",
+   "title": "Primeiro commit",
+   "description": "Atualização em Task-Manager-App: 20 arquivos alterados.",
+   "additions": 25356,
+   "deletions": 0,
+   "techs": [
+    "express",
+    "flask",
+    "gemini",
+    "javascript",
+    "nodejs",
+    "python",
+    "react",
+    "typescript"
+   ],
+   "url": "https://github.com/WaynerMoraes12/Task-Manager-App/commit/60101afeb32d7505b78589ef96a174a4bd7741a8",
+   "date": "2025-11-09T23:36:48Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/Do_Sofa_a_Medalha",
+   "kind": "Atualização",
+   "title": "Change team logo image format from PNG to JPG",
+   "description": "Atualização em Do_Sofa_a_Medalha: 1 arquivo alterado.",
+   "additions": 1,
+   "deletions": 1,
+   "techs": [
+    "html"
+   ],
+   "url": "https://github.com/WaynerMoraes12/Do_Sofa_a_Medalha/commit/592ac8b5a1785a2a93c04bbdb275ab0e4beaf47d",
+   "date": "2025-11-08T02:37:48Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/Do_Sofa_a_Medalha",
+   "kind": "Atualização",
+   "title": "Update equipe-logo styles and image usageter",
+   "description": "Atualização em Do_Sofa_a_Medalha: 1 arquivo alterado.",
+   "additions": 14,
+   "deletions": 4,
+   "techs": [
+    "html"
+   ],
+   "url": "https://github.com/WaynerMoraes12/Do_Sofa_a_Medalha/commit/89101d36c1acaac5b9194eac3c7b8254d56ffa76",
+   "date": "2025-11-08T02:34:56Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/Do_Sofa_a_Medalha",
+   "kind": "Atualização",
+   "title": "Add files via upload",
+   "description": "Atualização em Do_Sofa_a_Medalha: 1 arquivo alterado.",
+   "additions": 0,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/Do_Sofa_a_Medalha/commit/929d2f1653d12a3933625209136eac3eb4f3f3fa",
+   "date": "2025-11-08T02:34:22Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/Do_Sofa_a_Medalha",
+   "kind": "Atualização",
+   "title": "Segunda alteação",
+   "description": "Atualização em Do_Sofa_a_Medalha: 1 arquivo alterado.",
+   "additions": 1,
+   "deletions": 1,
+   "techs": [
+    "html"
+   ],
+   "url": "https://github.com/WaynerMoraes12/Do_Sofa_a_Medalha/commit/e6c6bc4efc3709183345ca0c54613dd6e2b9d906",
+   "date": "2025-11-08T02:31:30Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/Do_Sofa_a_Medalha",
+   "kind": "Atualização",
+   "title": "Read.me",
+   "description": "Atualização em Do_Sofa_a_Medalha: 1 arquivo alterado.",
+   "additions": 306,
+   "deletions": 2,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/Do_Sofa_a_Medalha/commit/f8569318a65e22b9e0dcf93bacd6c821fe26d676",
+   "date": "2025-11-08T02:26:29Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/Do_Sofa_a_Medalha",
+   "kind": "Atualização",
+   "title": "Fotos",
+   "description": "Atualização em Do_Sofa_a_Medalha: 3 arquivos alterados.",
+   "additions": 0,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/Do_Sofa_a_Medalha/commit/0b1c9ad797f3c0f4cd946df7906495118231bc19",
+   "date": "2025-11-08T02:18:42Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/Do_Sofa_a_Medalha",
+   "kind": "Atualização",
+   "title": "Index html",
+   "description": "Atualização em Do_Sofa_a_Medalha: 1 arquivo alterado.",
+   "additions": 713,
+   "deletions": 0,
+   "techs": [
+    "html"
+   ],
+   "url": "https://github.com/WaynerMoraes12/Do_Sofa_a_Medalha/commit/70f41d0a61cfd18e9baccfb7c1eec380424ab5c2",
+   "date": "2025-11-08T02:17:03Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12/Do_Sofa_a_Medalha",
+   "kind": "Atualização",
+   "title": "Initial commit",
+   "description": "Atualização em Do_Sofa_a_Medalha: 2 arquivos alterados.",
+   "additions": 23,
+   "deletions": 0,
+   "techs": [],
+   "url": "https://github.com/WaynerMoraes12/Do_Sofa_a_Medalha/commit/6b4a04ec65602db6de6bfab2396488497a737944",
+   "date": "2025-11-08T02:15:26Z"
+  }
+ ],
+ "last_run": "2026-09-24T17:42:13.474613+00:00"
+}
