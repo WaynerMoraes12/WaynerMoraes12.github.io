@@ -1,0 +1,11 @@
+{
+  "_como_usar": "Para mostrar um site no portfólio, adicione um objeto na lista 'sites'. Obrigatórios: nome e url (https). Opcionais: descricao, tecnologias (lista) e imagem (um print salvo em assets/sites/, por exemplo assets/sites/meu-site.webp). Enquanto a lista estiver vazia, o site mostra um espaço reservado.",
+  "_exemplo": {
+    "nome": "Nome do projeto",
+    "url": "https://www.exemplo.com.br",
+    "descricao": "Uma frase dizendo o que o site faz e para quem.",
+    "tecnologias": ["React", "Tailwind CSS", "FastAPI"],
+    "imagem": "assets/sites/exemplo.webp"
+  },
+  "sites": []
+}
