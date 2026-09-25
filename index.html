@@ -203,6 +203,26 @@ section { padding-block: clamp(72px, 10vw, 128px) 0; }
 }
 .gh-all { display: inline-block; margin-top: 22px; font-weight: 600; text-underline-offset: 3px; color: var(--violet); }
 
+/* Sites no ar */
+.sites { margin-top: 56px; }
+.sites-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+.sites-head h3 { margin: 0; font-size: clamp(1.4rem, 2.2vw, 1.7rem); font-weight: 750; }
+.sites-head p { margin: 0; color: var(--graphite); }
+.sites-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.site-empty { grid-column: 1 / -1; border: 1.5px dashed #4b2a8a; border-radius: 14px; padding: 28px; color: var(--graphite); text-align: center; }
+.site-card { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; }
+.site-card:hover { border-color: var(--violet); }
+.site-card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-bottom: 1px solid var(--rule); }
+.site-body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+.site-body h3 { margin: 0; font-size: 1.25rem; font-weight: 750; }
+.site-domain { color: var(--violet); font-size: .9rem; margin-top: 2px; }
+.site-body p { margin: 10px 0 0; color: var(--graphite); font-size: .96rem; }
+.site-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.site-tags span { font-size: .78rem; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--rule); color: var(--graphite); }
+.site-open { margin-top: auto; padding-top: 14px; font-weight: 600; font-size: .9rem; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 900px) { .sites-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .sites-grid { grid-template-columns: 1fr; } }
+
 /* MAW callout */
 .maw {
   margin-top: 44px; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center;
@@ -331,8 +351,8 @@ section { padding-block: clamp(72px, 10vw, 128px) 0; }
 .live-head p { margin: 0; color: var(--graphite); font-size: .9rem; }
 .live-list { list-style: none; margin: 14px 0 0; padding: 0; }
 .live-list li { border-bottom: 1px solid var(--rule); }
-.live-list a { display: grid; grid-template-columns: 120px 1fr auto; gap: 18px; padding: 14px 0; text-decoration: none; align-items: baseline; }
-.live-list a:hover .lv-title { color: var(--violet); }
+.live-list .lv-row { display: grid; grid-template-columns: 120px 1fr auto; gap: 18px; padding: 14px 0; text-decoration: none; align-items: baseline; }
+a.lv-row:hover .lv-title { color: var(--violet); }
 .lv-type { font-size: .82rem; font-weight: 700; color: var(--violet); }
 .lv-type.pr { color: var(--signal); }
 .lv-title { font-weight: 650; display: block; }
@@ -340,7 +360,17 @@ section { padding-block: clamp(72px, 10vw, 128px) 0; }
 .lv-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
 .lv-tags span { font-size: .78rem; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--rule); color: var(--graphite); }
 .lv-when { color: var(--graphite); font-size: .85rem; white-space: nowrap; }
-@media (max-width: 640px) { .live-list a { grid-template-columns: 1fr; gap: 2px; } }
+.lv-type.priv { color: var(--graphite); }
+.lv-row { color: inherit; }
+.gh-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 18px; }
+.gh-stats[hidden] { display: none; }
+.gh-stat { background: var(--panel); padding: 14px 14px 12px; }
+.gh-stat b { display: block; font-size: 1.9rem; font-weight: 800; font-variation-settings: "wdth" 70; line-height: 1; color: var(--violet); font-variant-numeric: tabular-nums; }
+.gh-stat:nth-child(3) b { color: var(--signal); }
+.gh-stat span { display: block; margin-top: 6px; color: var(--graphite); font-size: .86rem; line-height: 1.3; }
+@media (max-width: 860px) { .gh-stats { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 520px) { .gh-stats { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .live-list .lv-row { grid-template-columns: 1fr; gap: 2px; } }
 
 /* ---------- Stack automático ---------- */
 .stack li.auto { border-style: dashed; border-color: #5b34a3; }
@@ -484,8 +514,9 @@ section { padding-block: clamp(72px, 10vw, 128px) 0; }
         <h3><span class="live-dot" aria-hidden="true"></span>Direto do GitHub</h3>
         <p id="liveMeta">Carregando a atividade mais recente...</p>
       </div>
+      <div class="gh-stats" id="ghStats" hidden></div>
       <ol class="live-list" id="liveList"></ol>
-      <p class="note">Commits e pull requests dos meus repositórios públicos, atualizados sozinhos de hora em hora. Mensagens que pareçam ter dados sensíveis viram um resumo genérico.</p>
+      <p class="note"><span id="ghStatsNote">Commits e pull requests dos meus repositórios públicos.</span> Atualiza sozinho enquanto a página está aberta. Mensagens que pareçam ter dados sensíveis viram um resumo genérico.</p>
     </div>
   </section>
 
@@ -553,6 +584,16 @@ section { padding-block: clamp(72px, 10vw, 128px) 0; }
       </a>
     </div>
     <a class="gh-all" href="https://github.com/WaynerMoraes12?tab=repositories" target="_blank" rel="noopener">Ver todos os repositórios no GitHub</a>
+
+    <div class="sites" id="sites">
+      <div class="sites-head">
+        <h3>Sites no ar</h3>
+        <p>Projetos que desenvolvi e estão publicados.</p>
+      </div>
+      <div class="sites-grid" id="sitesGrid">
+        <div class="site-empty">Em breve: os sites que eu desenvolver e estiverem no ar aparecem aqui.</div>
+      </div>
+    </div>
 
     <div class="maw">
       <div class="maw-tag" aria-hidden="true">MAW</div>
@@ -807,6 +848,9 @@ document.getElementById("year").textContent = new Date().getFullYear();
   function fretMid(n) { return (frets[n - 1] + frets[n]) / 2; }
 
   function draw(t) {
+    // Espelhado: pestana à direita e casas crescendo para a esquerda,
+    // como um guitarrista destro de frente para quem assiste
+    ctx.setTransform(-dpr, 0, 0, dpr, W * dpr, 0);
     ctx.clearRect(0, 0, W, H);
     // trastes
     for (let n = 1; n <= FRETS; n++) {
@@ -959,7 +1003,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
     const s = strings[i];
     s.amp = Math.min(H * 0.06, s.amp + H * 0.05 * strength);
     s.phase = Math.random() * 6.28;
-    pluck(i, fretAt(x), 0.5 + 0.5 * strength);
+    pluck(i, fretAt(W - x), 0.5 + 0.5 * strength);  // desenho espelhado
     if (reduced) draw(performance.now()); else kick();
   }
 
@@ -999,13 +1043,26 @@ document.getElementById("year").textContent = new Date().getFullYear();
   }
 })();
 
-/* ---------- Atividade do GitHub e competências automáticas ---------- */
+/* ---------- Atividade do GitHub ao vivo, contadores e competências automáticas ----------
+   Duas fontes:
+   1. activity.json, gerado a cada 5 min pelo GitHub Action e publicado na branch
+      activity-data. Traz feed (inclusive privados, sem detalhes), contadores e competências.
+   2. A API pública de eventos do GitHub, consultada direto daqui, para commits e PRs
+      públicos aparecerem quase na hora. */
 (function () {
+  const USER = "WaynerMoraes12";
+  const RAW = `https://raw.githubusercontent.com/${USER}/${USER}.github.io/activity-data/activity.json`;
+  const EVENTS = `https://api.github.com/users/${USER}/events/public?per_page=40`;
+  const FEED_SIZE = 6;
   const list = document.getElementById("liveList");
   const meta = document.getElementById("liveMeta");
+  const statsBox = document.getElementById("ghStats");
   const watch = document.getElementById("watch");
   const ICONS = "https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/";
   const rtf = new Intl.RelativeTimeFormat("pt-BR", { numeric: "auto" });
+  const nf = new Intl.NumberFormat("pt-BR");
+
+  let base = null, liveItems = [], excluded = new Set(), lastFresh = 0, eventsEtag = null;
 
   function ago(iso) {
     const s = (new Date(iso) - Date.now()) / 1000;
@@ -1023,34 +1080,156 @@ document.getElementById("year").textContent = new Date().getFullYear();
     return e;
   }
 
-  function renderFeed(d, names) {
-    list.replaceChildren();
-    if (!d.feed.length) {
-      meta.textContent = "Nenhuma atividade pública recente.";
-      return;
+  // Mesmo filtro do script do Action: na dúvida, o texto não aparece
+  const SENSITIVE = /\b(senhas?|passwords?|passwd|pwd|secrets?|segredos?|tokens?|api[\s_-]?keys?|apikey|chaves?|credenc\w*|credentials?|private[\s_-]?keys?|ssh|dotenv|cpf|cnpj|rg|cart[aã]o|cart[oõ]es|cards?|cvv|pix|sal[aá]rios?|clientes?|confidencia\w*|sigil\w*|internos?|internal)\b|\.env\b/i;
+  const SECRET = /gh[pousr]_[A-Za-z0-9]{20,}|github_pat_\w{20,}|sk-[A-Za-z0-9_-]{16,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{30,}|xox[abprs]-[A-Za-z0-9-]{10,}|eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}|-----BEGIN|[A-Za-z0-9+/_=-]{32,}|[\w.+-]+@[\w-]+\.[\w.-]+|\b\d{1,3}(\.\d{1,3}){3}\b|\b\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2}\b|\b\d{3}\.?\d{3}\.?\d{3}-?\d{2}\b|\(?\d{2}\)?\s?9?\d{4}-?\d{4}|https?:\/\/\S+/;
+  const KINDS = { feat: "Nova funcionalidade", fix: "Correção", docs: "Documentação", refactor: "Refatoração", test: "Testes", perf: "Performance", style: "Ajuste visual", chore: "Manutenção", build: "Build", ci: "Automação", revert: "Reversão" };
+  function cleanTitle(raw) {
+    let line = String(raw || "").trim().split("\n")[0].trim(), kind = "Atualização";
+    const m = line.match(/^(\w+)(\([^)]*\))?!?:\s*(.+)$/);
+    if (m && KINDS[m[1].toLowerCase()]) { kind = KINDS[m[1].toLowerCase()]; line = m[3]; }
+    line = line.replace(/\s+/g, " ");
+    if (!line || SENSITIVE.test(line) || SECRET.test(line)) return [kind, null];
+    line = line.replace(/[<>`]/g, "");
+    if (line.length > 110) line = line.slice(0, 107).trimEnd() + "...";
+    return [kind, line[0].toUpperCase() + line.slice(1)];
+  }
+
+  // Eventos públicos: chegam segundos ou poucos minutos depois do push
+  async function loadEvents() {
+    try {
+      const r = await fetch(EVENTS, { headers: eventsEtag ? { "If-None-Match": eventsEtag } : {} });
+      if (r.status === 304) { lastFresh = Date.now(); return false; }
+      if (!r.ok) return false;
+      eventsEtag = r.headers.get("ETag");
+      const events = await r.json();
+      const items = [];
+      for (const ev of events) {
+        const repo = ev.repo && ev.repo.name;
+        if (!repo || excluded.has(repo.toLowerCase())) continue;
+        const short = repo.split("/")[1];
+        if (ev.type === "PushEvent") {
+          const commits = (ev.payload && ev.payload.commits) || [];
+          if (commits.length) {
+            commits.forEach(c => {
+              if (c.author && c.author.name && /\[bot\]/.test(c.author.name)) return;
+              const [kind, title] = cleanTitle(c.message);
+              items.push({ type: "commit", key: c.sha, title: title || `${kind} no código`, description: `${kind} em ${short}.`,
+                url: `https://github.com/${repo}/commit/${c.sha}`, date: ev.created_at, techs: [] });
+            });
+          } else if (ev.payload && ev.payload.head) {
+            // A API hoje manda só o hash do push, sem mensagem. Se o Action já tiver
+            // esse commit, o item dele (com título de verdade) é o que aparece.
+            items.push({ type: "commit", key: ev.payload.head, push: true, repo, title: `Novo push em ${short}`,
+              description: `Código atualizado em ${short}.`,
+              url: `https://github.com/${repo}/commit/${ev.payload.head}`, date: ev.created_at, techs: [] });
+          }
+        } else if (ev.type === "PullRequestEvent" && ev.payload) {
+          const pr = ev.payload.pull_request || {};
+          const number = ev.payload.number || pr.number;
+          const merged = ev.payload.action === "merged" || (ev.payload.action === "closed" && pr.merged);
+          if (!number || (!merged && ev.payload.action !== "opened")) continue;
+          const [, title] = cleanTitle(pr.title);
+          const url = pr.html_url || `https://github.com/${repo}/pull/${number}`;
+          items.push({ type: merged ? "pr" : "pr-open", key: url + (merged ? "#m" : "#o"), repo,
+            title: title || `Pull request #${number} ${merged ? "mergeada" : "aberta"}`,
+            description: `Em ${repo}.`, url, date: (merged && pr.merged_at) || ev.created_at, techs: [] });
+        }
+      }
+      // O push que é só o merge de uma PR já aparece como "PR mergeada"
+      const mergedAt = items.filter(i => i.type === "pr").map(i => [i.repo, new Date(i.date).getTime()]);
+      liveItems = items.filter(i => !(i.push && mergedAt.some(([r, t]) => r === i.repo && Math.abs(new Date(i.date) - t) < 90 * 1000)));
+      lastFresh = Date.now();
+      return true;
+    } catch (e) { return false; }
+  }
+
+  function mergedFeed() {
+    const seen = new Set(), all = [];
+    // PR: a mesma URL vale uma vez só (a mergeada, que vem antes, esconde a "aberta")
+    const keyOf = it => (/\/pull\/\d+/.test(it.url || "") ? it.url.replace(/#.*$/, "") : null) || it.key || it.url || (it.type + it.date);
+    for (const it of [...((base && base.feed) || []), ...liveItems]) {  // o do Action vem primeiro: tem título real
+      const shaFromUrl = (it.url || "").match(/\/commit\/([0-9a-f]{7,40})/);
+      const k = shaFromUrl ? shaFromUrl[1].slice(0, 12) : keyOf(it);
+      if (seen.has(k)) continue;
+      seen.add(k); all.push(it);
     }
-    meta.textContent = "Atualizado " + ago(d.generated_at);
-    for (const it of d.feed) {
+    all.sort((a, b) => new Date(b.date) - new Date(a.date));
+    // Junta itens privados seguidos do mesmo tipo: "4 commits em repositórios privados"
+    const out = [];
+    for (const it of all) {
+      const prev = out[out.length - 1];
+      if (it.private && prev && prev.private && prev.type === it.type) { prev.count = (prev.count || 1) + 1; continue; }
+      out.push({ ...it });
+    }
+    return out.slice(0, FEED_SIZE);
+  }
+
+  function typeLabel(it) {
+    if (it.private) return it.type === "pr" ? "PR privada" : "Commit privado";
+    return it.type === "pr" ? "PR mergeada" : it.type === "pr-open" ? "PR aberta" : "Commit";
+  }
+
+  function renderFeed(names) {
+    const feed = mergedFeed();
+    list.replaceChildren();
+    if (!feed.length) { meta.textContent = "Nenhuma atividade recente."; return; }
+    for (const it of feed) {
       const li = el("li");
-      const a = el("a");
-      if (/^https:\/\/github\.com\//.test(it.url || "")) { a.href = it.url; a.target = "_blank"; a.rel = "noopener"; }
-      a.append(el("span", "lv-type" + (it.type === "pr" ? " pr" : ""), it.type === "pr" ? "PR mergeada" : "Commit"));
+      const safeUrl = /^https:\/\/github\.com\//.test(it.url || "") ? it.url : null;
+      const row = el(safeUrl ? "a" : "div", "lv-row" + (it.private ? " private" : ""));
+      if (safeUrl) { row.href = safeUrl; row.target = "_blank"; row.rel = "noopener"; }
+      row.append(el("span", "lv-type" + (it.type.startsWith("pr") ? " pr" : "") + (it.private ? " priv" : ""), typeLabel(it)));
       const body = el("span");
-      body.append(el("span", "lv-title", it.title), el("span", "lv-desc", it.description));
+      let title = it.title, desc = it.description;
+      if (it.private && it.count > 1) {
+        title = it.type === "pr" ? `${it.count} pull requests mergeadas em repositórios privados` : `${it.count} commits em repositórios privados`;
+        desc = "Os detalhes ficam ocultos porque os repositórios são privados.";
+      }
+      body.append(el("span", "lv-title", title), el("span", "lv-desc", desc));
       if (it.techs && it.techs.length) {
         const tags = el("span", "lv-tags");
         it.techs.slice(0, 5).forEach(t => tags.append(el("span", null, names[t] || t)));
         body.append(tags);
       }
-      a.append(body, el("span", "lv-when", ago(it.date)));
-      li.append(a);
+      row.append(body, el("span", "lv-when", ago(it.date)));
+      li.append(row);
       list.append(li);
     }
   }
 
+  function renderMeta() {
+    const times = [lastFresh, base ? new Date(base.generated_at).getTime() : 0];
+    const fresh = Math.max(...times);
+    meta.textContent = fresh ? "Atualizado " + ago(new Date(fresh).toISOString()) : "Carregando a atividade mais recente...";
+  }
+
+  function renderStats() {
+    const s = base && base.stats;
+    if (!s) return;
+    const rows = [
+      [s.commits_30d, "commits nos últimos 30 dias"],
+      [s.commits_year, `commits em ${new Date().getFullYear()}`],
+      [s.prs_open, "pull requests abertas agora"],
+      [s.prs_merged_30d, "PRs mergeadas em 30 dias"],
+      [s.repos_30d, "repositórios ativos em 30 dias"],
+    ].filter(([v]) => typeof v === "number");
+    statsBox.replaceChildren();
+    rows.forEach(([v, label]) => {
+      const d = el("div", "gh-stat");
+      d.append(el("b", null, nf.format(v)), el("span", null, label));
+      statsBox.append(d);
+    });
+    statsBox.hidden = !rows.length;
+    const note = document.getElementById("ghStatsNote");
+    note.textContent = s.includes_private
+      ? "Os números incluem repositórios privados. Deles aparece só a contagem e a data, nunca o nome ou o conteúdo."
+      : "Commits e pull requests dos meus repositórios públicos.";
+  }
+
   function renderSkills(d) {
     const manual = new Set();
-    document.querySelectorAll("[data-skill]").forEach(li => li.dataset.skill.split(" ").forEach(id => manual.add(id)));
+    document.querySelectorAll("[data-skill]:not(.auto)").forEach(li => li.dataset.skill.split(" ").forEach(id => manual.add(id)));
     const columns = {};
     document.querySelectorAll(".stack > div").forEach(col => { columns[col.querySelector("h3").textContent.trim()] = col.querySelector("ul"); });
     document.querySelectorAll(".stack li.auto").forEach(li => li.remove());
@@ -1079,30 +1258,90 @@ document.getElementById("year").textContent = new Date().getFullYear();
         chip.append(el("i", null, `${sk.uses}/${d.threshold}`));
         watch.append(chip);
       });
-      watch.hidden = false;
+    }
+    watch.hidden = !pending.length;
+  }
+
+  function render() {
+    const names = base ? Object.fromEntries(base.skills.map(s => [s.id, s.name])) : {};
+    renderFeed(names);
+    renderMeta();
+  }
+
+  async function loadBase() {
+    for (const url of [RAW + "?t=" + Date.now(), "data/activity.json?t=" + Date.now()]) {
+      try {
+        const r = await fetch(url, { cache: "no-store" });
+        if (!r.ok) continue;
+        const d = await r.json();
+        if (base && new Date(d.generated_at) < new Date(base.generated_at)) return;  // nunca volta para dados mais velhos
+        base = d;
+        renderStats();
+        renderSkills(d);
+        return;
+      } catch (e) { /* tenta a próxima fonte */ }
     }
   }
 
-  async function load() {
+  async function start() {
     try {
-      const r = await fetch("data/activity.json?t=" + Date.now(), { cache: "no-store" });
-      if (!r.ok) throw new Error(r.status);
-      const d = await r.json();
-      const names = Object.fromEntries(d.skills.map(s => [s.id, s.name]));
-      renderFeed(d, names);
-      renderSkills(d);
-    } catch (e) {
+      const cfg = await (await fetch("data/github-config.json", { cache: "no-store" })).json();
+      excluded = new Set((cfg.excluded_repos || []).map(r => r.toLowerCase()));
+    } catch (e) { /* sem config, sem exclusões extras */ }
+    await Promise.all([loadBase(), loadEvents()]);
+    if (!base && !liveItems.length) {
       meta.textContent = "Não consegui carregar a atividade agora.";
-      if (!list.children.length) {
-        const li = el("li"), a = el("a");
-        a.href = "https://github.com/WaynerMoraes12"; a.target = "_blank"; a.rel = "noopener";
-        a.append(el("span", "lv-type", "GitHub"), el("span", "lv-title", "Ver a atividade direto no meu perfil"));
-        li.append(a); list.append(li);
-      }
+      const li = el("li"), a = el("a", "lv-row");
+      a.href = `https://github.com/${USER}`; a.target = "_blank"; a.rel = "noopener";
+      a.append(el("span", "lv-type", "GitHub"), el("span", "lv-title", "Ver a atividade direto no meu perfil"));
+      li.append(a); list.replaceChildren(li);
+      return;
     }
+    render();
   }
-  load();
-  setInterval(load, 10 * 60 * 1000);
+
+  start();
+  // Ao vivo: dados do Action a cada minuto, eventos públicos a cada 90 s, relógio a cada 20 s
+  setInterval(async () => { if (!document.hidden) { await loadBase(); render(); } }, 60 * 1000);
+  setInterval(async () => { if (!document.hidden && await loadEvents()) render(); }, 90 * 1000);
+  setInterval(() => { if (!document.hidden) render(); }, 20 * 1000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) { loadBase().then(render); loadEvents().then(render); } });
+})();
+
+/* ---------- Sites que desenvolvi (data/sites.json) ---------- */
+(function () {
+  const grid = document.getElementById("sitesGrid");
+  if (!grid) return;
+  function el(tag, cls, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  fetch("data/sites.json", { cache: "no-store" }).then(r => r.json()).then(d => {
+    const sites = (d.sites || []).filter(s => s && s.nome && /^https:\/\//.test(s.url || ""));
+    if (!sites.length) return;  // mantém o espaço reservado
+    grid.replaceChildren();
+    sites.forEach(s => {
+      const a = el("a", "site-card");
+      a.href = s.url; a.target = "_blank"; a.rel = "noopener";
+      if (s.imagem && /^assets\/[\w./-]+$/.test(s.imagem)) {
+        const img = el("img"); img.src = s.imagem; img.alt = `Página inicial de ${s.nome}`; img.loading = "lazy";
+        a.append(img);
+      }
+      const body = el("div", "site-body");
+      body.append(el("h3", null, s.nome), el("span", "site-domain", new URL(s.url).hostname.replace(/^www\./, "")));
+      if (s.descricao) body.append(el("p", null, s.descricao));
+      if (Array.isArray(s.tecnologias) && s.tecnologias.length) {
+        const tags = el("div", "site-tags");
+        s.tecnologias.slice(0, 6).forEach(t => tags.append(el("span", null, t)));
+        body.append(tags);
+      }
+      body.append(el("span", "site-open", "Abrir site"));
+      a.append(body);
+      grid.append(a);
+    });
+  }).catch(() => { /* sem arquivo: fica o espaço reservado */ });
 })();
 
 /* ---------- Tênis de mesa ---------- */
