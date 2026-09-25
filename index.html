@@ -401,14 +401,6 @@ a.lv-row:hover .lv-title { color: var(--violet); }
 @media (max-width: 520px) { .gh-stats { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .live-list .lv-row { grid-template-columns: 1fr; gap: 2px; } }
 
-/* ---------- Stack automático ---------- */
-.stack li.auto { border-style: dashed; border-color: #5b34a3; }
-.stack li.auto small { color: var(--violet); }
-.watch { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; color: var(--graphite); font-size: .92rem; }
-.watch[hidden] { display: none; }
-.watch b { color: var(--ink); font-weight: 650; margin-right: 4px; }
-.watch span { border: 1px solid var(--rule); border-radius: 999px; padding: 3px 10px; font-size: .85rem; }
-.watch span i { font-style: normal; color: var(--violet); margin-left: 6px; font-variant-numeric: tabular-nums; }
 
 /* ---------- Rosa costurando o fundo ---------- */
 .seam { position: relative; height: 190px; margin-bottom: 8px; }
@@ -663,7 +655,7 @@ a.lv-row:hover .lv-title { color: var(--violet); }
   <section id="stack" class="wrap">
     <div class="sec-head">
       <h2>Stack</h2>
-      <p>O que uso no dia a dia e nos projetos pessoais. As peças tracejadas entraram sozinhas: o site conta as ferramentas dos meus commits e PRs e adiciona cada uma depois do terceiro uso.</p>
+      <p>O que uso no dia a dia e nos projetos pessoais. A lista também cresce sozinha: o site acompanha as ferramentas dos meus commits e PRs, públicos e privados, e adiciona cada uma quando ela passa de 10 usos.</p>
     </div>
     <div class="stack">
       <div>
@@ -710,7 +702,6 @@ a.lv-row:hover .lv-title { color: var(--violet); }
         </ul>
       </div>
     </div>
-    <div class="watch" id="watch" hidden></div>
   </section>
 
   <!-- TRAJETÓRIA -->
@@ -1111,7 +1102,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
   const EVENTS = `https://api.github.com/users/${USER}/events/public?per_page=40`;
   const MAX_GROUPS = 8;
   const $ = id => document.getElementById(id);
-  const list = $("liveList"), meta = $("liveMeta"), statsBox = $("ghStats"), watch = $("watch");
+  const list = $("liveList"), meta = $("liveMeta"), statsBox = $("ghStats");
   const ICONS = "https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/";
   const rtf = new Intl.RelativeTimeFormat("pt-BR", { numeric: "auto" });
   const nf = new Intl.NumberFormat("pt-BR");
@@ -1346,39 +1337,37 @@ document.getElementById("year").textContent = new Date().getFullYear();
     }
   }
 
+  // Ícones neutros para ferramentas sem logo em nenhum repositório de ícones
+  const GLYPHS = {
+    code: "<path d='M8 6 2 12l6 6M16 6l6 6-6 6' fill='none' stroke='#000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/>",
+    db: "<ellipse cx='12' cy='5.5' rx='8' ry='3' fill='none' stroke='#000' stroke-width='2.2'/><path d='M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3' fill='none' stroke='#000' stroke-width='2.2'/>",
+    audio: "<path d='M3 10v4M7 6v12M11 3v18M15 7v10M19 10v4' stroke='#000' stroke-width='2.4' stroke-linecap='round'/>",
+    doc: "<path d='M6 2h8l5 5v15H6z' fill='none' stroke='#000' stroke-width='2.2' stroke-linejoin='round'/><path d='M14 2v5h5M9 13h7M9 17h7' fill='none' stroke='#000' stroke-width='2'/>",
+  };
+  const glyphUrl = g => `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>${GLYPHS[g] || GLYPHS.code}</svg>`)}")`;
+
+  // Ferramenta detectada nos commits e PRs entra no Stack quando passa do limite (hoje, mais de 10 usos).
+  // A contagem continua sendo registrada no activity.json; na tela só aparece quem passou.
   function renderSkills(d) {
     const manual = new Set();
     document.querySelectorAll("[data-skill]:not(.auto)").forEach(li => li.dataset.skill.split(" ").forEach(id => manual.add(id)));
     const columns = {};
     document.querySelectorAll(".stack > div").forEach(col => { columns[col.querySelector("h3").textContent.trim()] = col.querySelector("ul"); });
     document.querySelectorAll(".stack li.auto").forEach(li => li.remove());
-    const pending = [];
     for (const sk of d.skills) {
-      if (manual.has(sk.id)) continue;
-      if (!sk.promoted) { pending.push(sk); continue; }
+      if (manual.has(sk.id) || !sk.promoted) continue;
       const ul = columns[sk.group];
       if (!ul) continue;
       const li = el("li", "auto");
       li.dataset.skill = sk.id;
-      li.title = `Adicionada automaticamente: usada em ${sk.uses} commits ou PRs`;
       const ic = el("span", "ic");
       ic.setAttribute("aria-hidden", "true");
-      if (sk.icon) ic.style.setProperty("--i", `url(${ICONS}${sk.icon}.svg)`);
-      else { ic.style.background = "none"; ic.style.border = "2px solid var(--violet)"; ic.style.borderRadius = "6px"; ic.style.width = ic.style.height = "18px"; }
-      li.append(ic, document.createTextNode(sk.name), el("small", null, `${sk.uses} usos`));
+      const url = sk.icon ? `url(${ICONS}${sk.icon}.svg)`
+        : /^https:\/\/cdn\.jsdelivr\.net\//.test(sk.icon_url || "") ? `url(${sk.icon_url})` : glyphUrl(sk.glyph);
+      ic.style.setProperty("--i", url);
+      li.append(ic, document.createTextNode(sk.name));
       ul.append(li);
     }
-    pending.sort((a, b) => b.uses - a.uses);
-    watch.replaceChildren();
-    if (pending.length) {
-      watch.append(el("b", null, "Em observação:"));
-      pending.forEach(sk => {
-        const chip = el("span", null, sk.name);
-        chip.append(el("i", null, `${sk.uses}/${d.threshold}`));
-        watch.append(chip);
-      });
-    }
-    watch.hidden = !pending.length;
   }
 
   function render() {

@@ -1,13 +1,13 @@
 {
   "username": "WaynerMoraes12",
-  "skill_threshold": 3,
+  "skill_threshold": 11,
   "feed_size": 40,
   "backfill_days": 365,
   "max_commit_details_per_run": 700,
   "excluded_repos": [
     "WaynerMoraes12/WaynerMoraes12"
   ],
-  "_como_usar": "excluded_repos: repositórios (dono/nome) que nunca aparecem nem contam. skill_threshold: usos para uma ferramenta entrar no Stack. named_private_repos: privados que podem aparecer com o nome no feed (os outros viram 'repositório privado'). showcase: repositório da seção da MAW; o resumo vem da seção summary_heading do arquivo summary_file. company: organização do GitHub da empresa, usada só para contar commits e PRs.",
+  "_como_usar": "excluded_repos: repositórios (dono/nome) que nunca aparecem nem contam. skill_threshold: quantos usos uma ferramenta detectada precisa para entrar sozinha no Stack (11 = \"mais de 10 usos\"); as skills escritas à mão no site aparecem sempre. named_private_repos: privados que podem aparecer com o nome no feed (os outros viram 'repositório privado'). showcase: repositório da seção da MAW; o resumo vem da seção summary_heading do arquivo summary_file. company: organização do GitHub da empresa, usada só para contar commits e PRs.",
   "company": {
     "org": "areaincrivel",
     "name": "Área Incrível"

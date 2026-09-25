@@ -185,7 +185,10 @@ COMPANY = CONFIG.get("company") or {}
 SHOWCASE = CONFIG.get("showcase") or {}
 # Privados que podem aparecer com o nome no feed (ex.: a MAW). Os demais viram "repositório privado".
 NAMED_PRIVATE = {r.lower() for r in CONFIG.get("named_private_repos", [])}
-CATALOG_HASH = hashlib.sha1(json.dumps(CATALOG, sort_keys=True).encode("utf-8")).hexdigest()[:12]
+# Só as regras de detecção entram no hash: trocar nome ou ícone não obriga a recontar tudo
+DETECTION_KEYS = ("id", "ext", "files", "deps", "imports")
+CATALOG_HASH = hashlib.sha1(json.dumps([{k: t.get(k) for k in DETECTION_KEYS} for t in CATALOG],
+                                       sort_keys=True).encode("utf-8")).hexdigest()[:12]
 
 
 def fresh_state() -> dict:
@@ -490,6 +493,7 @@ def main() -> int:
             continue
         skills.append({
             "id": tid, "name": t["name"], "group": t["group"], "icon": t.get("icon"),
+            "icon_url": t.get("icon_url"), "glyph": t.get("glyph"),
             "uses": c["count"], "promoted": c["count"] >= THRESHOLD,
             "first_seen": c["first_seen"], "last_seen": c["last_seen"],
         })
