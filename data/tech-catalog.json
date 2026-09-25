@@ -1,90 +1,2566 @@
 [
-  {"id": "cpp", "name": "C++", "group": "Linguagens", "icon": "cplusplus", "ext": [".cpp", ".cc", ".cxx", ".hpp", ".hh", ".hxx"]},
-  {"id": "c", "name": "C", "group": "Linguagens", "icon": "c", "ext": [".c"]},
-  {"id": "python", "name": "Python", "group": "Linguagens", "icon": "python", "ext": [".py", ".pyi", ".ipynb"]},
-  {"id": "typescript", "name": "TypeScript", "group": "Linguagens", "icon": "typescript", "ext": [".ts", ".tsx"]},
-  {"id": "javascript", "name": "JavaScript", "group": "Linguagens", "icon": "javascript", "ext": [".js", ".jsx", ".mjs", ".cjs"]},
-  {"id": "rust", "name": "Rust", "group": "Linguagens", "icon": "rust", "ext": [".rs"], "files": ["(^|/)Cargo\\.toml$"]},
-  {"id": "go", "name": "Go", "group": "Linguagens", "icon": "go", "ext": [".go"], "files": ["(^|/)go\\.mod$"]},
-  {"id": "java", "name": "Java", "group": "Linguagens", "icon": "openjdk", "ext": [".java"]},
-  {"id": "kotlin", "name": "Kotlin", "group": "Linguagens", "icon": "kotlin", "ext": [".kt", ".kts"]},
-  {"id": "csharp", "name": "C#", "group": "Linguagens", "icon": "dotnet", "ext": [".cs"]},
-  {"id": "php", "name": "PHP", "group": "Linguagens", "icon": "php", "ext": [".php"]},
-  {"id": "lua", "name": "Lua", "group": "Linguagens", "icon": "lua", "ext": [".lua"]},
-  {"id": "dart", "name": "Dart", "group": "Linguagens", "icon": "dart", "ext": [".dart"]},
-  {"id": "bash", "name": "Shell Script", "group": "Linguagens", "icon": "gnubash", "ext": [".sh", ".bash"]},
-  {"id": "powershell", "name": "PowerShell", "group": "Linguagens", "icon": null, "ext": [".ps1", ".psm1"]},
-  {"id": "sql", "name": "SQL", "group": "Dados e infra", "icon": null, "ext": [".sql"]},
-
-  {"id": "fastapi", "name": "FastAPI", "group": "Back-end e IA", "icon": "fastapi", "deps": ["fastapi"], "imports": ["fastapi"]},
-  {"id": "flask", "name": "Flask", "group": "Back-end e IA", "icon": "flask", "deps": ["flask"], "imports": ["flask"]},
-  {"id": "django", "name": "Django", "group": "Back-end e IA", "icon": "django", "deps": ["django"], "imports": ["django"]},
-  {"id": "crewai", "name": "CrewAI", "group": "Back-end e IA", "icon": "crewai", "deps": ["crewai"], "imports": ["crewai"]},
-  {"id": "langchain", "name": "LangChain", "group": "Back-end e IA", "icon": "langchain", "deps": ["langchain", "langchain-core", "langchain-community"], "imports": ["langchain", "langchain_core", "langchain_community"]},
-  {"id": "langgraph", "name": "LangGraph", "group": "Back-end e IA", "icon": "langgraph", "deps": ["langgraph"], "imports": ["langgraph"]},
-  {"id": "openai", "name": "OpenAI API", "group": "Back-end e IA", "icon": null, "deps": ["openai"], "imports": ["openai"]},
-  {"id": "anthropic", "name": "Claude API", "group": "Back-end e IA", "icon": "anthropic", "deps": ["anthropic", "@anthropic-ai/sdk"], "imports": ["anthropic", "@anthropic-ai/sdk"]},
-  {"id": "gemini", "name": "Gemini API", "group": "Back-end e IA", "icon": "googlegemini", "deps": ["google-generativeai", "google-genai", "@google/generative-ai"], "imports": ["google.generativeai", "google.genai"]},
-  {"id": "temporal", "name": "Temporal", "group": "Back-end e IA", "icon": "temporal", "deps": ["temporalio", "@temporalio/client", "@temporalio/worker"], "imports": ["temporalio", "@temporalio/client", "@temporalio/worker", "@temporalio/workflow"]},
-  {"id": "mcp", "name": "MCP", "group": "Back-end e IA", "icon": "modelcontextprotocol", "deps": ["mcp", "fastmcp", "@modelcontextprotocol/sdk"], "imports": ["mcp", "fastmcp", "@modelcontextprotocol/sdk"]},
-  {"id": "sqlalchemy", "name": "SQLAlchemy", "group": "Back-end e IA", "icon": "sqlalchemy", "deps": ["sqlalchemy"], "imports": ["sqlalchemy"]},
-  {"id": "pydantic", "name": "Pydantic", "group": "Back-end e IA", "icon": "pydantic", "deps": ["pydantic", "pydantic-settings"], "imports": ["pydantic", "pydantic_settings"]},
-  {"id": "celery", "name": "Celery", "group": "Back-end e IA", "icon": "celery", "deps": ["celery"], "imports": ["celery"]},
-  {"id": "httpx", "name": "HTTPX", "group": "Back-end e IA", "icon": null, "deps": ["httpx"], "imports": ["httpx"]},
-  {"id": "aiohttp", "name": "aiohttp", "group": "Back-end e IA", "icon": "aiohttp", "deps": ["aiohttp"], "imports": ["aiohttp"]},
-  {"id": "nodejs", "name": "Node.js", "group": "Back-end e IA", "icon": "nodedotjs", "files": ["(^|/)package\\.json$"]},
-  {"id": "express", "name": "Express", "group": "Back-end e IA", "icon": "express", "deps": ["express"], "imports": ["express"]},
-  {"id": "nestjs", "name": "NestJS", "group": "Back-end e IA", "icon": "nestjs", "deps": ["@nestjs/core"], "imports": ["@nestjs/core", "@nestjs/common"]},
-  {"id": "prisma", "name": "Prisma", "group": "Back-end e IA", "icon": "prisma", "deps": ["prisma", "@prisma/client"], "files": ["(^|/)schema\\.prisma$"]},
-  {"id": "graphql", "name": "GraphQL", "group": "Back-end e IA", "icon": "graphql", "deps": ["graphql", "strawberry-graphql", "@apollo/server"], "ext": [".graphql", ".gql"]},
-  {"id": "socketio", "name": "Socket.IO", "group": "Back-end e IA", "icon": "socketdotio", "deps": ["socket.io", "socket.io-client", "python-socketio"], "imports": ["socket.io", "socket.io-client", "socketio"]},
-  {"id": "playwright", "name": "Playwright", "group": "Back-end e IA", "icon": null, "deps": ["playwright", "@playwright/test"], "imports": ["playwright", "@playwright/test"]},
-  {"id": "pandas", "name": "Pandas", "group": "Back-end e IA", "icon": "pandas", "deps": ["pandas"], "imports": ["pandas"]},
-  {"id": "numpy", "name": "NumPy", "group": "Back-end e IA", "icon": "numpy", "deps": ["numpy"], "imports": ["numpy"]},
-  {"id": "pytorch", "name": "PyTorch", "group": "Back-end e IA", "icon": "pytorch", "deps": ["torch"], "imports": ["torch"]},
-  {"id": "tensorflow", "name": "TensorFlow", "group": "Back-end e IA", "icon": "tensorflow", "deps": ["tensorflow"], "imports": ["tensorflow"]},
-  {"id": "sklearn", "name": "scikit-learn", "group": "Back-end e IA", "icon": "scikitlearn", "deps": ["scikit-learn"], "imports": ["sklearn"]},
-  {"id": "opencv", "name": "OpenCV", "group": "Back-end e IA", "icon": "opencv", "deps": ["opencv-python", "opencv-python-headless"], "imports": ["cv2", "opencv2"]},
-  {"id": "boost", "name": "Boost", "group": "Back-end e IA", "icon": null, "imports": ["boost"]},
-  {"id": "qt", "name": "Qt", "group": "Front-end", "icon": "qt", "deps": ["pyside6", "pyqt5", "pyqt6"], "imports": ["QtCore", "QtWidgets", "QApplication", "PySide6", "PyQt5", "PyQt6"]},
-  {"id": "juce", "name": "JUCE", "group": "Back-end e IA", "icon": "juce", "imports": ["JuceHeader.h", "juce_audio_processors", "juce_core"]},
-  {"id": "portaudio", "name": "PortAudio", "group": "Back-end e IA", "icon": null, "deps": ["pyaudio", "sounddevice"], "imports": ["portaudio.h", "pyaudio", "sounddevice"]},
-  {"id": "cmake", "name": "CMake", "group": "Dados e infra", "icon": "cmake", "files": ["(^|/)CMakeLists\\.txt$", "\\.cmake$"]},
-  {"id": "gtest", "name": "GoogleTest", "group": "Dados e infra", "icon": null, "imports": ["gtest/gtest.h", "gmock/gmock.h"]},
-
-  {"id": "react", "name": "React", "group": "Front-end", "icon": "react", "deps": ["react"], "imports": ["react"]},
-  {"id": "nextjs", "name": "Next.js", "group": "Front-end", "icon": "nextdotjs", "deps": ["next"], "imports": ["next"], "files": ["(^|/)next\\.config\\.(js|mjs|ts)$"]},
-  {"id": "vue", "name": "Vue", "group": "Front-end", "icon": "vuedotjs", "deps": ["vue"], "ext": [".vue"]},
-  {"id": "svelte", "name": "Svelte", "group": "Front-end", "icon": "svelte", "deps": ["svelte"], "ext": [".svelte"]},
-  {"id": "angular", "name": "Angular", "group": "Front-end", "icon": "angular", "deps": ["@angular/core"]},
-  {"id": "tailwind", "name": "Tailwind CSS", "group": "Front-end", "icon": "tailwindcss", "deps": ["tailwindcss", "@tailwindcss/vite", "@tailwindcss/postcss"], "files": ["(^|/)tailwind\\.config\\.(js|cjs|mjs|ts)$"]},
-  {"id": "vite", "name": "Vite", "group": "Front-end", "icon": "vite", "deps": ["vite"], "files": ["(^|/)vite\\.config\\.(js|mjs|ts)$"]},
-  {"id": "html", "name": "HTML", "group": "Front-end", "icon": "html5", "ext": [".html", ".htm"]},
-  {"id": "css", "name": "CSS", "group": "Front-end", "icon": "css", "ext": [".css", ".scss", ".sass"]},
-  {"id": "streamlit", "name": "Streamlit", "group": "Front-end", "icon": "streamlit", "deps": ["streamlit"], "imports": ["streamlit"]},
-  {"id": "threejs", "name": "Three.js", "group": "Front-end", "icon": "threedotjs", "deps": ["three"], "imports": ["three"]},
-  {"id": "recharts", "name": "Recharts", "group": "Front-end", "icon": null, "deps": ["recharts"], "imports": ["recharts"]},
-  {"id": "tkinter", "name": "Tkinter", "group": "Front-end", "icon": null, "imports": ["tkinter"]},
-
-  {"id": "postgresql", "name": "PostgreSQL", "group": "Dados e infra", "icon": "postgresql", "deps": ["psycopg", "psycopg2", "psycopg2-binary", "asyncpg", "pg"], "imports": ["psycopg", "psycopg2", "asyncpg", "pg"]},
-  {"id": "mysql", "name": "MySQL", "group": "Dados e infra", "icon": "mysql", "deps": ["mysql-connector-python", "pymysql", "mysql2", "aiomysql"], "imports": ["mysql.connector", "pymysql", "mysql2", "aiomysql"]},
-  {"id": "sqlserver", "name": "SQL Server", "group": "Dados e infra", "icon": null, "deps": ["mssql", "pyodbc", "tedious"], "imports": ["mssql", "pyodbc"]},
-  {"id": "sqlite", "name": "SQLite", "group": "Dados e infra", "icon": "sqlite", "deps": ["better-sqlite3", "aiosqlite"], "imports": ["sqlite3", "aiosqlite", "better-sqlite3"]},
-  {"id": "mongodb", "name": "MongoDB", "group": "Dados e infra", "icon": "mongodb", "deps": ["pymongo", "motor", "mongoose", "mongodb"], "imports": ["pymongo", "motor", "mongoose", "mongodb"]},
-  {"id": "redis", "name": "Redis", "group": "Dados e infra", "icon": "redis", "deps": ["redis", "ioredis"], "imports": ["redis", "ioredis"]},
-  {"id": "supabase", "name": "Supabase", "group": "Dados e infra", "icon": "supabase", "deps": ["supabase", "@supabase/supabase-js"], "imports": ["supabase", "@supabase/supabase-js"]},
-  {"id": "firebase", "name": "Firebase", "group": "Dados e infra", "icon": "firebase", "deps": ["firebase", "firebase-admin"], "imports": ["firebase", "firebase_admin", "firebase-admin"]},
-  {"id": "rabbitmq", "name": "RabbitMQ", "group": "Dados e infra", "icon": "rabbitmq", "deps": ["pika", "aio-pika", "amqplib"], "imports": ["pika", "aio_pika", "amqplib"]},
-  {"id": "kafka", "name": "Kafka", "group": "Dados e infra", "icon": "apachekafka", "deps": ["kafka-python", "aiokafka", "confluent-kafka", "kafkajs"], "imports": ["kafka", "aiokafka", "confluent_kafka", "kafkajs"]},
-  {"id": "minio", "name": "MinIO", "group": "Dados e infra", "icon": "minio", "deps": ["minio"], "imports": ["minio"]},
-  {"id": "aws", "name": "AWS", "group": "Dados e infra", "icon": null, "deps": ["boto3", "aioboto3", "@aws-sdk/client-s3"], "imports": ["boto3", "aioboto3"]},
-  {"id": "docker", "name": "Docker", "group": "Dados e infra", "icon": "docker", "files": ["(^|/)Dockerfile[^/]*$", "(^|/)\\.dockerignore$", "(^|/)(docker-)?compose[^/]*\\.ya?ml$"]},
-  {"id": "kubernetes", "name": "Kubernetes", "group": "Dados e infra", "icon": "kubernetes", "files": ["(^|/)(k8s|kubernetes|helm)/", "(^|/)Chart\\.yaml$"]},
-  {"id": "terraform", "name": "Terraform", "group": "Dados e infra", "icon": "terraform", "ext": [".tf"]},
-  {"id": "nginx", "name": "Nginx", "group": "Dados e infra", "icon": "nginx", "files": ["(^|/)nginx[^/]*\\.conf$"]},
-  {"id": "githubactions", "name": "GitHub Actions", "group": "Dados e infra", "icon": "githubactions", "files": ["^\\.github/workflows/"]},
-  {"id": "pytest", "name": "pytest", "group": "Dados e infra", "icon": "pytest", "deps": ["pytest", "pytest-asyncio"], "imports": ["pytest"], "files": ["(^|/)(pytest\\.ini|conftest\\.py)$"]},
-  {"id": "testcontainers", "name": "Testcontainers", "group": "Dados e infra", "icon": null, "deps": ["testcontainers"], "imports": ["testcontainers"]},
-  {"id": "jest", "name": "Jest", "group": "Dados e infra", "icon": "jest", "deps": ["jest"], "files": ["(^|/)jest\\.config\\.(js|ts|mjs)$"]},
-  {"id": "vitest", "name": "Vitest", "group": "Dados e infra", "icon": "vitest", "deps": ["vitest"], "imports": ["vitest"]}
+ {
+  "id": "cpp",
+  "name": "C++",
+  "group": "Linguagens",
+  "icon": "cplusplus",
+  "ext": [
+   ".cpp",
+   ".cc",
+   ".cxx",
+   ".hpp",
+   ".hh",
+   ".hxx"
+  ]
+ },
+ {
+  "id": "c",
+  "name": "C",
+  "group": "Linguagens",
+  "icon": "c",
+  "ext": [
+   ".c"
+  ]
+ },
+ {
+  "id": "python",
+  "name": "Python",
+  "group": "Linguagens",
+  "icon": "python",
+  "ext": [
+   ".py",
+   ".pyi",
+   ".ipynb"
+  ]
+ },
+ {
+  "id": "typescript",
+  "name": "TypeScript",
+  "group": "Linguagens",
+  "icon": "typescript",
+  "ext": [
+   ".ts",
+   ".tsx"
+  ]
+ },
+ {
+  "id": "javascript",
+  "name": "JavaScript",
+  "group": "Linguagens",
+  "icon": "javascript",
+  "ext": [
+   ".js",
+   ".jsx",
+   ".mjs",
+   ".cjs"
+  ]
+ },
+ {
+  "id": "rust",
+  "name": "Rust",
+  "group": "Linguagens",
+  "icon": "rust",
+  "ext": [
+   ".rs"
+  ],
+  "files": [
+   "(^|/)Cargo\\.toml$"
+  ]
+ },
+ {
+  "id": "go",
+  "name": "Go",
+  "group": "Linguagens",
+  "icon": "go",
+  "ext": [
+   ".go"
+  ],
+  "files": [
+   "(^|/)go\\.mod$"
+  ]
+ },
+ {
+  "id": "java",
+  "name": "Java",
+  "group": "Linguagens",
+  "icon": "openjdk",
+  "ext": [
+   ".java"
+  ]
+ },
+ {
+  "id": "kotlin",
+  "name": "Kotlin",
+  "group": "Linguagens",
+  "icon": "kotlin",
+  "ext": [
+   ".kt",
+   ".kts"
+  ]
+ },
+ {
+  "id": "csharp",
+  "name": "C#",
+  "group": "Linguagens",
+  "icon": "dotnet",
+  "ext": [
+   ".cs"
+  ]
+ },
+ {
+  "id": "php",
+  "name": "PHP",
+  "group": "Linguagens",
+  "icon": "php",
+  "ext": [
+   ".php"
+  ]
+ },
+ {
+  "id": "lua",
+  "name": "Lua",
+  "group": "Linguagens",
+  "icon": "lua",
+  "ext": [
+   ".lua"
+  ]
+ },
+ {
+  "id": "dart",
+  "name": "Dart",
+  "group": "Linguagens",
+  "icon": "dart",
+  "ext": [
+   ".dart"
+  ]
+ },
+ {
+  "id": "bash",
+  "name": "Shell Script",
+  "group": "Linguagens",
+  "icon": "gnubash",
+  "ext": [
+   ".sh",
+   ".bash"
+  ]
+ },
+ {
+  "id": "powershell",
+  "name": "PowerShell",
+  "group": "Linguagens",
+  "icon": null,
+  "ext": [
+   ".ps1",
+   ".psm1"
+  ]
+ },
+ {
+  "id": "sql",
+  "name": "SQL",
+  "group": "Dados e infra",
+  "icon": null,
+  "ext": [
+   ".sql"
+  ]
+ },
+ {
+  "id": "fastapi",
+  "name": "FastAPI",
+  "group": "Back-end e IA",
+  "icon": "fastapi",
+  "deps": [
+   "fastapi"
+  ],
+  "imports": [
+   "fastapi"
+  ]
+ },
+ {
+  "id": "flask",
+  "name": "Flask",
+  "group": "Back-end e IA",
+  "icon": "flask",
+  "deps": [
+   "flask"
+  ],
+  "imports": [
+   "flask"
+  ]
+ },
+ {
+  "id": "django",
+  "name": "Django",
+  "group": "Back-end e IA",
+  "icon": "django",
+  "deps": [
+   "django"
+  ],
+  "imports": [
+   "django"
+  ]
+ },
+ {
+  "id": "crewai",
+  "name": "CrewAI",
+  "group": "Back-end e IA",
+  "icon": "crewai",
+  "deps": [
+   "crewai"
+  ],
+  "imports": [
+   "crewai"
+  ]
+ },
+ {
+  "id": "langchain",
+  "name": "LangChain",
+  "group": "Back-end e IA",
+  "icon": "langchain",
+  "deps": [
+   "langchain",
+   "langchain-core",
+   "langchain-community"
+  ],
+  "imports": [
+   "langchain",
+   "langchain_core",
+   "langchain_community"
+  ]
+ },
+ {
+  "id": "langgraph",
+  "name": "LangGraph",
+  "group": "Back-end e IA",
+  "icon": "langgraph",
+  "deps": [
+   "langgraph"
+  ],
+  "imports": [
+   "langgraph"
+  ]
+ },
+ {
+  "id": "openai",
+  "name": "OpenAI API",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "openai"
+  ],
+  "imports": [
+   "openai"
+  ]
+ },
+ {
+  "id": "anthropic",
+  "name": "Claude API",
+  "group": "Back-end e IA",
+  "icon": "anthropic",
+  "deps": [
+   "anthropic",
+   "@anthropic-ai/sdk"
+  ],
+  "imports": [
+   "anthropic",
+   "@anthropic-ai/sdk"
+  ]
+ },
+ {
+  "id": "gemini",
+  "name": "Gemini API",
+  "group": "Back-end e IA",
+  "icon": "googlegemini",
+  "deps": [
+   "google-generativeai",
+   "google-genai",
+   "@google/generative-ai"
+  ],
+  "imports": [
+   "google.generativeai",
+   "google.genai"
+  ]
+ },
+ {
+  "id": "temporal",
+  "name": "Temporal",
+  "group": "Back-end e IA",
+  "icon": "temporal",
+  "deps": [
+   "temporalio",
+   "@temporalio/client",
+   "@temporalio/worker"
+  ],
+  "imports": [
+   "temporalio",
+   "@temporalio/client",
+   "@temporalio/worker",
+   "@temporalio/workflow"
+  ]
+ },
+ {
+  "id": "mcp",
+  "name": "MCP",
+  "group": "Back-end e IA",
+  "icon": "modelcontextprotocol",
+  "deps": [
+   "mcp",
+   "fastmcp",
+   "@modelcontextprotocol/sdk"
+  ],
+  "imports": [
+   "mcp",
+   "fastmcp",
+   "@modelcontextprotocol/sdk"
+  ]
+ },
+ {
+  "id": "sqlalchemy",
+  "name": "SQLAlchemy",
+  "group": "Back-end e IA",
+  "icon": "sqlalchemy",
+  "deps": [
+   "sqlalchemy"
+  ],
+  "imports": [
+   "sqlalchemy"
+  ]
+ },
+ {
+  "id": "pydantic",
+  "name": "Pydantic",
+  "group": "Back-end e IA",
+  "icon": "pydantic",
+  "deps": [
+   "pydantic",
+   "pydantic-settings"
+  ],
+  "imports": [
+   "pydantic",
+   "pydantic_settings"
+  ]
+ },
+ {
+  "id": "celery",
+  "name": "Celery",
+  "group": "Back-end e IA",
+  "icon": "celery",
+  "deps": [
+   "celery"
+  ],
+  "imports": [
+   "celery"
+  ]
+ },
+ {
+  "id": "httpx",
+  "name": "HTTPX",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "httpx"
+  ],
+  "imports": [
+   "httpx"
+  ]
+ },
+ {
+  "id": "aiohttp",
+  "name": "aiohttp",
+  "group": "Back-end e IA",
+  "icon": "aiohttp",
+  "deps": [
+   "aiohttp"
+  ],
+  "imports": [
+   "aiohttp"
+  ]
+ },
+ {
+  "id": "nodejs",
+  "name": "Node.js",
+  "group": "Back-end e IA",
+  "icon": "nodedotjs",
+  "files": [
+   "(^|/)package\\.json$"
+  ]
+ },
+ {
+  "id": "express",
+  "name": "Express",
+  "group": "Back-end e IA",
+  "icon": "express",
+  "deps": [
+   "express"
+  ],
+  "imports": [
+   "express"
+  ]
+ },
+ {
+  "id": "nestjs",
+  "name": "NestJS",
+  "group": "Back-end e IA",
+  "icon": "nestjs",
+  "deps": [
+   "@nestjs/core"
+  ],
+  "imports": [
+   "@nestjs/core",
+   "@nestjs/common"
+  ]
+ },
+ {
+  "id": "prisma",
+  "name": "Prisma",
+  "group": "Back-end e IA",
+  "icon": "prisma",
+  "deps": [
+   "prisma",
+   "@prisma/client"
+  ],
+  "files": [
+   "(^|/)schema\\.prisma$"
+  ]
+ },
+ {
+  "id": "graphql",
+  "name": "GraphQL",
+  "group": "Back-end e IA",
+  "icon": "graphql",
+  "deps": [
+   "graphql",
+   "strawberry-graphql",
+   "@apollo/server"
+  ],
+  "ext": [
+   ".graphql",
+   ".gql"
+  ]
+ },
+ {
+  "id": "socketio",
+  "name": "Socket.IO",
+  "group": "Back-end e IA",
+  "icon": "socketdotio",
+  "deps": [
+   "socket.io",
+   "socket.io-client",
+   "python-socketio"
+  ],
+  "imports": [
+   "socket.io",
+   "socket.io-client",
+   "socketio"
+  ]
+ },
+ {
+  "id": "playwright",
+  "name": "Playwright",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "playwright",
+   "@playwright/test"
+  ],
+  "imports": [
+   "playwright",
+   "@playwright/test"
+  ]
+ },
+ {
+  "id": "pandas",
+  "name": "Pandas",
+  "group": "Back-end e IA",
+  "icon": "pandas",
+  "deps": [
+   "pandas"
+  ],
+  "imports": [
+   "pandas"
+  ]
+ },
+ {
+  "id": "numpy",
+  "name": "NumPy",
+  "group": "Back-end e IA",
+  "icon": "numpy",
+  "deps": [
+   "numpy"
+  ],
+  "imports": [
+   "numpy"
+  ]
+ },
+ {
+  "id": "pytorch",
+  "name": "PyTorch",
+  "group": "Back-end e IA",
+  "icon": "pytorch",
+  "deps": [
+   "torch"
+  ],
+  "imports": [
+   "torch"
+  ]
+ },
+ {
+  "id": "tensorflow",
+  "name": "TensorFlow",
+  "group": "Back-end e IA",
+  "icon": "tensorflow",
+  "deps": [
+   "tensorflow"
+  ],
+  "imports": [
+   "tensorflow"
+  ]
+ },
+ {
+  "id": "sklearn",
+  "name": "scikit-learn",
+  "group": "Back-end e IA",
+  "icon": "scikitlearn",
+  "deps": [
+   "scikit-learn"
+  ],
+  "imports": [
+   "sklearn"
+  ]
+ },
+ {
+  "id": "opencv",
+  "name": "OpenCV",
+  "group": "Back-end e IA",
+  "icon": "opencv",
+  "deps": [
+   "opencv-python",
+   "opencv-python-headless"
+  ],
+  "imports": [
+   "cv2",
+   "opencv2"
+  ]
+ },
+ {
+  "id": "boost",
+  "name": "Boost",
+  "group": "Back-end e IA",
+  "icon": null,
+  "imports": [
+   "boost"
+  ]
+ },
+ {
+  "id": "qt",
+  "name": "Qt",
+  "group": "Front-end",
+  "icon": "qt",
+  "deps": [
+   "pyside6",
+   "pyqt5",
+   "pyqt6"
+  ],
+  "imports": [
+   "QtCore",
+   "QtWidgets",
+   "QApplication",
+   "PySide6",
+   "PyQt5",
+   "PyQt6"
+  ]
+ },
+ {
+  "id": "juce",
+  "name": "JUCE",
+  "group": "Back-end e IA",
+  "icon": "juce",
+  "imports": [
+   "JuceHeader.h",
+   "juce_audio_processors",
+   "juce_core"
+  ]
+ },
+ {
+  "id": "portaudio",
+  "name": "PortAudio",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "pyaudio",
+   "sounddevice"
+  ],
+  "imports": [
+   "portaudio.h",
+   "pyaudio",
+   "sounddevice"
+  ]
+ },
+ {
+  "id": "cmake",
+  "name": "CMake",
+  "group": "Dados e infra",
+  "icon": "cmake",
+  "files": [
+   "(^|/)CMakeLists\\.txt$",
+   "\\.cmake$"
+  ]
+ },
+ {
+  "id": "gtest",
+  "name": "GoogleTest",
+  "group": "Dados e infra",
+  "icon": null,
+  "imports": [
+   "gtest/gtest.h",
+   "gmock/gmock.h"
+  ]
+ },
+ {
+  "id": "react",
+  "name": "React",
+  "group": "Front-end",
+  "icon": "react",
+  "deps": [
+   "react"
+  ],
+  "imports": [
+   "react"
+  ]
+ },
+ {
+  "id": "nextjs",
+  "name": "Next.js",
+  "group": "Front-end",
+  "icon": "nextdotjs",
+  "deps": [
+   "next"
+  ],
+  "imports": [
+   "next"
+  ],
+  "files": [
+   "(^|/)next\\.config\\.(js|mjs|ts)$"
+  ]
+ },
+ {
+  "id": "vue",
+  "name": "Vue",
+  "group": "Front-end",
+  "icon": "vuedotjs",
+  "deps": [
+   "vue"
+  ],
+  "ext": [
+   ".vue"
+  ]
+ },
+ {
+  "id": "svelte",
+  "name": "Svelte",
+  "group": "Front-end",
+  "icon": "svelte",
+  "deps": [
+   "svelte"
+  ],
+  "ext": [
+   ".svelte"
+  ]
+ },
+ {
+  "id": "angular",
+  "name": "Angular",
+  "group": "Front-end",
+  "icon": "angular",
+  "deps": [
+   "@angular/core"
+  ]
+ },
+ {
+  "id": "tailwind",
+  "name": "Tailwind CSS",
+  "group": "Front-end",
+  "icon": "tailwindcss",
+  "deps": [
+   "tailwindcss",
+   "@tailwindcss/vite",
+   "@tailwindcss/postcss"
+  ],
+  "files": [
+   "(^|/)tailwind\\.config\\.(js|cjs|mjs|ts)$"
+  ]
+ },
+ {
+  "id": "vite",
+  "name": "Vite",
+  "group": "Front-end",
+  "icon": "vite",
+  "deps": [
+   "vite"
+  ],
+  "files": [
+   "(^|/)vite\\.config\\.(js|mjs|ts)$"
+  ]
+ },
+ {
+  "id": "html",
+  "name": "HTML",
+  "group": "Front-end",
+  "icon": "html5",
+  "ext": [
+   ".html",
+   ".htm"
+  ]
+ },
+ {
+  "id": "css",
+  "name": "CSS",
+  "group": "Front-end",
+  "icon": "css",
+  "ext": [
+   ".css",
+   ".scss",
+   ".sass"
+  ]
+ },
+ {
+  "id": "streamlit",
+  "name": "Streamlit",
+  "group": "Front-end",
+  "icon": "streamlit",
+  "deps": [
+   "streamlit"
+  ],
+  "imports": [
+   "streamlit"
+  ]
+ },
+ {
+  "id": "threejs",
+  "name": "Three.js",
+  "group": "Front-end",
+  "icon": "threedotjs",
+  "deps": [
+   "three"
+  ],
+  "imports": [
+   "three"
+  ]
+ },
+ {
+  "id": "recharts",
+  "name": "Recharts",
+  "group": "Front-end",
+  "icon": null,
+  "deps": [
+   "recharts"
+  ],
+  "imports": [
+   "recharts"
+  ]
+ },
+ {
+  "id": "tkinter",
+  "name": "Tkinter",
+  "group": "Front-end",
+  "icon": null,
+  "imports": [
+   "tkinter"
+  ]
+ },
+ {
+  "id": "postgresql",
+  "name": "PostgreSQL",
+  "group": "Dados e infra",
+  "icon": "postgresql",
+  "deps": [
+   "psycopg",
+   "psycopg2",
+   "psycopg2-binary",
+   "asyncpg",
+   "pg"
+  ],
+  "imports": [
+   "psycopg",
+   "psycopg2",
+   "asyncpg",
+   "pg"
+  ]
+ },
+ {
+  "id": "mysql",
+  "name": "MySQL",
+  "group": "Dados e infra",
+  "icon": "mysql",
+  "deps": [
+   "mysql-connector-python",
+   "pymysql",
+   "mysql2",
+   "aiomysql"
+  ],
+  "imports": [
+   "mysql.connector",
+   "pymysql",
+   "mysql2",
+   "aiomysql"
+  ]
+ },
+ {
+  "id": "sqlserver",
+  "name": "SQL Server",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "mssql",
+   "pyodbc",
+   "tedious"
+  ],
+  "imports": [
+   "mssql",
+   "pyodbc"
+  ]
+ },
+ {
+  "id": "sqlite",
+  "name": "SQLite",
+  "group": "Dados e infra",
+  "icon": "sqlite",
+  "deps": [
+   "better-sqlite3",
+   "aiosqlite"
+  ],
+  "imports": [
+   "sqlite3",
+   "aiosqlite",
+   "better-sqlite3"
+  ]
+ },
+ {
+  "id": "mongodb",
+  "name": "MongoDB",
+  "group": "Dados e infra",
+  "icon": "mongodb",
+  "deps": [
+   "pymongo",
+   "motor",
+   "mongoose",
+   "mongodb"
+  ],
+  "imports": [
+   "pymongo",
+   "motor",
+   "mongoose",
+   "mongodb"
+  ]
+ },
+ {
+  "id": "redis",
+  "name": "Redis",
+  "group": "Dados e infra",
+  "icon": "redis",
+  "deps": [
+   "redis",
+   "ioredis"
+  ],
+  "imports": [
+   "redis",
+   "ioredis"
+  ]
+ },
+ {
+  "id": "supabase",
+  "name": "Supabase",
+  "group": "Dados e infra",
+  "icon": "supabase",
+  "deps": [
+   "supabase",
+   "@supabase/supabase-js"
+  ],
+  "imports": [
+   "supabase",
+   "@supabase/supabase-js"
+  ]
+ },
+ {
+  "id": "firebase",
+  "name": "Firebase",
+  "group": "Dados e infra",
+  "icon": "firebase",
+  "deps": [
+   "firebase",
+   "firebase-admin"
+  ],
+  "imports": [
+   "firebase",
+   "firebase_admin",
+   "firebase-admin"
+  ]
+ },
+ {
+  "id": "rabbitmq",
+  "name": "RabbitMQ",
+  "group": "Dados e infra",
+  "icon": "rabbitmq",
+  "deps": [
+   "pika",
+   "aio-pika",
+   "amqplib"
+  ],
+  "imports": [
+   "pika",
+   "aio_pika",
+   "amqplib"
+  ]
+ },
+ {
+  "id": "kafka",
+  "name": "Kafka",
+  "group": "Dados e infra",
+  "icon": "apachekafka",
+  "deps": [
+   "kafka-python",
+   "aiokafka",
+   "confluent-kafka",
+   "kafkajs"
+  ],
+  "imports": [
+   "kafka",
+   "aiokafka",
+   "confluent_kafka",
+   "kafkajs"
+  ]
+ },
+ {
+  "id": "minio",
+  "name": "MinIO",
+  "group": "Dados e infra",
+  "icon": "minio",
+  "deps": [
+   "minio"
+  ],
+  "imports": [
+   "minio"
+  ]
+ },
+ {
+  "id": "aws",
+  "name": "AWS",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "boto3",
+   "aioboto3",
+   "@aws-sdk/client-s3"
+  ],
+  "imports": [
+   "boto3",
+   "aioboto3"
+  ]
+ },
+ {
+  "id": "docker",
+  "name": "Docker",
+  "group": "Dados e infra",
+  "icon": "docker",
+  "files": [
+   "(^|/)Dockerfile[^/]*$",
+   "(^|/)\\.dockerignore$",
+   "(^|/)(docker-)?compose[^/]*\\.ya?ml$"
+  ]
+ },
+ {
+  "id": "kubernetes",
+  "name": "Kubernetes",
+  "group": "Dados e infra",
+  "icon": "kubernetes",
+  "files": [
+   "(^|/)(k8s|kubernetes|helm)/",
+   "(^|/)Chart\\.yaml$"
+  ]
+ },
+ {
+  "id": "terraform",
+  "name": "Terraform",
+  "group": "Dados e infra",
+  "icon": "terraform",
+  "ext": [
+   ".tf"
+  ]
+ },
+ {
+  "id": "nginx",
+  "name": "Nginx",
+  "group": "Dados e infra",
+  "icon": "nginx",
+  "files": [
+   "(^|/)nginx[^/]*\\.conf$"
+  ]
+ },
+ {
+  "id": "githubactions",
+  "name": "GitHub Actions",
+  "group": "Dados e infra",
+  "icon": "githubactions",
+  "files": [
+   "^\\.github/workflows/"
+  ]
+ },
+ {
+  "id": "pytest",
+  "name": "pytest",
+  "group": "Dados e infra",
+  "icon": "pytest",
+  "deps": [
+   "pytest",
+   "pytest-asyncio"
+  ],
+  "imports": [
+   "pytest"
+  ],
+  "files": [
+   "(^|/)(pytest\\.ini|conftest\\.py)$"
+  ]
+ },
+ {
+  "id": "testcontainers",
+  "name": "Testcontainers",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "testcontainers"
+  ],
+  "imports": [
+   "testcontainers"
+  ]
+ },
+ {
+  "id": "jest",
+  "name": "Jest",
+  "group": "Dados e infra",
+  "icon": "jest",
+  "deps": [
+   "jest"
+  ],
+  "files": [
+   "(^|/)jest\\.config\\.(js|ts|mjs)$"
+  ]
+ },
+ {
+  "id": "vitest",
+  "name": "Vitest",
+  "group": "Dados e infra",
+  "icon": "vitest",
+  "deps": [
+   "vitest"
+  ],
+  "imports": [
+   "vitest"
+  ]
+ },
+ {
+  "id": "clerk",
+  "name": "Clerk",
+  "group": "Back-end e IA",
+  "icon": "clerk",
+  "deps": [
+   "clerk-backend-api",
+   "@clerk/nextjs",
+   "@clerk/clerk-react",
+   "@clerk/express",
+   "@clerk/clerk-js",
+   "@clerk/backend"
+  ],
+  "imports": [
+   "clerk_backend_api",
+   "@clerk/nextjs",
+   "@clerk/clerk-react",
+   "@clerk/express",
+   "@clerk/backend"
+  ]
+ },
+ {
+  "id": "svix",
+  "name": "Svix (webhooks)",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "svix"
+  ],
+  "imports": [
+   "svix"
+  ]
+ },
+ {
+  "id": "nextauth",
+  "name": "NextAuth",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "next-auth",
+   "@auth/core"
+  ],
+  "imports": [
+   "next-auth",
+   "@auth/core"
+  ]
+ },
+ {
+  "id": "auth0",
+  "name": "Auth0",
+  "group": "Back-end e IA",
+  "icon": "auth0",
+  "deps": [
+   "auth0-python",
+   "@auth0/nextjs-auth0",
+   "@auth0/auth0-react"
+  ],
+  "imports": [
+   "auth0",
+   "@auth0/nextjs-auth0",
+   "@auth0/auth0-react"
+  ]
+ },
+ {
+  "id": "jwt",
+  "name": "JWT",
+  "group": "Back-end e IA",
+  "icon": "jsonwebtokens",
+  "deps": [
+   "pyjwt",
+   "python-jose",
+   "jsonwebtoken",
+   "jose"
+  ],
+  "imports": [
+   "jwt",
+   "jose",
+   "jsonwebtoken"
+  ]
+ },
+ {
+  "id": "stripe",
+  "name": "Stripe",
+  "group": "Back-end e IA",
+  "icon": "stripe",
+  "deps": [
+   "stripe",
+   "@stripe/stripe-js"
+  ],
+  "imports": [
+   "stripe",
+   "@stripe/stripe-js"
+  ]
+ },
+ {
+  "id": "mercadopago",
+  "name": "Mercado Pago",
+  "group": "Back-end e IA",
+  "icon": "mercadopago",
+  "deps": [
+   "mercadopago"
+  ],
+  "imports": [
+   "mercadopago"
+  ]
+ },
+ {
+  "id": "twilio",
+  "name": "Twilio",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "twilio"
+  ],
+  "imports": [
+   "twilio"
+  ]
+ },
+ {
+  "id": "sendgrid",
+  "name": "SendGrid",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "sendgrid",
+   "@sendgrid/mail"
+  ],
+  "imports": [
+   "sendgrid",
+   "@sendgrid/mail"
+  ]
+ },
+ {
+  "id": "nodemailer",
+  "name": "Nodemailer",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "nodemailer"
+  ],
+  "imports": [
+   "nodemailer"
+  ]
+ },
+ {
+  "id": "googleapis",
+  "name": "Google APIs",
+  "group": "Back-end e IA",
+  "icon": "google",
+  "deps": [
+   "google-api-python-client",
+   "googleapis",
+   "gspread",
+   "google-auth"
+  ],
+  "imports": [
+   "googleapiclient",
+   "gspread",
+   "googleapis",
+   "google.oauth2"
+  ]
+ },
+ {
+  "id": "appsscript",
+  "name": "Google Apps Script",
+  "group": "Linguagens",
+  "icon": "googleappsscript",
+  "ext": [
+   ".gs"
+  ]
+ },
+ {
+  "id": "whatsapp",
+  "name": "WhatsApp API",
+  "group": "Back-end e IA",
+  "icon": "whatsapp",
+  "deps": [
+   "whatsapp-web.js",
+   "@whiskeysockets/baileys",
+   "pywhatkit"
+  ],
+  "imports": [
+   "whatsapp-web.js",
+   "@whiskeysockets/baileys",
+   "pywhatkit"
+  ]
+ },
+ {
+  "id": "uvicorn",
+  "name": "Uvicorn",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "uvicorn",
+   "gunicorn"
+  ],
+  "imports": [
+   "uvicorn",
+   "gunicorn"
+  ]
+ },
+ {
+  "id": "starlette",
+  "name": "Starlette",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "starlette"
+  ],
+  "imports": [
+   "starlette"
+  ]
+ },
+ {
+  "id": "drf",
+  "name": "Django REST",
+  "group": "Back-end e IA",
+  "icon": "django",
+  "deps": [
+   "djangorestframework"
+  ],
+  "imports": [
+   "rest_framework"
+  ]
+ },
+ {
+  "id": "alembic",
+  "name": "Alembic",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "alembic"
+  ],
+  "imports": [
+   "alembic"
+  ],
+  "files": [
+   "(^|/)alembic\\.ini$"
+  ]
+ },
+ {
+  "id": "sqlmodel",
+  "name": "SQLModel",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "sqlmodel"
+  ],
+  "imports": [
+   "sqlmodel"
+  ]
+ },
+ {
+  "id": "jinja",
+  "name": "Jinja",
+  "group": "Back-end e IA",
+  "icon": "jinja",
+  "deps": [
+   "jinja2"
+  ],
+  "imports": [
+   "jinja2"
+  ],
+  "ext": [
+   ".j2",
+   ".jinja"
+  ]
+ },
+ {
+  "id": "dotenv",
+  "name": "dotenv",
+  "group": "Back-end e IA",
+  "icon": "dotenv",
+  "deps": [
+   "python-dotenv",
+   "dotenv"
+  ],
+  "imports": [
+   "dotenv"
+  ]
+ },
+ {
+  "id": "requests",
+  "name": "Requests",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "requests"
+  ],
+  "imports": [
+   "requests"
+  ]
+ },
+ {
+  "id": "axios",
+  "name": "Axios",
+  "group": "Front-end",
+  "icon": "axios",
+  "deps": [
+   "axios"
+  ],
+  "imports": [
+   "axios"
+  ]
+ },
+ {
+  "id": "websockets",
+  "name": "WebSockets",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "websockets",
+   "ws"
+  ],
+  "imports": [
+   "websockets",
+   "ws"
+  ]
+ },
+ {
+  "id": "grpc",
+  "name": "gRPC",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "grpcio",
+   "@grpc/grpc-js"
+  ],
+  "imports": [
+   "grpc",
+   "@grpc/grpc-js"
+  ],
+  "ext": [
+   ".proto"
+  ]
+ },
+ {
+  "id": "beautifulsoup",
+  "name": "BeautifulSoup",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "beautifulsoup4",
+   "bs4"
+  ],
+  "imports": [
+   "bs4"
+  ]
+ },
+ {
+  "id": "selenium",
+  "name": "Selenium",
+  "group": "Back-end e IA",
+  "icon": "selenium",
+  "deps": [
+   "selenium",
+   "selenium-webdriver"
+  ],
+  "imports": [
+   "selenium",
+   "selenium-webdriver"
+  ]
+ },
+ {
+  "id": "scrapy",
+  "name": "Scrapy",
+  "group": "Back-end e IA",
+  "icon": "scrapy",
+  "deps": [
+   "scrapy"
+  ],
+  "imports": [
+   "scrapy"
+  ]
+ },
+ {
+  "id": "puppeteer",
+  "name": "Puppeteer",
+  "group": "Back-end e IA",
+  "icon": "puppeteer",
+  "deps": [
+   "puppeteer"
+  ],
+  "imports": [
+   "puppeteer"
+  ]
+ },
+ {
+  "id": "n8n",
+  "name": "n8n",
+  "group": "Back-end e IA",
+  "icon": "n8n",
+  "deps": [
+   "n8n",
+   "n8n-workflow"
+  ],
+  "imports": [
+   "n8n-workflow"
+  ]
+ },
+ {
+  "id": "jupyter",
+  "name": "Jupyter",
+  "group": "Dados e infra",
+  "icon": "jupyter",
+  "ext": [
+   ".ipynb"
+  ]
+ },
+ {
+  "id": "matplotlib",
+  "name": "Matplotlib",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "matplotlib"
+  ],
+  "imports": [
+   "matplotlib"
+  ]
+ },
+ {
+  "id": "seaborn",
+  "name": "Seaborn",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "seaborn"
+  ],
+  "imports": [
+   "seaborn"
+  ]
+ },
+ {
+  "id": "plotly",
+  "name": "Plotly",
+  "group": "Dados e infra",
+  "icon": "plotly",
+  "deps": [
+   "plotly",
+   "plotly.js",
+   "react-plotly.js"
+  ],
+  "imports": [
+   "plotly"
+  ]
+ },
+ {
+  "id": "polars",
+  "name": "Polars",
+  "group": "Dados e infra",
+  "icon": "polars",
+  "deps": [
+   "polars"
+  ],
+  "imports": [
+   "polars"
+  ]
+ },
+ {
+  "id": "scipy",
+  "name": "SciPy",
+  "group": "Dados e infra",
+  "icon": "scipy",
+  "deps": [
+   "scipy"
+  ],
+  "imports": [
+   "scipy"
+  ]
+ },
+ {
+  "id": "duckdb",
+  "name": "DuckDB",
+  "group": "Dados e infra",
+  "icon": "duckdb",
+  "deps": [
+   "duckdb"
+  ],
+  "imports": [
+   "duckdb"
+  ]
+ },
+ {
+  "id": "openpyxl",
+  "name": "Excel (openpyxl)",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "openpyxl",
+   "xlsxwriter",
+   "exceljs",
+   "xlsx"
+  ],
+  "imports": [
+   "openpyxl",
+   "xlsxwriter",
+   "exceljs",
+   "xlsx"
+  ]
+ },
+ {
+  "id": "pdf",
+  "name": "PDF (geração e leitura)",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "fpdf",
+   "fpdf2",
+   "reportlab",
+   "pymupdf",
+   "pypdf",
+   "pypdf2",
+   "pdfplumber",
+   "pdfkit",
+   "pdf-lib",
+   "jspdf"
+  ],
+  "imports": [
+   "fpdf",
+   "reportlab",
+   "fitz",
+   "pypdf",
+   "PyPDF2",
+   "pdfplumber",
+   "pdfkit",
+   "pdf-lib",
+   "jspdf"
+  ]
+ },
+ {
+  "id": "docx",
+  "name": "Word (python-docx)",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "python-docx",
+   "docx"
+  ],
+  "imports": [
+   "docx"
+  ]
+ },
+ {
+  "id": "transformers",
+  "name": "Hugging Face",
+  "group": "Back-end e IA",
+  "icon": "huggingface",
+  "deps": [
+   "transformers",
+   "huggingface-hub",
+   "datasets",
+   "sentence-transformers"
+  ],
+  "imports": [
+   "transformers",
+   "huggingface_hub",
+   "datasets",
+   "sentence_transformers"
+  ]
+ },
+ {
+  "id": "llamaindex",
+  "name": "LlamaIndex",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "llama-index",
+   "llama_index"
+  ],
+  "imports": [
+   "llama_index"
+  ]
+ },
+ {
+  "id": "chromadb",
+  "name": "ChromaDB",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "chromadb"
+  ],
+  "imports": [
+   "chromadb"
+  ]
+ },
+ {
+  "id": "qdrant",
+  "name": "Qdrant",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "qdrant-client",
+   "@qdrant/js-client-rest"
+  ],
+  "imports": [
+   "qdrant_client"
+  ]
+ },
+ {
+  "id": "pinecone",
+  "name": "Pinecone",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "pinecone",
+   "pinecone-client",
+   "@pinecone-database/pinecone"
+  ],
+  "imports": [
+   "pinecone",
+   "@pinecone-database/pinecone"
+  ]
+ },
+ {
+  "id": "faiss",
+  "name": "FAISS",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "faiss-cpu",
+   "faiss-gpu"
+  ],
+  "imports": [
+   "faiss"
+  ]
+ },
+ {
+  "id": "pgvector",
+  "name": "pgvector",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "pgvector"
+  ],
+  "imports": [
+   "pgvector"
+  ]
+ },
+ {
+  "id": "ollama",
+  "name": "Ollama",
+  "group": "Back-end e IA",
+  "icon": "ollama",
+  "deps": [
+   "ollama"
+  ],
+  "imports": [
+   "ollama"
+  ]
+ },
+ {
+  "id": "whisper",
+  "name": "Whisper",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "openai-whisper",
+   "faster-whisper",
+   "whisperx"
+  ],
+  "imports": [
+   "whisper",
+   "faster_whisper",
+   "whisperx"
+  ]
+ },
+ {
+  "id": "spleeter",
+  "name": "Spleeter",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "spleeter"
+  ],
+  "imports": [
+   "spleeter"
+  ]
+ },
+ {
+  "id": "librosa",
+  "name": "librosa",
+  "group": "Back-end e IA",
+  "icon": null,
+  "deps": [
+   "librosa",
+   "soundfile",
+   "pydub"
+  ],
+  "imports": [
+   "librosa",
+   "soundfile",
+   "pydub"
+  ]
+ },
+ {
+  "id": "keras",
+  "name": "Keras",
+  "group": "Back-end e IA",
+  "icon": "keras",
+  "deps": [
+   "keras"
+  ],
+  "imports": [
+   "keras"
+  ]
+ },
+ {
+  "id": "vst3",
+  "name": "VST3",
+  "group": "Back-end e IA",
+  "icon": null,
+  "imports": [
+   "pluginterfaces",
+   "public.sdk",
+   "juce_audio_plugin_client"
+  ]
+ },
+ {
+  "id": "asio",
+  "name": "ASIO",
+  "group": "Back-end e IA",
+  "icon": null,
+  "imports": [
+   "asio.h",
+   "iasiodrv.h"
+  ]
+ },
+ {
+  "id": "eigen",
+  "name": "Eigen",
+  "group": "Back-end e IA",
+  "icon": null,
+  "imports": [
+   "Eigen"
+  ]
+ },
+ {
+  "id": "opengl",
+  "name": "OpenGL",
+  "group": "Back-end e IA",
+  "icon": "opengl",
+  "imports": [
+   "GL",
+   "GLFW",
+   "glad",
+   "juce_opengl"
+  ]
+ },
+ {
+  "id": "sdl",
+  "name": "SDL",
+  "group": "Back-end e IA",
+  "icon": null,
+  "imports": [
+   "SDL2",
+   "SDL.h",
+   "SDL3"
+  ]
+ },
+ {
+  "id": "fmtlib",
+  "name": "fmt / spdlog",
+  "group": "Back-end e IA",
+  "icon": null,
+  "imports": [
+   "fmt",
+   "spdlog"
+  ]
+ },
+ {
+  "id": "nlohmannjson",
+  "name": "nlohmann/json",
+  "group": "Back-end e IA",
+  "icon": null,
+  "imports": [
+   "nlohmann"
+  ]
+ },
+ {
+  "id": "catch2",
+  "name": "Catch2",
+  "group": "Dados e infra",
+  "icon": null,
+  "imports": [
+   "catch2",
+   "catch.hpp"
+  ]
+ },
+ {
+  "id": "vcpkg",
+  "name": "vcpkg / Conan",
+  "group": "Dados e infra",
+  "icon": null,
+  "files": [
+   "(^|/)vcpkg\\.json$",
+   "(^|/)conanfile\\.(txt|py)$"
+  ]
+ },
+ {
+  "id": "visualstudio",
+  "name": "Visual Studio",
+  "group": "Dados e infra",
+  "icon": null,
+  "ext": [
+   ".sln",
+   ".vcxproj"
+  ]
+ },
+ {
+  "id": "arduino",
+  "name": "Arduino",
+  "group": "Linguagens",
+  "icon": "arduino",
+  "ext": [
+   ".ino"
+  ]
+ },
+ {
+  "id": "objcpp",
+  "name": "Objective-C++",
+  "group": "Linguagens",
+  "icon": null,
+  "ext": [
+   ".mm"
+  ]
+ },
+ {
+  "id": "r",
+  "name": "R",
+  "group": "Linguagens",
+  "icon": "r",
+  "ext": [
+   ".r",
+   ".rmd"
+  ]
+ },
+ {
+  "id": "swift",
+  "name": "Swift",
+  "group": "Linguagens",
+  "icon": "swift",
+  "ext": [
+   ".swift"
+  ]
+ },
+ {
+  "id": "assembly",
+  "name": "Assembly",
+  "group": "Linguagens",
+  "icon": null,
+  "ext": [
+   ".asm",
+   ".s"
+  ]
+ },
+ {
+  "id": "sass",
+  "name": "Sass",
+  "group": "Front-end",
+  "icon": "sass",
+  "ext": [
+   ".scss",
+   ".sass"
+  ],
+  "deps": [
+   "sass",
+   "node-sass"
+  ]
+ },
+ {
+  "id": "bootstrap",
+  "name": "Bootstrap",
+  "group": "Front-end",
+  "icon": "bootstrap",
+  "deps": [
+   "bootstrap",
+   "react-bootstrap"
+  ],
+  "imports": [
+   "bootstrap",
+   "react-bootstrap"
+  ]
+ },
+ {
+  "id": "jquery",
+  "name": "jQuery",
+  "group": "Front-end",
+  "icon": "jquery",
+  "deps": [
+   "jquery"
+  ],
+  "imports": [
+   "jquery"
+  ]
+ },
+ {
+  "id": "shadcn",
+  "name": "shadcn/ui",
+  "group": "Front-end",
+  "icon": "shadcnui",
+  "files": [
+   "(^|/)components\\.json$"
+  ]
+ },
+ {
+  "id": "radix",
+  "name": "Radix UI",
+  "group": "Front-end",
+  "icon": "radixui",
+  "imports": [
+   "@radix-ui"
+  ]
+ },
+ {
+  "id": "framermotion",
+  "name": "Framer Motion",
+  "group": "Front-end",
+  "icon": null,
+  "deps": [
+   "framer-motion",
+   "motion"
+  ],
+  "imports": [
+   "framer-motion",
+   "motion"
+  ]
+ },
+ {
+  "id": "lucide",
+  "name": "Lucide",
+  "group": "Front-end",
+  "icon": "lucide",
+  "deps": [
+   "lucide-react",
+   "lucide"
+  ],
+  "imports": [
+   "lucide-react",
+   "lucide"
+  ]
+ },
+ {
+  "id": "chartjs",
+  "name": "Chart.js",
+  "group": "Front-end",
+  "icon": "chartdotjs",
+  "deps": [
+   "chart.js",
+   "react-chartjs-2"
+  ],
+  "imports": [
+   "chart.js",
+   "react-chartjs-2"
+  ]
+ },
+ {
+  "id": "d3",
+  "name": "D3.js",
+  "group": "Front-end",
+  "icon": "d3",
+  "deps": [
+   "d3"
+  ],
+  "imports": [
+   "d3"
+  ]
+ },
+ {
+  "id": "leaflet",
+  "name": "Leaflet",
+  "group": "Front-end",
+  "icon": "leaflet",
+  "deps": [
+   "leaflet",
+   "react-leaflet",
+   "folium"
+  ],
+  "imports": [
+   "leaflet",
+   "react-leaflet",
+   "folium"
+  ]
+ },
+ {
+  "id": "redux",
+  "name": "Redux",
+  "group": "Front-end",
+  "icon": "redux",
+  "deps": [
+   "redux",
+   "@reduxjs/toolkit",
+   "react-redux"
+  ],
+  "imports": [
+   "redux",
+   "@reduxjs/toolkit",
+   "react-redux"
+  ]
+ },
+ {
+  "id": "zustand",
+  "name": "Zustand",
+  "group": "Front-end",
+  "icon": null,
+  "deps": [
+   "zustand"
+  ],
+  "imports": [
+   "zustand"
+  ]
+ },
+ {
+  "id": "tanstack",
+  "name": "TanStack Query",
+  "group": "Front-end",
+  "icon": "reactquery",
+  "deps": [
+   "@tanstack/react-query"
+  ],
+  "imports": [
+   "@tanstack/react-query"
+  ]
+ },
+ {
+  "id": "zod",
+  "name": "Zod",
+  "group": "Front-end",
+  "icon": "zod",
+  "deps": [
+   "zod"
+  ],
+  "imports": [
+   "zod"
+  ]
+ },
+ {
+  "id": "reacthookform",
+  "name": "React Hook Form",
+  "group": "Front-end",
+  "icon": "reacthookform",
+  "deps": [
+   "react-hook-form"
+  ],
+  "imports": [
+   "react-hook-form"
+  ]
+ },
+ {
+  "id": "nuxt",
+  "name": "Nuxt",
+  "group": "Front-end",
+  "icon": "nuxt",
+  "deps": [
+   "nuxt"
+  ],
+  "files": [
+   "(^|/)nuxt\\.config\\.(js|ts)$"
+  ]
+ },
+ {
+  "id": "astro",
+  "name": "Astro",
+  "group": "Front-end",
+  "icon": "astro",
+  "deps": [
+   "astro"
+  ],
+  "ext": [
+   ".astro"
+  ]
+ },
+ {
+  "id": "electron",
+  "name": "Electron",
+  "group": "Front-end",
+  "icon": "electron",
+  "deps": [
+   "electron"
+  ],
+  "imports": [
+   "electron"
+  ]
+ },
+ {
+  "id": "reactnative",
+  "name": "React Native",
+  "group": "Front-end",
+  "icon": "react",
+  "deps": [
+   "react-native",
+   "expo"
+  ],
+  "imports": [
+   "react-native",
+   "expo"
+  ]
+ },
+ {
+  "id": "flutter",
+  "name": "Flutter",
+  "group": "Front-end",
+  "icon": "flutter",
+  "files": [
+   "(^|/)pubspec\\.yaml$"
+  ]
+ },
+ {
+  "id": "htmx",
+  "name": "htmx",
+  "group": "Front-end",
+  "icon": "htmx",
+  "deps": [
+   "htmx.org"
+  ],
+  "imports": [
+   "htmx.org"
+  ]
+ },
+ {
+  "id": "alpine",
+  "name": "Alpine.js",
+  "group": "Front-end",
+  "icon": "alpinedotjs",
+  "deps": [
+   "alpinejs"
+  ],
+  "imports": [
+   "alpinejs"
+  ]
+ },
+ {
+  "id": "pwa",
+  "name": "PWA",
+  "group": "Front-end",
+  "icon": "pwa",
+  "files": [
+   "(^|/)manifest\\.webmanifest$",
+   "(^|/)(service-worker|sw)\\.(js|ts)$"
+  ],
+  "deps": [
+   "vite-plugin-pwa",
+   "next-pwa",
+   "workbox-webpack-plugin"
+  ]
+ },
+ {
+  "id": "webpack",
+  "name": "Webpack",
+  "group": "Front-end",
+  "icon": "webpack",
+  "deps": [
+   "webpack"
+  ],
+  "files": [
+   "(^|/)webpack\\.config\\.(js|ts)$"
+  ]
+ },
+ {
+  "id": "eslint",
+  "name": "ESLint",
+  "group": "Front-end",
+  "icon": "eslint",
+  "deps": [
+   "eslint"
+  ],
+  "files": [
+   "(^|/)\\.eslintrc",
+   "(^|/)eslint\\.config\\.(js|mjs|cjs|ts)$"
+  ]
+ },
+ {
+  "id": "prettier",
+  "name": "Prettier",
+  "group": "Front-end",
+  "icon": "prettier",
+  "deps": [
+   "prettier"
+  ],
+  "files": [
+   "(^|/)\\.prettierrc"
+  ]
+ },
+ {
+  "id": "cypress",
+  "name": "Cypress",
+  "group": "Dados e infra",
+  "icon": "cypress",
+  "deps": [
+   "cypress"
+  ],
+  "files": [
+   "(^|/)cypress\\.config\\.(js|ts)$"
+  ]
+ },
+ {
+  "id": "storybook",
+  "name": "Storybook",
+  "group": "Front-end",
+  "icon": "storybook",
+  "deps": [
+   "storybook",
+   "@storybook/react"
+  ],
+  "files": [
+   "(^|/)\\.storybook/"
+  ]
+ },
+ {
+  "id": "elasticsearch",
+  "name": "Elasticsearch",
+  "group": "Dados e infra",
+  "icon": "elasticsearch",
+  "deps": [
+   "elasticsearch",
+   "@elastic/elasticsearch"
+  ],
+  "imports": [
+   "elasticsearch",
+   "@elastic/elasticsearch"
+  ]
+ },
+ {
+  "id": "neo4j",
+  "name": "Neo4j",
+  "group": "Dados e infra",
+  "icon": "neo4j",
+  "deps": [
+   "neo4j",
+   "neo4j-driver"
+  ],
+  "imports": [
+   "neo4j",
+   "neo4j-driver"
+  ]
+ },
+ {
+  "id": "mariadb",
+  "name": "MariaDB",
+  "group": "Dados e infra",
+  "icon": "mariadb",
+  "deps": [
+   "mariadb"
+  ],
+  "imports": [
+   "mariadb"
+  ]
+ },
+ {
+  "id": "drizzle",
+  "name": "Drizzle ORM",
+  "group": "Dados e infra",
+  "icon": "drizzle",
+  "deps": [
+   "drizzle-orm"
+  ],
+  "imports": [
+   "drizzle-orm"
+  ]
+ },
+ {
+  "id": "b2",
+  "name": "Backblaze B2",
+  "group": "Dados e infra",
+  "icon": "backblaze",
+  "deps": [
+   "b2sdk"
+  ],
+  "imports": [
+   "b2sdk"
+  ]
+ },
+ {
+  "id": "gcp",
+  "name": "Google Cloud",
+  "group": "Dados e infra",
+  "icon": "googlecloud",
+  "imports": [
+   "google.cloud",
+   "@google-cloud/storage"
+  ]
+ },
+ {
+  "id": "azure",
+  "name": "Azure",
+  "group": "Dados e infra",
+  "icon": null,
+  "imports": [
+   "azure",
+   "@azure/storage-blob"
+  ]
+ },
+ {
+  "id": "vercel",
+  "name": "Vercel",
+  "group": "Dados e infra",
+  "icon": "vercel",
+  "files": [
+   "(^|/)vercel\\.json$"
+  ],
+  "deps": [
+   "@vercel/analytics",
+   "vercel"
+  ]
+ },
+ {
+  "id": "netlify",
+  "name": "Netlify",
+  "group": "Dados e infra",
+  "icon": "netlify",
+  "files": [
+   "(^|/)netlify\\.toml$"
+  ]
+ },
+ {
+  "id": "cloudflare",
+  "name": "Cloudflare",
+  "group": "Dados e infra",
+  "icon": "cloudflare",
+  "files": [
+   "(^|/)wrangler\\.(toml|json|jsonc)$"
+  ]
+ },
+ {
+  "id": "heroku",
+  "name": "Heroku",
+  "group": "Dados e infra",
+  "icon": null,
+  "files": [
+   "(^|/)Procfile$"
+  ]
+ },
+ {
+  "id": "sentry",
+  "name": "Sentry",
+  "group": "Dados e infra",
+  "icon": "sentry",
+  "deps": [
+   "sentry-sdk",
+   "@sentry/nextjs",
+   "@sentry/react",
+   "@sentry/node"
+  ],
+  "imports": [
+   "sentry_sdk",
+   "@sentry/nextjs",
+   "@sentry/react",
+   "@sentry/node"
+  ]
+ },
+ {
+  "id": "prometheus",
+  "name": "Prometheus",
+  "group": "Dados e infra",
+  "icon": "prometheus",
+  "deps": [
+   "prometheus-client",
+   "prom-client"
+  ],
+  "imports": [
+   "prometheus_client",
+   "prom-client"
+  ]
+ },
+ {
+  "id": "opentelemetry",
+  "name": "OpenTelemetry",
+  "group": "Dados e infra",
+  "icon": "opentelemetry",
+  "imports": [
+   "opentelemetry",
+   "@opentelemetry/api"
+  ]
+ },
+ {
+  "id": "prefect",
+  "name": "Prefect",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "prefect"
+  ],
+  "imports": [
+   "prefect"
+  ]
+ },
+ {
+  "id": "airflow",
+  "name": "Airflow",
+  "group": "Dados e infra",
+  "icon": "apacheairflow",
+  "deps": [
+   "apache-airflow"
+  ],
+  "imports": [
+   "airflow"
+  ]
+ },
+ {
+  "id": "ansible",
+  "name": "Ansible",
+  "group": "Dados e infra",
+  "icon": "ansible",
+  "files": [
+   "(^|/)ansible\\.cfg$",
+   "(^|/)playbooks?/"
+  ]
+ },
+ {
+  "id": "gitlabci",
+  "name": "GitLab CI",
+  "group": "Dados e infra",
+  "icon": "gitlab",
+  "files": [
+   "(^|/)\\.gitlab-ci\\.yml$"
+  ]
+ },
+ {
+  "id": "precommit",
+  "name": "pre-commit",
+  "group": "Dados e infra",
+  "icon": null,
+  "files": [
+   "(^|/)\\.pre-commit-config\\.yaml$"
+  ]
+ },
+ {
+  "id": "ruff",
+  "name": "Ruff",
+  "group": "Dados e infra",
+  "icon": "ruff",
+  "deps": [
+   "ruff"
+  ],
+  "files": [
+   "(^|/)ruff\\.toml$"
+  ]
+ },
+ {
+  "id": "mypy",
+  "name": "mypy",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "mypy"
+  ],
+  "files": [
+   "(^|/)mypy\\.ini$"
+  ]
+ },
+ {
+  "id": "poetry",
+  "name": "Poetry / uv",
+  "group": "Dados e infra",
+  "icon": "poetry",
+  "files": [
+   "(^|/)poetry\\.lock$",
+   "(^|/)uv\\.lock$"
+  ]
+ },
+ {
+  "id": "make",
+  "name": "Make",
+  "group": "Dados e infra",
+  "icon": null,
+  "files": [
+   "(^|/)Makefile$"
+  ]
+ },
+ {
+  "id": "hypothesis",
+  "name": "Hypothesis",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "hypothesis"
+  ],
+  "imports": [
+   "hypothesis"
+  ]
+ },
+ {
+  "id": "locust",
+  "name": "Locust",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "locust"
+  ],
+  "imports": [
+   "locust"
+  ]
+ },
+ {
+  "id": "faker",
+  "name": "Faker",
+  "group": "Dados e infra",
+  "icon": null,
+  "deps": [
+   "faker",
+   "@faker-js/faker"
+  ],
+  "imports": [
+   "faker",
+   "@faker-js/faker"
+  ]
+ }
 ]

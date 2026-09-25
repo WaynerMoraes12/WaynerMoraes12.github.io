@@ -223,21 +223,50 @@ section { padding-block: clamp(72px, 10vw, 128px) 0; }
 @media (max-width: 900px) { .sites-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .sites-grid { grid-template-columns: 1fr; } }
 
-/* MAW callout */
-.maw {
-  margin-top: 44px; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center;
-  background: radial-gradient(120% 140% at 0% 0%, #3a1d6e 0%, #1d1233 55%, #160f26 100%);
-  border: 1px solid #4b2a8a; color: #f1ecfa; border-radius: 14px; padding: 28px clamp(22px, 4vw, 40px);
+/* ---------- MAW ---------- */
+.maw-panel {
+  background: radial-gradient(120% 120% at 0% 0%, #3a1d6e 0%, #1d1233 45%, #140e22 100%);
+  border: 1px solid #4b2a8a; border-radius: 18px; padding: clamp(24px, 4vw, 52px); color: #f1ecfa;
 }
-.maw-tag {
-  font-weight: 900; font-variation-settings: "wdth" 62; font-size: clamp(3.4rem, 8vw, 5.4rem); line-height: .9;
-  color: var(--violet); text-shadow: 0 0 28px rgba(169,116,255,.45);
-  border-bottom: 5px solid var(--signal); padding-bottom: 4px;
+.maw-hero { display: grid; grid-template-columns: auto 1fr; gap: clamp(20px, 4vw, 52px); align-items: end; }
+.maw-logo {
+  font-weight: 900; font-variation-settings: "wdth" 62; font-size: clamp(5rem, 14vw, 10.5rem); line-height: .82;
+  color: var(--violet); text-shadow: 0 0 44px rgba(169,116,255,.5);
+  border-bottom: 8px solid var(--signal); padding-bottom: 8px;
 }
-.maw h3 { margin: 0 0 6px; font-size: 1.35rem; font-weight: 700; }
-.maw p { margin: 0; color: #cdc3e3; max-width: 64ch; }
-.maw code { font-family: "JetBrains Mono", monospace; font-size: .88em; color: #f1ebe2; }
-@media (max-width: 620px) { .maw { grid-template-columns: 1fr; gap: 10px; } }
+.maw-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; color: #cdc3e3; font-size: .95rem; margin: 0 0 12px; }
+.maw-kicker .live-dot { flex: none; }
+.maw-hero h2 { margin: 0; font-size: clamp(1.7rem, 3.2vw, 2.6rem); line-height: 1.08; font-weight: 800; font-variation-settings: "wdth" 82; }
+.maw-lede { margin: 14px 0 0; color: #cdc3e3; max-width: 64ch; }
+.maw-stats { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: rgba(169,116,255,.25); border: 1px solid rgba(169,116,255,.25); border-radius: 12px; overflow: hidden; margin: clamp(26px, 4vw, 40px) 0; }
+.maw-stats[hidden] { display: none; }
+.maw-stat { background: rgba(18,12,30,.88); padding: 16px 16px 14px; }
+.maw-stat b { display: block; font-size: 2.1rem; font-weight: 800; font-variation-settings: "wdth" 70; line-height: 1; color: var(--violet); font-variant-numeric: tabular-nums; }
+.maw-stat.hl b { color: #ff6a5c; }
+.maw-stat span { display: block; margin-top: 7px; color: #b9aed3; font-size: .85rem; line-height: 1.3; }
+.maw-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(24px, 4vw, 52px); align-items: start; }
+.maw-grid h3 { margin: 0 0 14px; font-size: 1.2rem; font-weight: 750; color: #fff; }
+.maw-summary p { margin: 0 0 14px; color: #ddd5ef; line-height: 1.72; max-width: 72ch; }
+.maw-more { background: none; border: 1px solid #6b46b8; color: #e4d8ff; border-radius: 999px; padding: 8px 18px; font: inherit; font-size: .9rem; }
+.maw-more:hover { border-color: var(--violet); color: #fff; }
+.maw-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.maw-tags span { border: 1px solid #5b3aa0; color: #d6c7f7; border-radius: 999px; padding: 3px 11px; font-size: .82rem; }
+.maw-note { color: #a99dc4; font-size: .85rem; margin: 14px 0 0; }
+.maw-recent[hidden] { display: none; }
+.maw-recent ol { list-style: none; margin: 0; padding: 0; }
+.maw-recent li { display: grid; grid-template-columns: 1fr auto; gap: 3px 12px; padding: 12px 0; border-top: 1px solid rgba(169,116,255,.22); }
+.maw-recent .scope { grid-column: 1 / -1; font-size: .78rem; font-weight: 700; color: #ff6a5c; }
+.maw-recent .t { color: #f1ecfa; font-size: .95rem; line-height: 1.45; }
+.maw-recent time { color: #a99dc4; font-size: .8rem; white-space: nowrap; }
+@media (max-width: 980px) { .maw-stats { grid-template-columns: repeat(3, 1fr); } .maw-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .maw-hero { grid-template-columns: 1fr; } .maw-stats { grid-template-columns: 1fr 1fr; } }
+
+/* ---------- Agora: faixa ao vivo da empresa ---------- */
+.company-live { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 26px; margin: 0 0 44px; padding: 14px 18px; border: 1px solid var(--rule); border-radius: 12px; background: var(--panel); }
+.company-live[hidden] { display: none; }
+.company-live .cl-title { display: flex; align-items: center; gap: 9px; font-weight: 650; font-size: .95rem; }
+.company-live .cl-item { color: var(--graphite); font-size: .93rem; }
+.company-live .cl-item b { color: var(--ink); font-weight: 750; font-variant-numeric: tabular-nums; }
 
 /* ---------- Stack ---------- */
 .stack { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
@@ -417,6 +446,7 @@ a.lv-row:hover .lv-title { color: var(--violet); }
       <ul>
         <li><a href="#agora">Agora</a></li>
         <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#maw">MAW</a></li>
         <li><a href="#trajetoria">Trajetória</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
@@ -453,6 +483,8 @@ a.lv-row:hover .lv-title { color: var(--violet); }
       <h2>Agora</h2>
       <div class="company"><img src="assets/area-incrivel.png" alt="Logo da Área Incrível" width="58" height="58"><p><span class="kicker">Desenvolvedor Júnior na Área Incrível, desde agosto de 2026.</span><br>Incorporadora do Grupo MNGT, em Rio Claro. Trabalho no SIGESCON, uma plataforma que troca o preenchimento de formulários corporativos por uma conversa em linguagem natural.</p></div>
     </div>
+
+    <div class="company-live" id="companyLive" hidden></div>
 
     <div class="now">
       <div>
@@ -594,12 +626,35 @@ a.lv-row:hover .lv-title { color: var(--violet); }
         <div class="site-empty">Em breve: os sites que eu desenvolver e estiverem no ar aparecem aqui.</div>
       </div>
     </div>
+  </section>
 
-    <div class="maw">
-      <div class="maw-tag" aria-hidden="true">MAW</div>
-      <div>
-        <h3>Em desenvolvimento: MAW, uma DAW com IA</h3>
-        <p>Meu TCC junta as duas coisas que mais faço na vida: código e guitarra. É uma estação de áudio digital em C++ com processamento lock-free, para que a thread de áudio nunca espere, e redes neurais aplicadas ao som.</p>
+  <!-- MAW -->
+  <section id="maw" class="wrap maw-sec">
+    <div class="maw-panel">
+      <div class="maw-hero">
+        <div class="maw-logo" aria-hidden="true">MAW</div>
+        <div>
+          <p class="maw-kicker"><span class="live-dot" aria-hidden="true"></span><span>Meu TCC, em desenvolvimento ativo</span><span id="mawUpdated"></span></p>
+          <h2>MAW: uma DAW em C++ com análise musical integrada</h2>
+          <p class="maw-lede">Musical Artificial Workspace. Junta as duas coisas que mais faço na vida, código e guitarra: uma estação de áudio digital feita do zero em C++17 e JUCE 8, com caminho de áudio sem travas e ferramentas de IA para entender o som que acabou de ser gravado.</p>
+        </div>
+      </div>
+
+      <div class="maw-stats" id="mawStats" hidden></div>
+
+      <div class="maw-grid">
+        <article class="maw-summary">
+          <h3>Como ela está agora</h3>
+          <div id="mawSummary">
+            <p>Gravação multipista, piano roll, mesa de mixagem, efeitos e plugins VST3, com processamento lock-free para que a thread de áudio nunca espere, e redes neurais aplicadas ao som.</p>
+          </div>
+          <div class="maw-tags" id="mawTags"></div>
+          <p class="maw-note" id="mawNote"></p>
+        </article>
+        <aside class="maw-recent" id="mawRecentBox" hidden>
+          <h3>Últimas entregas</h3>
+          <ol id="mawRecent"></ol>
+        </aside>
       </div>
     </div>
   </section>
@@ -784,6 +839,7 @@ a.lv-row:hover .lv-title { color: var(--violet); }
       <ul>
         <li><a href="#agora">Agora</a></li>
         <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#maw">MAW</a></li>
         <li><a href="#stack">Stack</a></li>
         <li><a href="#trajetoria">Trajetória</a></li>
         <li><a href="#fora">Fora do código</a></li>
@@ -1043,21 +1099,19 @@ document.getElementById("year").textContent = new Date().getFullYear();
   }
 })();
 
-/* ---------- Atividade do GitHub ao vivo, contadores e competências automáticas ----------
+/* ---------- Atividade do GitHub ao vivo, MAW, empresa, contadores e competências ----------
    Duas fontes:
-   1. activity.json, gerado a cada 5 min pelo GitHub Action e publicado na branch
-      activity-data. Traz feed (inclusive privados, sem detalhes), contadores e competências.
-   2. A API pública de eventos do GitHub, consultada direto daqui, para commits e PRs
-      públicos aparecerem quase na hora. */
+   1. activity.json, gerado pelo GitHub Action e publicado na branch activity-data:
+      feed (públicos com nome, privados só com a data), contadores, empresa, MAW e competências.
+   2. A API pública de eventos do GitHub, consultada daqui, para pushes e PRs públicos
+      aparecerem quase na hora. */
 (function () {
   const USER = "WaynerMoraes12";
   const RAW = `https://raw.githubusercontent.com/${USER}/${USER}.github.io/activity-data/activity.json`;
   const EVENTS = `https://api.github.com/users/${USER}/events/public?per_page=40`;
-  const FEED_SIZE = 6;
-  const list = document.getElementById("liveList");
-  const meta = document.getElementById("liveMeta");
-  const statsBox = document.getElementById("ghStats");
-  const watch = document.getElementById("watch");
+  const MAX_GROUPS = 8;
+  const $ = id => document.getElementById(id);
+  const list = $("liveList"), meta = $("liveMeta"), statsBox = $("ghStats"), watch = $("watch");
   const ICONS = "https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/";
   const rtf = new Intl.RelativeTimeFormat("pt-BR", { numeric: "auto" });
   const nf = new Intl.NumberFormat("pt-BR");
@@ -1079,152 +1133,217 @@ document.getElementById("year").textContent = new Date().getFullYear();
     if (text != null) e.textContent = text;
     return e;
   }
+  const plural = (n, one, many) => `${nf.format(n)} ${n === 1 ? one : many}`;
 
-  // Mesmo filtro do script do Action: na dúvida, o texto não aparece
-  const SENSITIVE = /\b(senhas?|passwords?|passwd|pwd|secrets?|segredos?|tokens?|api[\s_-]?keys?|apikey|chaves?|credenc\w*|credentials?|private[\s_-]?keys?|ssh|dotenv|cpf|cnpj|rg|cart[aã]o|cart[oõ]es|cards?|cvv|pix|sal[aá]rios?|clientes?|confidencia\w*|sigil\w*|internos?|internal)\b|\.env\b/i;
-  const SECRET = /gh[pousr]_[A-Za-z0-9]{20,}|github_pat_\w{20,}|sk-[A-Za-z0-9_-]{16,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{30,}|xox[abprs]-[A-Za-z0-9-]{10,}|eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}|-----BEGIN|[A-Za-z0-9+/_=-]{32,}|[\w.+-]+@[\w-]+\.[\w.-]+|\b\d{1,3}(\.\d{1,3}){3}\b|\b\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2}\b|\b\d{3}\.?\d{3}\.?\d{3}-?\d{2}\b|\(?\d{2}\)?\s?9?\d{4}-?\d{4}|https?:\/\/\S+/;
-  const KINDS = { feat: "Nova funcionalidade", fix: "Correção", docs: "Documentação", refactor: "Refatoração", test: "Testes", perf: "Performance", style: "Ajuste visual", chore: "Manutenção", build: "Build", ci: "Automação", revert: "Reversão" };
-  function cleanTitle(raw) {
-    let line = String(raw || "").trim().split("\n")[0].trim(), kind = "Atualização";
-    const m = line.match(/^(\w+)(\([^)]*\))?!?:\s*(.+)$/);
-    if (m && KINDS[m[1].toLowerCase()]) { kind = KINDS[m[1].toLowerCase()]; line = m[3]; }
-    line = line.replace(/\s+/g, " ");
-    if (!line || SENSITIVE.test(line) || SECRET.test(line)) return [kind, null];
-    line = line.replace(/[<>`]/g, "");
-    if (line.length > 110) line = line.slice(0, 107).trimEnd() + "...";
-    return [kind, line[0].toUpperCase() + line.slice(1)];
-  }
-
-  // Eventos públicos: chegam segundos ou poucos minutos depois do push
+  /* ---- eventos públicos: chegam segundos ou poucos minutos depois do push ---- */
   async function loadEvents() {
     try {
       const r = await fetch(EVENTS, { headers: eventsEtag ? { "If-None-Match": eventsEtag } : {} });
       if (r.status === 304) { lastFresh = Date.now(); return false; }
       if (!r.ok) return false;
       eventsEtag = r.headers.get("ETag");
-      const events = await r.json();
       const items = [];
-      for (const ev of events) {
-        const repo = ev.repo && ev.repo.name;
-        if (!repo || excluded.has(repo.toLowerCase())) continue;
-        const short = repo.split("/")[1];
-        if (ev.type === "PushEvent") {
-          const commits = (ev.payload && ev.payload.commits) || [];
-          if (commits.length) {
-            commits.forEach(c => {
-              if (c.author && c.author.name && /\[bot\]/.test(c.author.name)) return;
-              const [kind, title] = cleanTitle(c.message);
-              items.push({ type: "commit", key: c.sha, title: title || `${kind} no código`, description: `${kind} em ${short}.`,
-                url: `https://github.com/${repo}/commit/${c.sha}`, date: ev.created_at, techs: [] });
-            });
-          } else if (ev.payload && ev.payload.head) {
-            // A API hoje manda só o hash do push, sem mensagem. Se o Action já tiver
-            // esse commit, o item dele (com título de verdade) é o que aparece.
-            items.push({ type: "commit", key: ev.payload.head, push: true, repo, title: `Novo push em ${short}`,
-              description: `Código atualizado em ${short}.`,
-              url: `https://github.com/${repo}/commit/${ev.payload.head}`, date: ev.created_at, techs: [] });
-          }
-        } else if (ev.type === "PullRequestEvent" && ev.payload) {
-          const pr = ev.payload.pull_request || {};
-          const number = ev.payload.number || pr.number;
-          const merged = ev.payload.action === "merged" || (ev.payload.action === "closed" && pr.merged);
-          if (!number || (!merged && ev.payload.action !== "opened")) continue;
-          const [, title] = cleanTitle(pr.title);
-          const url = pr.html_url || `https://github.com/${repo}/pull/${number}`;
-          items.push({ type: merged ? "pr" : "pr-open", key: url + (merged ? "#m" : "#o"), repo,
-            title: title || `Pull request #${number} ${merged ? "mergeada" : "aberta"}`,
-            description: `Em ${repo}.`, url, date: (merged && pr.merged_at) || ev.created_at, techs: [] });
+      for (const ev of await r.json()) {
+        const repoFull = ev.repo && ev.repo.name;
+        if (!repoFull || excluded.has(repoFull.toLowerCase())) continue;
+        const repo = repoFull.split("/")[1];
+        const p = ev.payload || {};
+        if (ev.type === "PushEvent" && p.head) {
+          items.push({ type: "commit", push: true, repo, repoFull, sha: p.head,
+            url: `https://github.com/${repoFull}/commit/${p.head}`, date: ev.created_at, techs: [] });
+        } else if (ev.type === "PullRequestEvent") {
+          const pr = p.pull_request || {};
+          const number = p.number || pr.number;
+          const merged = p.action === "merged" || (p.action === "closed" && pr.merged);
+          if (!number || (!merged && p.action !== "opened")) continue;
+          items.push({ type: "pr", state: merged ? "merged" : "open", number, repo, repoFull,
+            url: pr.html_url || `https://github.com/${repoFull}/pull/${number}`,
+            date: (merged && pr.merged_at) || ev.created_at, techs: [] });
         }
       }
-      // O push que é só o merge de uma PR já aparece como "PR mergeada"
-      const mergedAt = items.filter(i => i.type === "pr").map(i => [i.repo, new Date(i.date).getTime()]);
-      liveItems = items.filter(i => !(i.push && mergedAt.some(([r, t]) => r === i.repo && Math.abs(new Date(i.date) - t) < 90 * 1000)));
+      // o push que é só o merge de uma PR já aparece como "PR mergeada"
+      const merges = items.filter(i => i.type === "pr" && i.state === "merged").map(i => [i.repoFull, new Date(i.date).getTime()]);
+      liveItems = items.filter(i => !(i.push && merges.some(([r, t]) => r === i.repoFull && Math.abs(new Date(i.date) - t) < 90 * 1000)));
       lastFresh = Date.now();
       return true;
     } catch (e) { return false; }
   }
 
-  function mergedFeed() {
-    const seen = new Set(), all = [];
-    // PR: a mesma URL vale uma vez só (a mergeada, que vem antes, esconde a "aberta")
-    const keyOf = it => (/\/pull\/\d+/.test(it.url || "") ? it.url.replace(/#.*$/, "") : null) || it.key || it.url || (it.type + it.date);
-    for (const it of [...((base && base.feed) || []), ...liveItems]) {  // o do Action vem primeiro: tem título real
-      const shaFromUrl = (it.url || "").match(/\/commit\/([0-9a-f]{7,40})/);
-      const k = shaFromUrl ? shaFromUrl[1].slice(0, 12) : keyOf(it);
-      if (seen.has(k)) continue;
-      seen.add(k); all.push(it);
+  /* ---- junta as duas fontes, sem repetir, e agrupa: "3 commits em clerk-estudo" ---- */
+  const shaOf = it => it.sha || ((it.url || "").match(/\/commit\/([0-9a-f]{7,40})/) || [])[1] || null;
+  const repoFullOf = it => it.repoFull || ((it.url || "").match(/github\.com\/([^/]+\/[^/]+)\//) || [])[1] || null;
+  const dayOf = d => new Date(d).toLocaleDateString("pt-BR");
+
+  function pool() {
+    const items = [...((base && base.feed) || []), ...liveItems];
+    const seenSha = new Set(), bestPr = new Map();
+    for (const it of items) {
+      if (it.type === "pr" && it.url) {
+        const k = it.url.replace(/#.*$/, ""), cur = bestPr.get(k);
+        if (!cur || (cur.state !== "merged" && it.state === "merged")) bestPr.set(k, it);  // mergeada esconde a "aberta"
+      }
     }
-    all.sort((a, b) => new Date(b.date) - new Date(a.date));
-    // Junta itens privados seguidos do mesmo tipo: "4 commits em repositórios privados"
-    const out = [];
-    for (const it of all) {
-      const prev = out[out.length - 1];
-      if (it.private && prev && prev.private && prev.type === it.type) { prev.count = (prev.count || 1) + 1; continue; }
-      out.push({ ...it });
-    }
-    return out.slice(0, FEED_SIZE);
+    return items.filter(it => {
+      if (it.type === "pr" && it.url) return bestPr.get(it.url.replace(/#.*$/, "")) === it;
+      const s = it.type === "commit" && shaOf(it);
+      if (s) { const k = s.slice(0, 12); if (seenSha.has(k)) return false; seenSha.add(k); }
+      return true;
+    }).sort((a, b) => new Date(b.date) - new Date(a.date));
   }
 
-  function typeLabel(it) {
-    if (it.private) return it.type === "pr" ? "PR privada" : "Commit privado";
-    return it.type === "pr" ? "PR mergeada" : it.type === "pr-open" ? "PR aberta" : "Commit";
+  function groups() {
+    const out = [];
+    for (const it of pool()) {
+      const prev = out[out.length - 1];
+      const same = prev && prev.type === it.type && (prev.state || "") === (it.state || "") &&
+        prev.repo === it.repo && !!prev.private === !!it.private && dayOf(prev.date) === dayOf(it.date) &&
+        (it.type === "commit" || !it.repo);  // PR com nome fica sozinha: cada uma tem número
+      if (same) {
+        prev.count++;
+        if (it.push) prev.pushes++; else prev.commits++;
+        (it.techs || []).forEach(t => prev.techs.add(t));
+        continue;
+      }
+      out.push({ ...it, count: 1, commits: it.push ? 0 : 1, pushes: it.push ? 1 : 0, techs: new Set(it.techs || []) });
+      if (out.length > MAX_GROUPS) break;
+    }
+    return out.slice(0, MAX_GROUPS);
+  }
+
+  function titleOf(g) {
+    const where = g.repo || (g.count > 1 ? "repositórios privados" : "repositório privado");
+    if (g.type === "commit") {
+      if (!g.commits) return g.pushes > 1 ? `${g.pushes} pushes em ${where}` : `Novo push em ${where}`;
+      return `${plural(g.commits, "commit", "commits")} em ${where}`;
+    }
+    const verb = g.state === "open" ? (g.count > 1 ? "abertas" : "aberta") : (g.count > 1 ? "mergeadas" : "mergeada");
+    if (g.repo && g.number) return `PR #${g.number} ${verb} em ${g.repo}`;
+    return g.count > 1 ? `${g.count} PRs ${verb} em ${where}` : `PR ${verb} em ${where}`;
+  }
+  function typeOf(g) {
+    const t = g.type === "commit" ? (g.count > 1 ? "Commits" : "Commit") : g.state === "open" ? "PR aberta" : "PR mergeada";
+    return g.private ? (g.type === "commit" ? `${t} ${g.count > 1 ? "privados" : "privado"}` : "PR privada") : t;
+  }
+  function linkOf(g) {
+    if (g.private) return null;
+    if (g.type === "pr") return g.url;
+    if (g.count === 1 && g.url) return g.url;
+    const full = repoFullOf(g);
+    return full ? `https://github.com/${full}/commits` : null;
   }
 
   function renderFeed(names) {
-    const feed = mergedFeed();
+    const gs = groups();
     list.replaceChildren();
-    if (!feed.length) { meta.textContent = "Nenhuma atividade recente."; return; }
-    for (const it of feed) {
-      const li = el("li");
-      const safeUrl = /^https:\/\/github\.com\//.test(it.url || "") ? it.url : null;
-      const row = el(safeUrl ? "a" : "div", "lv-row" + (it.private ? " private" : ""));
-      if (safeUrl) { row.href = safeUrl; row.target = "_blank"; row.rel = "noopener"; }
-      row.append(el("span", "lv-type" + (it.type.startsWith("pr") ? " pr" : "") + (it.private ? " priv" : ""), typeLabel(it)));
+    if (!gs.length) { meta.textContent = "Nenhuma atividade recente."; return; }
+    for (const g of gs) {
+      const li = el("li"), url = linkOf(g);
+      const safe = /^https:\/\/github\.com\//.test(url || "") ? url : null;
+      const row = el(safe ? "a" : "div", "lv-row" + (g.private ? " private" : ""));
+      if (safe) { row.href = safe; row.target = "_blank"; row.rel = "noopener"; }
+      row.append(el("span", "lv-type" + (g.type === "pr" ? " pr" : "") + (g.private ? " priv" : ""), typeOf(g)));
       const body = el("span");
-      let title = it.title, desc = it.description;
-      if (it.private && it.count > 1) {
-        title = it.type === "pr" ? `${it.count} pull requests mergeadas em repositórios privados` : `${it.count} commits em repositórios privados`;
-        desc = "Os detalhes ficam ocultos porque os repositórios são privados.";
-      }
-      body.append(el("span", "lv-title", title), el("span", "lv-desc", desc));
-      if (it.techs && it.techs.length) {
+      body.append(el("span", "lv-title", titleOf(g)));
+      if (g.techs.size) {
         const tags = el("span", "lv-tags");
-        it.techs.slice(0, 5).forEach(t => tags.append(el("span", null, names[t] || t)));
+        [...g.techs].slice(0, 5).forEach(t => tags.append(el("span", null, names[t] || t)));
         body.append(tags);
       }
-      row.append(body, el("span", "lv-when", ago(it.date)));
+      row.append(body, el("span", "lv-when", ago(g.date)));
       li.append(row);
       list.append(li);
     }
   }
 
   function renderMeta() {
-    const times = [lastFresh, base ? new Date(base.generated_at).getTime() : 0];
-    const fresh = Math.max(...times);
+    const fresh = Math.max(lastFresh, base ? new Date(base.generated_at).getTime() : 0);
     meta.textContent = fresh ? "Atualizado " + ago(new Date(fresh).toISOString()) : "Carregando a atividade mais recente...";
+  }
+
+  function stat(parent, value, label, cls) {
+    const d = el("div", cls);
+    d.append(el("b", null, typeof value === "number" ? nf.format(value) : value), el("span", null, label));
+    parent.append(d);
   }
 
   function renderStats() {
     const s = base && base.stats;
     if (!s) return;
-    const rows = [
-      [s.commits_30d, "commits nos últimos 30 dias"],
-      [s.commits_year, `commits em ${new Date().getFullYear()}`],
-      [s.prs_open, "pull requests abertas agora"],
-      [s.prs_merged_30d, "PRs mergeadas em 30 dias"],
-      [s.repos_30d, "repositórios ativos em 30 dias"],
-    ].filter(([v]) => typeof v === "number");
     statsBox.replaceChildren();
-    rows.forEach(([v, label]) => {
-      const d = el("div", "gh-stat");
-      d.append(el("b", null, nf.format(v)), el("span", null, label));
-      statsBox.append(d);
-    });
-    statsBox.hidden = !rows.length;
-    const note = document.getElementById("ghStatsNote");
-    note.textContent = s.includes_private
-      ? "Os números incluem repositórios privados. Deles aparece só a contagem e a data, nunca o nome ou o conteúdo."
-      : "Commits e pull requests dos meus repositórios públicos.";
+    [[s.commits_30d, "commits nos últimos 30 dias"], [s.commits_year, `commits em ${new Date().getFullYear()}`],
+     [s.prs_open, "pull requests abertas agora"], [s.prs_merged_30d, "PRs mergeadas em 30 dias"],
+     [s.repos_30d, "repositórios ativos em 30 dias"]]
+      .filter(([v]) => typeof v === "number").forEach(([v, l]) => stat(statsBox, v, l, "gh-stat"));
+    statsBox.hidden = !statsBox.children.length;
+    $("ghStatsNote").textContent = s.includes_private
+      ? "Os números somam repositórios públicos e privados. Dos privados aparece só a contagem e a data, nunca o nome ou o conteúdo."
+      : "Por enquanto os números contam só os repositórios públicos.";
+  }
+
+  /* ---- Agora: atividade na empresa, só números ---- */
+  function renderCompany() {
+    const c = base && base.company, box = $("companyLive");
+    if (!box || !c) return;
+    box.replaceChildren();
+    const t = el("span", "cl-title");
+    t.append(el("span", "live-dot"), document.createTextNode(`Ao vivo na ${c.name}`));
+    box.append(t);
+    const item = (value, label) => { const s = el("span", "cl-item"); s.append(el("b", null, value), document.createTextNode(" " + label)); box.append(s); };
+    if (c.last_commit) item(ago(c.last_commit), "foi o último commit");
+    if (typeof c.commits_30d === "number") item(nf.format(c.commits_30d), "commits em 30 dias");
+    if (typeof c.prs_merged_30d === "number") item(nf.format(c.prs_merged_30d), "PRs mergeadas em 30 dias");
+    if (typeof c.prs_open === "number") item(nf.format(c.prs_open), c.prs_open === 1 ? "PR aberta agora" : "PRs abertas agora");
+    box.hidden = false;
+  }
+
+  /* ---- MAW: resumo do TCC, números e últimas entregas, tudo vindo do repositório ---- */
+  let mawOpen = false;
+  function paragraphs(text) {
+    const sentences = text.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÂÊÔÃÕÇ])/);
+    const target = Math.max(1, Math.round(text.length / 700)), per = Math.ceil(sentences.length / target), out = [];
+    for (let i = 0; i < sentences.length; i += per) out.push(sentences.slice(i, i + per).join(" "));
+    return out;
+  }
+  function renderMaw() {
+    const m = base && base.showcase;
+    if (!m || !$("maw")) return;
+    if (m.pushed_at) $("mawUpdated").textContent = "atualizada " + ago(m.pushed_at);
+    const st = $("mawStats");
+    st.replaceChildren();
+    if (typeof m.merged_prs === "number") stat(st, m.merged_prs, "PRs mergeadas", "maw-stat");
+    if (typeof m.commits === "number") stat(st, m.commits, "commits", "maw-stat");
+    if (m.created_at) stat(st, Math.max(1, Math.round((Date.now() - new Date(m.created_at)) / 86400000)), "dias de desenvolvimento", "maw-stat");
+    (m.highlights || []).forEach(h => stat(st, h.value, h.label, "maw-stat hl"));
+    st.hidden = !st.children.length;
+
+    if (m.summary) {
+      const box = $("mawSummary"), ps = paragraphs(m.summary);
+      box.replaceChildren();
+      ps.forEach((p, i) => { const e = el("p", i >= 2 ? "more" : null, p); if (i >= 2) e.hidden = !mawOpen; box.append(e); });
+      if (ps.length > 2) {
+        const b = el("button", "maw-more", mawOpen ? "Mostrar menos" : "Continuar lendo");
+        b.type = "button"; b.setAttribute("aria-expanded", String(mawOpen));
+        b.addEventListener("click", () => { mawOpen = !mawOpen; renderMaw(); });
+        box.append(b);
+      }
+      $("mawNote").textContent = "Texto do resumo do meu TCC, lido direto do repositório da MAW" +
+        (m.summary_updated_at ? `. Última revisão ${ago(m.summary_updated_at)}.` : ".");
+      const tags = $("mawTags");
+      tags.replaceChildren();
+      (m.keywords || []).forEach(k => tags.append(el("span", null, k)));
+    }
+    if (m.recent && m.recent.length) {
+      const ol = $("mawRecent");
+      ol.replaceChildren();
+      m.recent.forEach(r => {
+        const li = el("li");
+        if (r.scope) li.append(el("span", "scope", r.scope));
+        li.append(el("span", "t", r.title), el("time", null, ago(r.date)));
+        li.lastChild.dateTime = r.date;
+        ol.append(li);
+      });
+      $("mawRecentBox").hidden = false;
+    }
   }
 
   function renderSkills(d) {
@@ -1253,7 +1372,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
     watch.replaceChildren();
     if (pending.length) {
       watch.append(el("b", null, "Em observação:"));
-      pending.slice(0, 10).forEach(sk => {
+      pending.forEach(sk => {
         const chip = el("span", null, sk.name);
         chip.append(el("i", null, `${sk.uses}/${d.threshold}`));
         watch.append(chip);
@@ -1266,6 +1385,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
     const names = base ? Object.fromEntries(base.skills.map(s => [s.id, s.name])) : {};
     renderFeed(names);
     renderMeta();
+    renderCompany();
   }
 
   async function loadBase() {
@@ -1278,6 +1398,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
         base = d;
         renderStats();
         renderSkills(d);
+        renderMaw();
         return;
       } catch (e) { /* tenta a próxima fonte */ }
     }
@@ -1301,10 +1422,10 @@ document.getElementById("year").textContent = new Date().getFullYear();
   }
 
   start();
-  // Ao vivo: dados do Action a cada minuto, eventos públicos a cada 90 s, relógio a cada 20 s
-  setInterval(async () => { if (!document.hidden) { await loadBase(); render(); } }, 60 * 1000);
-  setInterval(async () => { if (!document.hidden && await loadEvents()) render(); }, 90 * 1000);
-  setInterval(() => { if (!document.hidden) render(); }, 20 * 1000);
+  // Ao vivo: dados do Action a cada 45 s, eventos públicos a cada 60 s, horários a cada 20 s
+  setInterval(async () => { if (!document.hidden) { await loadBase(); render(); } }, 45 * 1000);
+  setInterval(async () => { if (!document.hidden && await loadEvents()) render(); }, 60 * 1000);
+  setInterval(() => { if (!document.hidden) { render(); renderMaw(); } }, 20 * 1000);
   document.addEventListener("visibilitychange", () => { if (!document.hidden) { loadBase().then(render); loadEvents().then(render); } });
 })();
 

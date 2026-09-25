@@ -20,7 +20,9 @@ Só usa a biblioteca padrão do Python.
 """
 from __future__ import annotations
 
+import base64
 import datetime as dt
+import hashlib
 import json
 import os
 import re
@@ -40,7 +42,7 @@ OUT_PATH = OUT_DIR / "activity.json"
 
 USER = CONFIG["username"]
 THRESHOLD = int(CONFIG.get("skill_threshold", 3))
-FEED_SIZE = int(CONFIG.get("feed_size", 6))
+FEED_SIZE = int(CONFIG.get("feed_size", 40))
 BACKFILL_DAYS = int(CONFIG.get("backfill_days", 365))
 MAX_DETAILS = int(CONFIG.get("max_commit_details_per_run", 250))
 EXCLUDED = {r.lower() for r in CONFIG.get("excluded_repos", [])}
@@ -178,14 +180,26 @@ def detect(files: list[dict]) -> set[str]:
 
 
 # ---------------------------------------------------------------- Principal
-PRIVATE_LABEL = "privado"
+STATE_VERSION = 3
+COMPANY = CONFIG.get("company") or {}
+SHOWCASE = CONFIG.get("showcase") or {}
+# Privados que podem aparecer com o nome no feed (ex.: a MAW). Os demais viram "repositório privado".
+NAMED_PRIVATE = {r.lower() for r in CONFIG.get("named_private_repos", [])}
+CATALOG_HASH = hashlib.sha1(json.dumps(CATALOG, sort_keys=True).encode("utf-8")).hexdigest()[:12]
+
+
+def fresh_state() -> dict:
+    return {"version": STATE_VERSION, "catalog": CATALOG_HASH, "processed_commits": [], "processed_prs": [],
+            "counts": {}, "recent": [], "cursor_public": None, "cursor_private": None, "showcase": {}}
 
 
 def load_state() -> dict:
-    state = {"processed_commits": [], "processed_prs": [], "counts": {}, "recent": [], "last_run": None}
     if STATE_PATH.exists():
-        state.update(json.loads(STATE_PATH.read_text(encoding="utf-8")))
-    return state
+        old = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+        if old.get("version") == STATE_VERSION and old.get("catalog") == CATALOG_HASH:
+            return {**fresh_state(), **old}
+        print("Catálogo de ferramentas mudou (ou estado antigo): recontando tudo do zero.")
+    return fresh_state()
 
 
 def bump(state: dict, tech_ids: set[str], when: str, repo: str):
@@ -198,8 +212,11 @@ def bump(state: dict, tech_ids: set[str], when: str, repo: str):
             c["repos"].append(repo)
 
 
-def plural(n: int, one: str, many: str) -> str:
-    return f"{n} {one if n == 1 else many}"
+def label(full: str, private: bool) -> str | None:
+    """Nome que pode aparecer no site. None = repositório privado sem nome."""
+    if not private or full.lower() in NAMED_PRIVATE:
+        return full.split("/")[1]
+    return None
 
 
 def private_repos() -> list[dict]:
@@ -226,11 +243,11 @@ def count(q: str, kind: str = "issues") -> int | None:
 
 
 def stats() -> dict:
-    """Contadores gerais. Com o token privado, incluem repositórios privados (só números)."""
+    """Contadores gerais: públicos e, com o token, privados também (só números)."""
     d30 = (NOW - dt.timedelta(days=30)).date().isoformat()
     year = f"{NOW.year}-01-01"
     repos30: set[str] = set()
-    for page in (1, 2, 3):
+    for page in (1, 2, 3, 4, 5):
         res = gh("/search/commits", {"q": f"author:{USER} author-date:>={d30}", "per_page": 100, "page": page},
                  token=PRIVATE_TOKEN or TOKEN) or {}
         items = res.get("items", [])
@@ -249,14 +266,121 @@ def stats() -> dict:
     }
 
 
+def company_stats() -> dict | None:
+    """Atividade na empresa (organização do GitHub): só números e a data do último commit."""
+    org = COMPANY.get("org")
+    if not org or not PRIVATE_TOKEN:
+        return None
+    d30 = (NOW - dt.timedelta(days=30)).date().isoformat()
+    last = gh("/search/commits", {"q": f"author:{USER} org:{org}", "sort": "author-date", "order": "desc",
+                                  "per_page": 1}, token=PRIVATE_TOKEN) or {}
+    items = last.get("items") or []
+    return {
+        "name": COMPANY.get("name") or org,
+        "commits_30d": count(f"author:{USER} org:{org} author-date:>={d30}", "commits"),
+        "prs_merged_30d": count(f"author:{USER} org:{org} is:pr is:merged merged:>={d30}"),
+        "prs_open": count(f"author:{USER} org:{org} is:pr is:open"),
+        "last_commit": items[0]["commit"]["author"]["date"] if items else None,
+    }
+
+
+# Números que valem destaque no resumo da MAW (se o texto mudar, o destaque some em vez de quebrar)
+HIGHLIGHTS = [
+    (r"(\d[\d.]*)\s+blocos de teste", "blocos de teste automatizado"),
+    (r"(\d[\d.]*)\s+verificações", "verificações nos testes"),
+    (r"([\d,]+\s*%)\s+com\s+(?:trinta e duas|32)\s+trilhas", "da CPU do bloco com 32 trilhas"),
+]
+SAFE_TEXT_RE = re.compile("|".join(SECRET_PATTERNS[:8]) + r"|[\w.+-]+@[\w-]+\.[\w.-]+")
+
+
+def md_section(text: str, heading: str) -> str:
+    lines, out, inside = text.splitlines(), [], False
+    for line in lines:
+        if re.match(rf"^#+\s*{re.escape(heading)}\s*$", line.strip(), re.I):
+            inside = True
+            continue
+        if inside and (line.strip().startswith("---") or re.match(r"^#+\s", line.strip())):
+            break
+        if inside:
+            out.append(line)
+    return "\n".join(out).strip()
+
+
+def plain(md: str) -> str:
+    md = re.sub(r"`([^`]*)`", r"\1", md)
+    md = re.sub(r"\*\*([^*]+)\*\*|__([^_]+)__", lambda m: m.group(1) or m.group(2), md)
+    md = re.sub(r"(?<!\w)[*_]([^*_]+)[*_](?!\w)", r"\1", md)
+    md = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", md)
+    return re.sub(r"[ \t]+", " ", md).strip()
+
+
+def showcase(state: dict) -> dict | None:
+    """Bloco da MAW: resumo do TCC, números, palavras-chave e as últimas entregas (PRs mergeadas)."""
+    repo = SHOWCASE.get("repo")
+    if not repo:
+        return None
+    meta = gh(f"/repos/{repo}", token=PRIVATE_TOKEN or TOKEN)
+    if not meta:
+        return None
+    tk = PRIVATE_TOKEN if meta.get("private") else None
+    if meta.get("private") and not tk:
+        return None
+    out = {"name": SHOWCASE.get("name") or meta["name"], "private": bool(meta.get("private")),
+           "created_at": meta.get("created_at"), "pushed_at": meta.get("pushed_at"),
+           "url": None if meta.get("private") else meta.get("html_url")}
+    out["merged_prs"] = count(f"repo:{repo} is:pr is:merged")
+    out["commits"] = count(f"repo:{repo} author:{USER}", "commits")
+
+    # resumo, palavras-chave e números destacados
+    path = SHOWCASE.get("summary_file")
+    if path:
+        f = gh(f"/repos/{repo}/contents/{path}", token=tk) or {}
+        if f.get("content"):
+            text = base64.b64decode(f["content"]).decode("utf-8", "replace")
+            sec = md_section(text, SHOWCASE.get("summary_heading", "RESUMO"))
+            kw = re.search(r"Palavras-chave:\**\s*(.+)", sec)
+            body = plain(re.sub(r"^\**Palavras-chave:.*$", "", sec, flags=re.M))
+            if body and not SAFE_TEXT_RE.search(body):
+                out["summary"] = body
+                out["keywords"] = [k.strip() for k in plain(kw.group(1)).rstrip(".").split(".") if k.strip()] if kw else []
+                out["highlights"] = [{"value": m.group(1).strip(), "label": lbl}
+                                     for rx, lbl in HIGHLIGHTS for m in [re.search(rx, body)] if m]
+                last = gh(f"/repos/{repo}/commits", {"path": path, "per_page": 1}, token=tk) or []
+                out["summary_updated_at"] = last[0]["commit"]["committer"]["date"] if last else None
+
+    # últimas entregas: PRs mergeadas, com o tema (escopo) separado do texto
+    prs = gh(f"/repos/{repo}/pulls", {"state": "closed", "sort": "updated", "direction": "desc", "per_page": 40},
+             token=tk) or []
+    merged = sorted((p for p in prs if p.get("merged_at")), key=lambda p: p["merged_at"], reverse=True)
+    recent = []
+    for p in merged[:int(SHOWCASE.get("recent", 10))]:
+        m = re.match(r"^(\w+)(?:\(([^)]*)\))?!?:\s*(.+)$", p["title"].strip())
+        scope = (m.group(2) or "") if m else ""
+        _, title = clean_title(m.group(3) if m else p["title"])
+        if title:
+            recent.append({"title": title, "scope": scope, "date": p["merged_at"]})
+    out["recent"] = recent
+    return out
+
+
+def pr_item(pr: dict, full: str, private: bool, state_: str) -> dict:
+    name = label(full, private)
+    date = ((pr.get("pull_request") or {}).get("merged_at") or pr.get("closed_at")) if state_ == "merged" else pr.get("created_at")
+    return {"type": "pr", "state": state_, "repo": name, "private": private,
+            "number": pr["number"] if name else None,
+            "url": None if private else pr["html_url"], "date": date, "techs": []}
+
+
 def main() -> int:
     state = load_state()
     processed = set(state["processed_commits"])
     processed_prs = set(state["processed_prs"])
-    last_run = iso(state.get("last_run"))
-    since = (last_run - dt.timedelta(days=3)) if last_run else (NOW - dt.timedelta(days=BACKFILL_DAYS))
     budget = MAX_DETAILS
-    complete = True
+    done = {"public": True, "private": True}
+
+    def since_of(kind: str) -> dt.datetime:
+        cur = iso(state.get(f"cursor_{kind}"))
+        return (cur - dt.timedelta(days=3)) if cur else (NOW - dt.timedelta(days=BACKFILL_DAYS))
 
     repos = gh(f"/users/{USER}/repos", {"type": "owner", "per_page": 100, "sort": "pushed"}) or []
     public = [
@@ -268,12 +392,19 @@ def main() -> int:
     privates = private_repos()
 
     for repo, is_private in [(r, False) for r in public] + [(r, True) for r in privates]:
+        kind = "private" if is_private else "public"
+        since = since_of(kind)
         if iso(repo.get("pushed_at")) and iso(repo["pushed_at"]) < since:
             continue
         full = repo["full_name"]
         token = PRIVATE_TOKEN if is_private else None
-        commits = gh(f"/repos/{full}/commits", {"author": USER, "since": since.isoformat(), "per_page": 100},
-                     token=token) or []
+        commits = []
+        for page in range(1, 11):
+            batch = gh(f"/repos/{full}/commits", {"author": USER, "since": since.isoformat(), "per_page": 100,
+                                                   "page": page}, token=token) or []
+            commits += batch
+            if len(batch) < 100:
+                break
         for c in reversed(commits):  # do mais antigo para o mais novo
             sha = c["sha"]
             if sha in processed:
@@ -282,7 +413,7 @@ def main() -> int:
                 processed.add(sha)
                 continue
             if budget <= 0:
-                complete = False
+                done[kind] = False
                 break
             detail = gh(f"/repos/{full}/commits/{sha}", token=token)
             budget -= 1
@@ -291,94 +422,65 @@ def main() -> int:
                 continue
             when = detail["commit"]["author"]["date"]
             techs = detect(detail.get("files", []))
-            if is_private:
-                # Só a data sai daqui. Nome do repo, mensagem, arquivos e link ficam de fora.
-                bump(state, techs, when, PRIVATE_LABEL)
-                state["recent"].append({
-                    "type": "commit", "private": True, "repo": PRIVATE_LABEL, "kind": "Commit",
-                    "title": "Commit em repositório privado",
-                    "description": "Os detalhes ficam ocultos porque o repositório é privado.",
-                    "techs": [], "url": None, "date": when,
-                })
-                continue
-            bump(state, techs, when, full)
-            kind, title = clean_title(detail["commit"].get("message"))
-            st = detail.get("stats", {})
-            nfiles = len(detail.get("files", []))
+            name = label(full, is_private)
+            # Privado sem nome: só a data. Nome, mensagem, arquivos e link ficam de fora.
+            bump(state, techs, when, full if not is_private else (name or "privado"))
             state["recent"].append({
-                "type": "commit", "repo": full, "kind": kind,
-                "title": title or f"{kind} no código",
-                "description": f"{kind} em {repo['name']}: {plural(nfiles, 'arquivo alterado', 'arquivos alterados')}.",
-                "additions": st.get("additions", 0), "deletions": st.get("deletions", 0),
-                "techs": sorted(techs), "url": detail.get("html_url"), "date": when,
+                "type": "commit", "repo": name, "private": is_private,
+                "url": None if is_private else detail.get("html_url"),
+                "techs": sorted(techs) if name else [], "date": when,
             })
 
-    # Pull requests públicas mergeadas (inclusive em projetos de terceiros)
-    prs = gh("/search/issues", {"q": f"author:{USER} is:pr is:merged is:public", "sort": "updated", "per_page": 30}) or {}
+    # PRs mergeadas públicas (inclusive em projetos de terceiros)
+    prs = gh("/search/issues", {"q": f"author:{USER} is:pr is:merged is:public", "sort": "updated", "per_page": 50}) or {}
     for pr in prs.get("items", []):
         full = "/".join(pr["repository_url"].split("/")[-2:])
         key = f"{full}#{pr['number']}"
-        if full.lower() in EXCLUDED:
+        if full.lower() in EXCLUDED or key in processed_prs:
             continue
-        merged_at = (pr.get("pull_request") or {}).get("merged_at") or pr.get("closed_at")
-        own_repo = full.lower() in public_names
-        techs: set[str] = set()
-        if key not in processed_prs and budget > 0:
-            files = gh(f"/repos/{full}/pulls/{pr['number']}/files", {"per_page": 100}) or []
-            budget -= 1
-            techs = detect(files)
-            # Em repositórios próprios os commits já foram contados; em terceiros a PR conta como uso.
-            if not own_repo:
-                bump(state, techs, merged_at, full)
-            processed_prs.add(key)
-        elif key in processed_prs:
-            old = next((r for r in state["recent"] if r.get("type") == "pr" and r.get("key") == key), None)
-            techs = set(old["techs"]) if old else set()
-        else:
-            complete = False
-            continue
-        kind, title = clean_title(pr.get("title"))
-        state["recent"] = [r for r in state["recent"] if r.get("key") != key]
-        state["recent"].append({
-            "type": "pr", "key": key, "repo": full, "kind": kind,
-            "title": title or f"{kind} via pull request",
-            "description": f"Pull request #{pr['number']} mergeada em {full}.",
-            "techs": sorted(techs), "url": pr["html_url"], "date": merged_at,
-        })
+        if budget <= 0:
+            done["public"] = False
+            break
+        item = pr_item(pr, full, False, "merged")
+        files = gh(f"/repos/{full}/pulls/{pr['number']}/files", {"per_page": 100}) or []
+        budget -= 1
+        item["techs"] = sorted(detect(files))
+        if full.lower() not in public_names:  # em repos de terceiros a PR conta como uso
+            bump(state, set(item["techs"]), item["date"], full)
+        processed_prs.add(key)
+        state["recent"].append(item)
 
-    # Pull requests mergeadas em repositórios privados: só a data.
-    # A chave é o node_id do GitHub, que não revela o nome do repositório.
+    # PRs mergeadas privadas: a chave é o node_id, que não revela o nome do repositório
     if privates:
         prs = gh("/search/issues", {"q": f"author:{USER} is:pr is:merged is:private", "sort": "updated",
-                                    "per_page": 30}, token=PRIVATE_TOKEN) or {}
+                                    "per_page": 100}, token=PRIVATE_TOKEN) or {}
         for pr in prs.get("items", []):
             full = "/".join(pr["repository_url"].split("/")[-2:])
-            if full.lower() in EXCLUDED:
-                continue
             key = "p:" + pr["node_id"]
-            if key in processed_prs:
+            if full.lower() in EXCLUDED or key in processed_prs:
                 continue
             processed_prs.add(key)
-            state["recent"].append({
-                "type": "pr", "private": True, "key": key, "repo": PRIVATE_LABEL, "kind": "Pull request",
-                "title": "Pull request mergeada em repositório privado",
-                "description": "Os detalhes ficam ocultos porque o repositório é privado.",
-                "techs": [], "url": None,
-                "date": (pr.get("pull_request") or {}).get("merged_at") or pr.get("closed_at"),
-            })
+            state["recent"].append(pr_item(pr, full, True, "merged"))
 
-    # Remove do feed repos excluídos e públicos que deixaram de ser públicos
-    state["recent"] = [
-        r for r in state["recent"]
-        if r["repo"].lower() not in EXCLUDED
-        and (r.get("private") or r["type"] == "pr" or r["repo"].lower() in public_names)
-    ]
-    state["recent"].sort(key=lambda r: r["date"], reverse=True)
-    state["recent"] = state["recent"][:80]
-    state["processed_commits"] = sorted(processed)[-10000:]
+    # PRs abertas agora: refeitas a cada execução
+    state["recent"] = [r for r in state["recent"] if r.get("state") != "open"]
+    opened = gh("/search/issues", {"q": f"author:{USER} is:pr is:open", "sort": "created", "per_page": 50},
+                token=PRIVATE_TOKEN or TOKEN) or {}
+    for pr in opened.get("items", []):
+        full = "/".join(pr["repository_url"].split("/")[-2:])
+        if full.lower() in EXCLUDED:
+            continue
+        is_private = full.lower() not in public_names and bool(PRIVATE_TOKEN) and \
+            (gh(f"/repos/{full}", token=PRIVATE_TOKEN) or {}).get("private", False)
+        state["recent"].append(pr_item(pr, full, is_private, "open"))
+
+    state["recent"].sort(key=lambda r: r["date"] or "", reverse=True)
+    state["recent"] = state["recent"][:200]
+    state["processed_commits"] = sorted(processed)[-20000:]
     state["processed_prs"] = sorted(processed_prs)
-    if complete:
-        state["last_run"] = NOW.isoformat()
+    for kind in ("public", "private"):
+        if done[kind] and (kind == "public" or privates):
+            state[f"cursor_{kind}"] = NOW.isoformat()
 
     by_id = {t["id"]: t for t in CATALOG}
     skills = []
@@ -393,20 +495,22 @@ def main() -> int:
         })
     skills.sort(key=lambda s: (-s["uses"], s["name"]))
 
-    feed = [{k: v for k, v in r.items() if k != "key"} for r in state["recent"][:FEED_SIZE]]
     out = {
         "generated_at": NOW.isoformat(),
         "username": USER,
         "threshold": THRESHOLD,
+        "complete": all(done.values()),
         "stats": stats(),
-        "feed": feed,
+        "company": company_stats(),
+        "showcase": showcase(state),
+        "feed": state["recent"][:FEED_SIZE],
         "skills": skills,
     }
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     OUT_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    print(f"feed={len(feed)} skills={len(skills)} promovidas={sum(s['promoted'] for s in skills)} "
-          f"privados={len(privates)} detalhes_usados={MAX_DETAILS - budget} completo={complete} stats={out['stats']}")
+    print(f"feed={len(out['feed'])} skills={len(skills)} promovidas={sum(s['promoted'] for s in skills)} "
+          f"privados={len(privates)} detalhes_usados={MAX_DETAILS - budget} completo={done} stats={out['stats']}")
     return 0
 
 
