@@ -1,0 +1,1455 @@
+{
+ "generated_at": "2026-09-26T22:42:21.659444+00:00",
+ "username": "WaynerMoraes12",
+ "threshold": 11,
+ "complete": true,
+ "stats": {
+  "commits_30d": 624,
+  "commits_year": 810,
+  "prs_open": 7,
+  "prs_merged_30d": 99,
+  "prs_merged_total": 107,
+  "repos_30d": 5,
+  "includes_private": true
+ },
+ "company": {
+  "name": "Área Incrível",
+  "commits_30d": 282,
+  "prs_merged_30d": 21,
+  "prs_open": 6,
+  "last_commit": "2026-09-25T16:55:51.000-03:00"
+ },
+ "showcase": {
+  "name": "MAW",
+  "private": true,
+  "created_at": "2026-05-01T19:30:34Z",
+  "pushed_at": "2026-09-25T03:03:02Z",
+  "url": null,
+  "merged_prs": 65,
+  "commits": 262,
+  "summary": "Estações de trabalho de áudio digital (DAWs) consolidaram-se como a ferramenta central da produção musical, mas mantêm uma separação histórica entre registrar o som e compreendê-lo: a afinação, o andamento, a harmonia e os conflitos de frequência de uma gravação continuam sendo obtidos em ferramentas externas, quando o são. Este trabalho apresenta a MAW (Musical Artificial Workspace), uma DAW multipista desenvolvida do zero em C++17 sobre o framework JUCE 8, cujo diferencial é integrar, dentro do próprio ambiente de edição, um conjunto de rotinas de análise musical que operam sobre o material que o usuário acabou de gravar. O sistema implementa o ciclo completo de produção — captura por driver ASIO, entrada MIDI de controladores, gravação multipista em disco a 24 bits com contagem de entrada, edição não destrutiva na linha do tempo com piano roll, metrônomo travado à grade, marcadores, mesa de mixagem com fader de master, cadeia modular de efeitos com hospedagem de plugins VST3 e compensação de latência, serialização de projeto, desfazer por instantâneo e renderização final por mixagem ou por stems — e acrescenta a esse ciclo detecção de altura pelo algoritmo YIN, correção de afinação de voz em tempo real, detecção de andamento por envelope de energia, reconhecimento de acordes por vetores de croma, análise de mascaramento espectral entre trilhas, separação de fontes por rede neural (Spleeter) e transcrição de fala (Whisper) convertida em marcadores, estas duas últimas executadas fora do processo em um serviço HTTP local. Sobre essas medições opera um conselheiro de produção em duas camadas: regras determinísticas, que produzem alertas e sugestões a partir do estado do projeto, e um modelo de linguagem (Gemini) que recebe exatamente esses fatos como contexto. A arquitetura de concorrência foi tratada como requisito de primeira ordem: o caminho de áudio em tempo real foi tornado livre de bloqueios e de alocação por meio de publicação atômica de instantâneos imutáveis associada a uma lista de aposentadoria para destruição diferida de objetos. A verificação combinou uma suíte de 589 blocos de teste automatizado com 8.045 verificações, revisão adversarial por múltiplas perspectivas independentes, teste de mutação com evidência reproduzível e instrumentação do próprio motor. A medição em binário de produção registrou carga média de 0,04 % do orçamento de tempo do bloco com uma trilha e 0,29 % com trinta e duas trilhas simultâneas, a 48 kHz e blocos de 512 amostras — isto é, o motor consome menos de um terço de por cento do prazo disponível em uma configuração de projeto realista. Conclui-se que é viável construir, em escopo de trabalho de conclusão de curso, uma DAW funcional e mensuravelmente estável cuja análise musical integrada constitui diferencial de produto, e não acessório.",
+  "keywords": [
+   "Processamento digital de sinais",
+   "Áudio em tempo real",
+   "C++",
+   "Programação concorrente",
+   "Recuperação de informação musical"
+  ],
+  "highlights": [
+   {
+    "value": "589",
+    "label": "blocos de teste automatizado"
+   },
+   {
+    "value": "8.045",
+    "label": "verificações nos testes"
+   },
+   {
+    "value": "0,29 %",
+    "label": "da CPU do bloco com 32 trilhas"
+   }
+  ],
+  "summary_updated_at": "2026-09-24T16:43:37Z",
+  "recent": [
+   {
+    "title": "Mapa de andamento e mudanca de formula de compasso",
+    "scope": "transporte",
+    "date": "2026-09-25T03:03:02Z"
+   },
+   {
+    "title": "Faixas de CC no piano roll, com modulacao, expressao, sustain e pitch bend",
+    "scope": "midi",
+    "date": "2026-09-25T03:02:52Z"
+   },
+   {
+    "title": "Congelar trilha, para o rack parar de rodar e a CPU voltar",
+    "scope": "trilha",
+    "date": "2026-09-25T03:02:39Z"
+   },
+   {
+    "title": "Gravacao em ciclo, tomadas e montagem",
+    "scope": "gravacao",
+    "date": "2026-09-24T14:55:13Z"
+   },
+   {
+    "title": "MIDI learn dos controles da mesa, do transporte e dos efeitos",
+    "scope": "midi",
+    "date": "2026-09-24T14:50:28Z"
+   },
+   {
+    "title": "Cadeia lateral no compressor e no noise gate",
+    "scope": "dinamica",
+    "date": "2026-09-24T14:49:55Z"
+   },
+   {
+    "title": "Sampler de 16 slots, kit de bateria e sequenciador de passos",
+    "scope": "sampler",
+    "date": "2026-09-24T14:49:33Z"
+   },
+   {
+    "title": "Envios auxiliares, barramentos e grupos",
+    "scope": "mixagem",
+    "date": "2026-09-24T14:49:22Z"
+   },
+   {
+    "title": "Janela de afinação por instrumento de corda",
+    "scope": "afinador",
+    "date": "2026-09-23T17:17:48Z"
+   },
+   {
+    "title": "Escala em dB com hold e clip, afinador YIN no cabeçalho, LUFS e true peak no mixdown",
+    "scope": "medidores",
+    "date": "2026-09-23T14:45:54Z"
+   }
+  ]
+ },
+ "feed": [
+  {
+   "type": "pr",
+   "state": "merged",
+   "repo": null,
+   "private": true,
+   "number": null,
+   "url": null,
+   "date": "2026-09-25T19:55:51Z",
+   "techs": []
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T19:53:08Z"
+  },
+  {
+   "type": "pr",
+   "state": "merged",
+   "repo": null,
+   "private": true,
+   "number": null,
+   "url": null,
+   "date": "2026-09-25T19:43:45Z",
+   "techs": []
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T19:31:32Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T19:31:31Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T19:31:31Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T19:31:31Z"
+  },
+  {
+   "type": "pr",
+   "state": "merged",
+   "repo": "WaynerMoraes12.github.io",
+   "private": false,
+   "number": 3,
+   "url": "https://github.com/WaynerMoraes12/WaynerMoraes12.github.io/pull/3",
+   "date": "2026-09-25T19:15:05Z",
+   "techs": [
+    "githubactions",
+    "html",
+    "python"
+   ]
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T19:10:34Z"
+  },
+  {
+   "type": "pr",
+   "state": "merged",
+   "repo": null,
+   "private": true,
+   "number": null,
+   "url": null,
+   "date": "2026-09-25T19:07:55Z",
+   "techs": []
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12.github.io",
+   "private": false,
+   "url": "https://github.com/WaynerMoraes12/WaynerMoraes12.github.io/commit/74b43247a52e215525d04fd23fffb95588f6c135",
+   "techs": [
+    "html",
+    "python"
+   ],
+   "date": "2026-09-25T19:04:50Z"
+  },
+  {
+   "type": "commit",
+   "repo": "WaynerMoraes12.github.io",
+   "private": false,
+   "url": "https://github.com/WaynerMoraes12/WaynerMoraes12.github.io/commit/d2149551f311456111be25a1bbaeeaa57d3aa2d4",
+   "techs": [
+    "githubactions",
+    "html",
+    "python"
+   ],
+   "date": "2026-09-25T19:00:25Z"
+  },
+  {
+   "type": "pr",
+   "state": "merged",
+   "repo": null,
+   "private": true,
+   "number": null,
+   "url": null,
+   "date": "2026-09-25T18:49:17Z",
+   "techs": []
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T18:44:12Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T18:44:12Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T18:44:11Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T18:44:11Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T18:44:11Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T18:44:10Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T18:44:10Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T18:44:09Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T18:43:43Z"
+  },
+  {
+   "type": "pr",
+   "state": "merged",
+   "repo": null,
+   "private": true,
+   "number": null,
+   "url": null,
+   "date": "2026-09-25T18:42:38Z",
+   "techs": []
+  },
+  {
+   "type": "pr",
+   "state": "merged",
+   "repo": null,
+   "private": true,
+   "number": null,
+   "url": null,
+   "date": "2026-09-25T18:36:42Z",
+   "techs": []
+  },
+  {
+   "type": "pr",
+   "state": "merged",
+   "repo": null,
+   "private": true,
+   "number": null,
+   "url": null,
+   "date": "2026-09-25T18:16:08Z",
+   "techs": []
+  },
+  {
+   "type": "pr",
+   "state": "merged",
+   "repo": null,
+   "private": true,
+   "number": null,
+   "url": null,
+   "date": "2026-09-25T18:02:42Z",
+   "techs": []
+  },
+  {
+   "type": "pr",
+   "state": "merged",
+   "repo": null,
+   "private": true,
+   "number": null,
+   "url": null,
+   "date": "2026-09-25T18:01:37Z",
+   "techs": []
+  },
+  {
+   "type": "pr",
+   "state": "merged",
+   "repo": "WaynerMoraes12.github.io",
+   "private": false,
+   "number": 2,
+   "url": "https://github.com/WaynerMoraes12/WaynerMoraes12.github.io/pull/2",
+   "date": "2026-09-25T17:58:39Z",
+   "techs": [
+    "githubactions",
+    "html",
+    "python"
+   ]
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T17:35:31Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T17:31:12Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T17:26:02Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T17:18:39Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T17:18:39Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T16:43:52Z"
+  },
+  {
+   "type": "pr",
+   "state": "merged",
+   "repo": null,
+   "private": true,
+   "number": null,
+   "url": null,
+   "date": "2026-09-25T16:36:08Z",
+   "techs": []
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T15:42:20Z"
+  },
+  {
+   "type": "pr",
+   "state": "merged",
+   "repo": null,
+   "private": true,
+   "number": null,
+   "url": null,
+   "date": "2026-09-25T14:51:58Z",
+   "techs": []
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T14:43:58Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T14:43:42Z"
+  },
+  {
+   "type": "commit",
+   "repo": null,
+   "private": true,
+   "url": null,
+   "techs": [],
+   "date": "2026-09-25T14:42:18Z"
+  }
+ ],
+ "skills": [
+  {
+   "id": "python",
+   "name": "Python",
+   "group": "Linguagens",
+   "icon": "python",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 280,
+   "promoted": true,
+   "first_seen": "2025-11-09T23:36:48Z",
+   "last_seen": "2026-09-25T19:31:32Z"
+  },
+  {
+   "id": "cpp",
+   "name": "C++",
+   "group": "Linguagens",
+   "icon": "cplusplus",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 125,
+   "promoted": true,
+   "first_seen": "2026-05-01T19:29:11Z",
+   "last_seen": "2026-09-24T14:19:17Z"
+  },
+  {
+   "id": "typescript",
+   "name": "TypeScript",
+   "group": "Linguagens",
+   "icon": "typescript",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 99,
+   "promoted": true,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-09-25T19:31:31Z"
+  },
+  {
+   "id": "html",
+   "name": "HTML",
+   "group": "Front-end",
+   "icon": "html5",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 83,
+   "promoted": true,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2026-09-25T19:04:50Z"
+  },
+  {
+   "id": "pytest",
+   "name": "pytest",
+   "group": "Dados e infra",
+   "icon": "pytest",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 72,
+   "promoted": true,
+   "first_seen": "2026-06-27T23:59:14Z",
+   "last_seen": "2026-09-25T00:13:39Z"
+  },
+  {
+   "id": "sqlalchemy",
+   "name": "SQLAlchemy",
+   "group": "Back-end e IA",
+   "icon": "sqlalchemy",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 53,
+   "promoted": true,
+   "first_seen": "2026-08-24T19:29:02Z",
+   "last_seen": "2026-09-25T19:31:32Z"
+  },
+  {
+   "id": "react",
+   "name": "React",
+   "group": "Front-end",
+   "icon": "react",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 36,
+   "promoted": true,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2026-09-25T18:44:11Z"
+  },
+  {
+   "id": "vitest",
+   "name": "Vitest",
+   "group": "Dados e infra",
+   "icon": "vitest",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 33,
+   "promoted": true,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-09-25T18:44:11Z"
+  },
+  {
+   "id": "alembic",
+   "name": "Alembic",
+   "group": "Dados e infra",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "db",
+   "uses": 32,
+   "promoted": true,
+   "first_seen": "2026-08-24T19:29:02Z",
+   "last_seen": "2026-09-25T19:31:32Z"
+  },
+  {
+   "id": "juce",
+   "name": "JUCE",
+   "group": "Back-end e IA",
+   "icon": "juce",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 30,
+   "promoted": true,
+   "first_seen": "2026-05-01T19:29:11Z",
+   "last_seen": "2026-09-24T11:16:05Z"
+  },
+  {
+   "id": "visualstudio",
+   "name": "Visual Studio",
+   "group": "Dados e infra",
+   "icon": null,
+   "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/visualstudio/visualstudio-original.svg",
+   "glyph": null,
+   "uses": 28,
+   "promoted": true,
+   "first_seen": "2026-05-01T19:29:11Z",
+   "last_seen": "2026-09-24T11:16:05Z"
+  },
+  {
+   "id": "javascript",
+   "name": "JavaScript",
+   "group": "Linguagens",
+   "icon": "javascript",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 25,
+   "promoted": true,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-09-25T18:44:11Z"
+  },
+  {
+   "id": "css",
+   "name": "CSS",
+   "group": "Front-end",
+   "icon": "css",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 23,
+   "promoted": true,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2026-09-25T19:53:08Z"
+  },
+  {
+   "id": "pydantic",
+   "name": "Pydantic",
+   "group": "Back-end e IA",
+   "icon": "pydantic",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 22,
+   "promoted": true,
+   "first_seen": "2026-06-05T18:56:55Z",
+   "last_seen": "2026-09-25T00:13:19Z"
+  },
+  {
+   "id": "fastapi",
+   "name": "FastAPI",
+   "group": "Back-end e IA",
+   "icon": "fastapi",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 21,
+   "promoted": true,
+   "first_seen": "2026-05-07T17:49:15Z",
+   "last_seen": "2026-09-25T00:13:39Z"
+  },
+  {
+   "id": "lucide",
+   "name": "Lucide",
+   "group": "Front-end",
+   "icon": "lucide",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 19,
+   "promoted": true,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2026-09-25T17:18:39Z"
+  },
+  {
+   "id": "nodejs",
+   "name": "Node.js",
+   "group": "Back-end e IA",
+   "icon": "nodedotjs",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 18,
+   "promoted": true,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-09-25T18:43:43Z"
+  },
+  {
+   "id": "nextjs",
+   "name": "Next.js",
+   "group": "Front-end",
+   "icon": "nextdotjs",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 17,
+   "promoted": true,
+   "first_seen": "2025-12-22T01:51:00Z",
+   "last_seen": "2026-09-25T18:44:11Z"
+  },
+  {
+   "id": "sql",
+   "name": "SQL",
+   "group": "Dados e infra",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "db",
+   "uses": 15,
+   "promoted": true,
+   "first_seen": "2026-08-21T17:45:19Z",
+   "last_seen": "2026-09-25T18:44:09Z"
+  },
+  {
+   "id": "flask",
+   "name": "Flask",
+   "group": "Back-end e IA",
+   "icon": "flask",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 12,
+   "promoted": true,
+   "first_seen": "2025-11-09T23:36:48Z",
+   "last_seen": "2026-09-16T18:13:31Z"
+  },
+  {
+   "id": "playwright",
+   "name": "Playwright",
+   "group": "Back-end e IA",
+   "icon": null,
+   "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/playwright/playwright-original.svg",
+   "glyph": null,
+   "uses": 9,
+   "promoted": false,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-09-25T18:44:11Z"
+  },
+  {
+   "id": "dotenv",
+   "name": "dotenv",
+   "group": "Back-end e IA",
+   "icon": "dotenv",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 9,
+   "promoted": false,
+   "first_seen": "2025-11-09T23:36:48Z",
+   "last_seen": "2026-08-31T14:28:34Z"
+  },
+  {
+   "id": "eslint",
+   "name": "ESLint",
+   "group": "Front-end",
+   "icon": "eslint",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 8,
+   "promoted": false,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-09-25T18:43:43Z"
+  },
+  {
+   "id": "githubactions",
+   "name": "GitHub Actions",
+   "group": "Dados e infra",
+   "icon": "githubactions",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 8,
+   "promoted": false,
+   "first_seen": "2026-08-31T14:10:35Z",
+   "last_seen": "2026-09-25T19:00:25Z"
+  },
+  {
+   "id": "httpx",
+   "name": "HTTPX",
+   "group": "Back-end e IA",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "code",
+   "uses": 8,
+   "promoted": false,
+   "first_seen": "2026-05-07T17:49:15Z",
+   "last_seen": "2026-09-23T14:04:24Z"
+  },
+  {
+   "id": "tailwind",
+   "name": "Tailwind CSS",
+   "group": "Front-end",
+   "icon": "tailwindcss",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 7,
+   "promoted": false,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2026-09-25T18:43:43Z"
+  },
+  {
+   "id": "docker",
+   "name": "Docker",
+   "group": "Dados e infra",
+   "icon": "docker",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 6,
+   "promoted": false,
+   "first_seen": "2026-06-20T18:42:43Z",
+   "last_seen": "2026-09-23T12:20:29Z"
+  },
+  {
+   "id": "gemini",
+   "name": "Gemini API",
+   "group": "Back-end e IA",
+   "icon": "googlegemini",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 6,
+   "promoted": false,
+   "first_seen": "2025-11-09T23:36:48Z",
+   "last_seen": "2026-09-24T15:39:00Z"
+  },
+  {
+   "id": "mysql",
+   "name": "MySQL",
+   "group": "Dados e infra",
+   "icon": "mysql",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 6,
+   "promoted": false,
+   "first_seen": "2026-06-17T18:24:06Z",
+   "last_seen": "2026-08-31T14:28:16Z"
+  },
+  {
+   "id": "pdf",
+   "name": "PDF (geração e leitura)",
+   "group": "Back-end e IA",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "doc",
+   "uses": 6,
+   "promoted": false,
+   "first_seen": "2026-04-02T13:53:52Z",
+   "last_seen": "2026-09-25T17:18:39Z"
+  },
+  {
+   "id": "requests",
+   "name": "Requests",
+   "group": "Back-end e IA",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "code",
+   "uses": 6,
+   "promoted": false,
+   "first_seen": "2026-06-02T19:05:33Z",
+   "last_seen": "2026-09-14T11:11:57Z"
+  },
+  {
+   "id": "supabase",
+   "name": "Supabase",
+   "group": "Dados e infra",
+   "icon": "supabase",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 6,
+   "promoted": false,
+   "first_seen": "2026-08-14T03:51:13Z",
+   "last_seen": "2026-09-25T18:44:11Z"
+  },
+  {
+   "id": "zod",
+   "name": "Zod",
+   "group": "Front-end",
+   "icon": "zod",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 6,
+   "promoted": false,
+   "first_seen": "2025-12-22T01:51:00Z",
+   "last_seen": "2026-09-25T18:44:11Z"
+  },
+  {
+   "id": "jinja",
+   "name": "Jinja",
+   "group": "Back-end e IA",
+   "icon": "jinja",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 5,
+   "promoted": false,
+   "first_seen": "2026-06-02T19:05:33Z",
+   "last_seen": "2026-09-23T12:06:40Z"
+  },
+  {
+   "id": "starlette",
+   "name": "Starlette",
+   "group": "Back-end e IA",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "code",
+   "uses": 5,
+   "promoted": false,
+   "first_seen": "2026-06-02T19:05:33Z",
+   "last_seen": "2026-09-25T00:13:22Z"
+  },
+  {
+   "id": "temporal",
+   "name": "Temporal",
+   "group": "Back-end e IA",
+   "icon": "temporal",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 5,
+   "promoted": false,
+   "first_seen": "2026-09-10T12:17:43Z",
+   "last_seen": "2026-09-21T17:37:13Z"
+  },
+  {
+   "id": "uvicorn",
+   "name": "Uvicorn",
+   "group": "Back-end e IA",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "code",
+   "uses": 5,
+   "promoted": false,
+   "first_seen": "2026-06-02T19:05:33Z",
+   "last_seen": "2026-08-17T17:57:02Z"
+  },
+  {
+   "id": "numpy",
+   "name": "NumPy",
+   "group": "Back-end e IA",
+   "icon": "numpy",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 4,
+   "promoted": false,
+   "first_seen": "2026-06-02T19:05:33Z",
+   "last_seen": "2026-09-15T16:35:49Z"
+  },
+  {
+   "id": "beautifulsoup",
+   "name": "BeautifulSoup",
+   "group": "Back-end e IA",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "code",
+   "uses": 3,
+   "promoted": false,
+   "first_seen": "2026-06-02T19:05:33Z",
+   "last_seen": "2026-09-23T12:02:56Z"
+  },
+  {
+   "id": "chromadb",
+   "name": "ChromaDB",
+   "group": "Dados e infra",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "db",
+   "uses": 3,
+   "promoted": false,
+   "first_seen": "2026-06-26T01:51:13Z",
+   "last_seen": "2026-08-07T04:39:07Z"
+  },
+  {
+   "id": "crewai",
+   "name": "CrewAI",
+   "group": "Back-end e IA",
+   "icon": "crewai",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 3,
+   "promoted": false,
+   "first_seen": "2026-09-08T14:12:27Z",
+   "last_seen": "2026-09-14T18:53:09Z"
+  },
+  {
+   "id": "transformers",
+   "name": "Hugging Face",
+   "group": "Back-end e IA",
+   "icon": "huggingface",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 3,
+   "promoted": false,
+   "first_seen": "2026-06-26T01:51:13Z",
+   "last_seen": "2026-08-07T04:39:07Z"
+  },
+  {
+   "id": "pandas",
+   "name": "Pandas",
+   "group": "Back-end e IA",
+   "icon": "pandas",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 3,
+   "promoted": false,
+   "first_seen": "2026-04-02T13:53:52Z",
+   "last_seen": "2026-06-05T18:56:55Z"
+  },
+  {
+   "id": "poetry",
+   "name": "Poetry / uv",
+   "group": "Dados e infra",
+   "icon": "poetry",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 3,
+   "promoted": false,
+   "first_seen": "2026-08-25T13:21:44Z",
+   "last_seen": "2026-09-25T00:13:39Z"
+  },
+  {
+   "id": "powershell",
+   "name": "PowerShell",
+   "group": "Linguagens",
+   "icon": null,
+   "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/powershell/powershell-original.svg",
+   "glyph": null,
+   "uses": 3,
+   "promoted": false,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2026-09-23T12:20:29Z"
+  },
+  {
+   "id": "vite",
+   "name": "Vite",
+   "group": "Front-end",
+   "icon": "vite",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 3,
+   "promoted": false,
+   "first_seen": "2026-04-05T01:28:12Z",
+   "last_seen": "2026-06-27T23:59:14Z"
+  },
+  {
+   "id": "websockets",
+   "name": "WebSockets",
+   "group": "Back-end e IA",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "code",
+   "uses": 3,
+   "promoted": false,
+   "first_seen": "2026-06-02T19:05:33Z",
+   "last_seen": "2026-08-07T04:39:07Z"
+  },
+  {
+   "id": "zustand",
+   "name": "Zustand",
+   "group": "Front-end",
+   "icon": null,
+   "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/zustand/zustand-original.svg",
+   "glyph": null,
+   "uses": 3,
+   "promoted": false,
+   "first_seen": "2025-12-22T01:51:00Z",
+   "last_seen": "2026-09-14T18:04:43Z"
+  },
+  {
+   "id": "anthropic",
+   "name": "Claude API",
+   "group": "Back-end e IA",
+   "icon": "anthropic",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2026-09-23T11:57:18Z",
+   "last_seen": "2026-09-23T12:03:40Z"
+  },
+  {
+   "id": "clerk",
+   "name": "Clerk",
+   "group": "Back-end e IA",
+   "icon": "clerk",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2026-08-17T17:57:02Z",
+   "last_seen": "2026-08-18T18:38:01Z"
+  },
+  {
+   "id": "openpyxl",
+   "name": "Excel (openpyxl)",
+   "group": "Dados e infra",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "doc",
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2026-09-25T00:13:39Z",
+   "last_seen": "2026-09-25T00:13:39Z"
+  },
+  {
+   "id": "express",
+   "name": "Express",
+   "group": "Back-end e IA",
+   "icon": "express",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2025-11-09T23:36:48Z",
+   "last_seen": "2026-06-20T18:42:43Z"
+  },
+  {
+   "id": "googleapis",
+   "name": "Google APIs",
+   "group": "Back-end e IA",
+   "icon": "google",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2025-10-05T02:08:08Z",
+   "last_seen": "2026-08-07T04:39:07Z"
+  },
+  {
+   "id": "prettier",
+   "name": "Prettier",
+   "group": "Front-end",
+   "icon": "prettier",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2025-10-05T01:28:30Z",
+   "last_seen": "2025-12-15T23:26:42Z"
+  },
+  {
+   "id": "redis",
+   "name": "Redis",
+   "group": "Dados e infra",
+   "icon": "redis",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2026-06-20T18:42:43Z",
+   "last_seen": "2026-08-07T04:39:07Z"
+  },
+  {
+   "id": "streamlit",
+   "name": "Streamlit",
+   "group": "Front-end",
+   "icon": "streamlit",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2026-06-02T19:05:33Z",
+   "last_seen": "2026-06-05T18:56:55Z"
+  },
+  {
+   "id": "whisper",
+   "name": "Whisper",
+   "group": "Back-end e IA",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "audio",
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2026-08-31T01:51:25Z",
+   "last_seen": "2026-09-16T18:13:31Z"
+  },
+  {
+   "id": "aiohttp",
+   "name": "aiohttp",
+   "group": "Back-end e IA",
+   "icon": "aiohttp",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 2,
+   "promoted": false,
+   "first_seen": "2026-06-01T18:16:52Z",
+   "last_seen": "2026-08-07T04:39:07Z"
+  },
+  {
+   "id": "axios",
+   "name": "Axios",
+   "group": "Front-end",
+   "icon": "axios",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2025-12-22T01:51:00Z",
+   "last_seen": "2025-12-22T01:51:00Z"
+  },
+  {
+   "id": "c",
+   "name": "C",
+   "group": "Linguagens",
+   "icon": "c",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-05-01T19:29:11Z",
+   "last_seen": "2026-05-01T19:29:11Z"
+  },
+  {
+   "id": "cmake",
+   "name": "CMake",
+   "group": "Dados e infra",
+   "icon": "cmake",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-05-01T19:29:11Z",
+   "last_seen": "2026-05-01T19:29:11Z"
+  },
+  {
+   "id": "django",
+   "name": "Django",
+   "group": "Back-end e IA",
+   "icon": "django",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-08-07T04:39:07Z",
+   "last_seen": "2026-08-07T04:39:07Z"
+  },
+  {
+   "id": "heroku",
+   "name": "Heroku",
+   "group": "Dados e infra",
+   "icon": null,
+   "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/heroku/heroku-original.svg",
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-08-31T14:10:35Z",
+   "last_seen": "2026-08-31T14:10:35Z"
+  },
+  {
+   "id": "java",
+   "name": "Java",
+   "group": "Linguagens",
+   "icon": "openjdk",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-05-01T19:29:11Z",
+   "last_seen": "2026-05-01T19:29:11Z"
+  },
+  {
+   "id": "netlify",
+   "name": "Netlify",
+   "group": "Dados e infra",
+   "icon": "netlify",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-09-25T18:43:43Z",
+   "last_seen": "2026-09-25T18:43:43Z"
+  },
+  {
+   "id": "objcpp",
+   "name": "Objective-C++",
+   "group": "Linguagens",
+   "icon": null,
+   "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/objectivec/objectivec-plain.svg",
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-05-01T19:29:11Z",
+   "last_seen": "2026-05-01T19:29:11Z"
+  },
+  {
+   "id": "openai",
+   "name": "OpenAI API",
+   "group": "Back-end e IA",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "code",
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-09-10T17:05:16Z",
+   "last_seen": "2026-09-10T17:05:16Z"
+  },
+  {
+   "id": "postgresql",
+   "name": "PostgreSQL",
+   "group": "Dados e infra",
+   "icon": "postgresql",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-06-05T17:34:57Z",
+   "last_seen": "2026-06-05T17:34:57Z"
+  },
+  {
+   "id": "pytorch",
+   "name": "PyTorch",
+   "group": "Back-end e IA",
+   "icon": "pytorch",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-08-07T04:39:07Z",
+   "last_seen": "2026-08-07T04:39:07Z"
+  },
+  {
+   "id": "radix",
+   "name": "Radix UI",
+   "group": "Front-end",
+   "icon": "radixui",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2025-12-22T01:51:00Z",
+   "last_seen": "2025-12-22T01:51:00Z"
+  },
+  {
+   "id": "reacthookform",
+   "name": "React Hook Form",
+   "group": "Front-end",
+   "icon": "reacthookform",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2025-12-22T01:51:00Z",
+   "last_seen": "2025-12-22T01:51:00Z"
+  },
+  {
+   "id": "reactnative",
+   "name": "React Native",
+   "group": "Front-end",
+   "icon": "react",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2025-11-09T23:36:48Z",
+   "last_seen": "2025-11-09T23:36:48Z"
+  },
+  {
+   "id": "recharts",
+   "name": "Recharts",
+   "group": "Front-end",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "code",
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2025-10-05T02:03:27Z",
+   "last_seen": "2025-10-05T02:03:27Z"
+  },
+  {
+   "id": "sqlserver",
+   "name": "SQL Server",
+   "group": "Dados e infra",
+   "icon": null,
+   "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/microsoftsqlserver/microsoftsqlserver-original.svg",
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2025-10-05T05:47:22Z",
+   "last_seen": "2025-10-05T05:47:22Z"
+  },
+  {
+   "id": "sqlite",
+   "name": "SQLite",
+   "group": "Dados e infra",
+   "icon": "sqlite",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-09-23T19:36:49Z",
+   "last_seen": "2026-09-23T19:36:49Z"
+  },
+  {
+   "id": "scipy",
+   "name": "SciPy",
+   "group": "Dados e infra",
+   "icon": "scipy",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-08-07T04:39:07Z",
+   "last_seen": "2026-08-07T04:39:07Z"
+  },
+  {
+   "id": "socketio",
+   "name": "Socket.IO",
+   "group": "Back-end e IA",
+   "icon": "socketdotio",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-06-20T18:42:43Z",
+   "last_seen": "2026-06-20T18:42:43Z"
+  },
+  {
+   "id": "spleeter",
+   "name": "Spleeter",
+   "group": "Back-end e IA",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "audio",
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-09-16T18:13:31Z",
+   "last_seen": "2026-09-16T18:13:31Z"
+  },
+  {
+   "id": "svix",
+   "name": "Svix (webhooks)",
+   "group": "Back-end e IA",
+   "icon": null,
+   "icon_url": null,
+   "glyph": "code",
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-08-17T17:57:02Z",
+   "last_seen": "2026-08-17T17:57:02Z"
+  },
+  {
+   "id": "vercel",
+   "name": "Vercel",
+   "group": "Dados e infra",
+   "icon": "vercel",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-09-25T02:45:32Z",
+   "last_seen": "2026-09-25T02:45:32Z"
+  },
+  {
+   "id": "grpc",
+   "name": "gRPC",
+   "group": "Back-end e IA",
+   "icon": null,
+   "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/grpc/grpc-original.svg",
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-08-07T04:39:07Z",
+   "last_seen": "2026-08-07T04:39:07Z"
+  },
+  {
+   "id": "sklearn",
+   "name": "scikit-learn",
+   "group": "Back-end e IA",
+   "icon": "scikitlearn",
+   "icon_url": null,
+   "glyph": null,
+   "uses": 1,
+   "promoted": false,
+   "first_seen": "2026-08-07T04:39:07Z",
+   "last_seen": "2026-08-07T04:39:07Z"
+  }
+ ]
+}
