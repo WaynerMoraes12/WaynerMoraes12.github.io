@@ -4,8 +4,36 @@
     "nome": "Nome do projeto",
     "url": "https://www.exemplo.com.br",
     "descricao": "Uma frase dizendo o que o site faz e para quem.",
-    "tecnologias": ["React", "Tailwind CSS", "FastAPI"],
+    "tecnologias": [
+      "React",
+      "Tailwind CSS",
+      "FastAPI"
+    ],
     "imagem": "assets/sites/exemplo.webp"
   },
-  "sites": []
+  "sites": [
+    {
+      "nome": "MAW, site oficial",
+      "url": "https://waynermoraes12.github.io/Site-oficial-MAW/pt/",
+      "descricao": "Página oficial e de download da MAW, a DAW com IA do meu TCC, com a interface real, os recursos e o roadmap em três idiomas.",
+      "tecnologias": [
+        "Astro",
+        "TypeScript",
+        "CSS"
+      ],
+      "imagem": "assets/sites/maw.webp"
+    },
+    {
+      "nome": "Preço Garimpado",
+      "url": "https://precogarimpado.netlify.app/",
+      "descricao": "Curadoria de ofertas de lojas confiáveis, com busca por produto, marca ou loja, categorias e guias de compra comparativos.",
+      "tecnologias": [
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "Netlify"
+      ],
+      "imagem": "assets/sites/precogarimpado.webp"
+    }
+  ]
 }
