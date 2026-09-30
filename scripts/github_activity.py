@@ -27,13 +27,15 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
+# No PC, o vigia instalado passa a pasta com a config e o catálogo copiados
+DATA = Path(os.environ.get("ACTIVITY_CONFIG_DIR") or ROOT / "data")
 CONFIG = json.loads((DATA / "github-config.json").read_text(encoding="utf-8"))
 CATALOG = json.loads((DATA / "tech-catalog.json").read_text(encoding="utf-8"))
 OUT_DIR = Path(os.environ.get("ACTIVITY_OUT") or DATA)
@@ -64,13 +66,20 @@ def gh(path: str, params: dict | None = None, token: str | None = None):
         "User-Agent": f"{USER}-portfolio-activity",
         **({"Authorization": f"Bearer {token}"} if token else {}),
     })
-    try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except urllib.error.HTTPError as err:
-        if err.code in (403, 404, 409, 422, 451):  # sem acesso, repo vazio, removido ou busca inválida
-            return None
-        raise
+    tries = 8  # rede instável: até ~2,5 min de novas tentativas antes de desistir
+    for attempt in range(tries):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except urllib.error.HTTPError as err:
+            if err.code in (403, 404, 409, 422, 451):  # sem acesso, repo vazio, removido ou busca inválida
+                return None
+            if err.code < 500 or attempt == tries - 1:
+                raise
+        except (urllib.error.URLError, TimeoutError, ConnectionError):
+            if attempt == tries - 1:
+                raise
+        time.sleep(min(30, 3 + 4 * attempt))
 
 
 def iso(s: str | None) -> dt.datetime | None:
@@ -374,6 +383,29 @@ def pr_item(pr: dict, full: str, private: bool, state_: str) -> dict:
             "url": None if private else pr["html_url"], "date": date, "techs": []}
 
 
+def leak_guard(out: dict, state: dict, privates: list[dict]) -> None:
+    """Trava de segurança: se qualquer nome de repositório privado (fora os liberados em
+    named_private_repos) aparecer no que vai ser publicado, aborta sem publicar nada."""
+    text = json.dumps(out, ensure_ascii=False).lower()
+    problems = []
+    for r in privates:
+        full = r["full_name"].lower()
+        if full in NAMED_PRIVATE:
+            continue
+        short = full.split("/")[1]
+        if full in text or f'"{short}"' in text:
+            problems.append("repositório privado citado no resultado")
+    for item in out.get("feed", []):
+        if item.get("private") and (item.get("url") or (item.get("repo") and
+                                                          f"{USER}/{item['repo']}".lower() not in NAMED_PRIVATE)):
+            problems.append("item privado com link ou nome")
+    if SECRET_RE.pattern and re.search("|".join(SECRET_PATTERNS[:8]), text):
+        problems.append("texto com cara de token ou chave")
+    if problems:
+        # A mensagem não repete o nome encontrado, para ele não parar em nenhum log
+        raise SystemExit("Publicação cancelada pela trava de segurança: " + "; ".join(sorted(set(problems))))
+
+
 def main() -> int:
     state = load_state()
     processed = set(state["processed_commits"])
@@ -510,6 +542,7 @@ def main() -> int:
         "feed": state["recent"][:FEED_SIZE],
         "skills": skills,
     }
+    leak_guard(out, state, privates)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     OUT_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
