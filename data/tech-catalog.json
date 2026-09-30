@@ -153,7 +153,7 @@
    ".ps1",
    ".psm1"
   ],
-  "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/powershell/powershell-original.svg"
+  "icon_url": "assets/icons/dev/powershell.svg"
  },
  {
   "id": "sql",
@@ -470,7 +470,7 @@
    "playwright",
    "@playwright/test"
   ],
-  "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/playwright/playwright-original.svg"
+  "icon_url": "assets/icons/dev/playwright.svg"
  },
  {
   "id": "pandas",
@@ -828,7 +828,7 @@
    "mssql",
    "pyodbc"
   ],
-  "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/microsoftsqlserver/microsoftsqlserver-original.svg"
+  "icon_url": "assets/icons/dev/microsoftsqlserver.svg"
  },
  {
   "id": "sqlite",
@@ -1188,7 +1188,7 @@
   "imports": [
    "twilio"
   ],
-  "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/twilio/twilio-original.svg"
+  "icon_url": "assets/icons/dev/twilio.svg"
  },
  {
   "id": "sendgrid",
@@ -1415,7 +1415,7 @@
   "ext": [
    ".proto"
   ],
-  "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/grpc/grpc-original.svg"
+  "icon_url": "assets/icons/dev/grpc.svg"
  },
  {
   "id": "beautifulsoup",
@@ -1502,7 +1502,7 @@
   "imports": [
    "matplotlib"
   ],
-  "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/matplotlib/matplotlib-original.svg"
+  "icon_url": "assets/icons/dev/matplotlib.svg"
  },
  {
   "id": "seaborn",
@@ -1912,7 +1912,7 @@
    ".sln",
    ".vcxproj"
   ],
-  "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/visualstudio/visualstudio-original.svg"
+  "icon_url": "assets/icons/dev/visualstudio.svg"
  },
  {
   "id": "arduino",
@@ -1931,7 +1931,7 @@
   "ext": [
    ".mm"
   ],
-  "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/objectivec/objectivec-plain.svg"
+  "icon_url": "assets/icons/dev/objectivec.svg"
  },
  {
   "id": "r",
@@ -2034,7 +2034,7 @@
    "framer-motion",
    "motion"
   ],
-  "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/framermotion/framermotion-original.svg"
+  "icon_url": "assets/icons/dev/framermotion.svg"
  },
  {
   "id": "lucide",
@@ -2119,7 +2119,7 @@
   "imports": [
    "zustand"
   ],
-  "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/zustand/zustand-original.svg"
+  "icon_url": "assets/icons/dev/zustand.svg"
  },
  {
   "id": "tanstack",
@@ -2400,7 +2400,7 @@
    "azure",
    "@azure/storage-blob"
   ],
-  "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/azure/azure-original.svg"
+  "icon_url": "assets/icons/dev/azure.svg"
  },
  {
   "id": "vercel",
@@ -2441,7 +2441,7 @@
   "files": [
    "(^|/)Procfile$"
   ],
-  "icon_url": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/heroku/heroku-original.svg"
+  "icon_url": "assets/icons/dev/heroku.svg"
  },
  {
   "id": "sentry",
