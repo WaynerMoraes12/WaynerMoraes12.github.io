@@ -34,6 +34,17 @@
         "Netlify"
       ],
       "imagem": "assets/sites/precogarimpado.webp"
+    },
+    {
+      "nome": "EGO",
+      "url": "https://waynermoraes12.github.io/ego-windows/",
+      "descricao": "Site e instalador do EGO, um centro de comando para Windows que reúne tarefas, foco, notas, saúde, finanças, agenda e IA, com os dados só no PC.",
+      "tecnologias": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "imagem": "assets/sites/ego.webp"
     }
   ]
 }
