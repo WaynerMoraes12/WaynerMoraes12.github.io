@@ -195,7 +195,7 @@ section { padding-block: clamp(72px, 10vw, 128px) 0; }
 .site-empty { grid-column: 1 / -1; border: 1.5px dashed #4b2a8a; border-radius: 14px; padding: 28px; color: var(--graphite); text-align: center; }
 .site-card { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; }
 .site-card:hover { border-color: var(--violet); }
-.site-card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-bottom: 1px solid var(--rule); }
+.site-card img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-bottom: 1px solid var(--rule); }
 .site-body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
 .site-body h3 { margin: 0; font-size: 1.25rem; font-weight: 750; }
 .site-domain { color: var(--violet); font-size: .9rem; margin-top: 2px; }
