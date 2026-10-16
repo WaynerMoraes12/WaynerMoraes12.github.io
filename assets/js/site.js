@@ -457,8 +457,10 @@ document.getElementById("year").textContent = new Date().getFullYear();
       const box = $("mawSummary"), ps = paragraphs(m.summary);
       box.replaceChildren();
       ps.forEach((p, i) => { const e = el("p", i >= 2 ? "more" : null, p); if (i >= 2) e.hidden = !mawOpen; box.append(e); });
-      if (ps.length > 2) {
+      box.classList.toggle("open", mawOpen);
+      if (ps.length > 1) {
         const b = el("button", "maw-more", mawOpen ? "Mostrar menos" : "Continuar lendo");
+        b.dataset.desk = ps.length > 2 ? "1" : "0";  // no computador já cabem 2 parágrafos
         b.type = "button"; b.setAttribute("aria-expanded", String(mawOpen));
         b.addEventListener("click", () => { mawOpen = !mawOpen; renderMaw(); });
         box.append(b);
@@ -531,6 +533,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
         const d = await r.json();
         if (base && new Date(d.generated_at) < new Date(base.generated_at)) return;  // nunca volta para dados mais velhos
         base = d;
+        document.dispatchEvent(new CustomEvent("portfolio:activity", { detail: d }));
         renderStats();
         renderSkills(d);
         renderMaw();
@@ -583,6 +586,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
       a.href = s.url; a.target = "_blank"; a.rel = "noopener noreferrer";
       if (s.imagem && /^assets\/[\w./-]+$/.test(s.imagem)) {
         const img = el("img"); img.src = s.imagem; img.alt = `Página inicial de ${s.nome}`; img.loading = "lazy";
+        img.decoding = "async"; img.width = 800; img.height = 500;
         a.append(img);
       }
       const body = el("div", "site-body");
@@ -899,3 +903,150 @@ document.getElementById("year").textContent = new Date().getFullYear();
     }
   }, { threshold: 0.6 }).observe(seam);
 })();
+
+/* ---------- Projetos: os fixados no GitHub em destaque, os demais públicos em seguida ----------
+   Fontes: activity.json (fixados, nº de commits e README, gerados no PC) e a API pública
+   do GitHub, consultada daqui a cada 5 min. Assim um repositório novo aparece mesmo com o PC
+   desligado. Textos em português e números de destaque vêm de data/projects.json. */
+(function () {
+  const USER = "WaynerMoraes12";
+  const REPOS = `https://api.github.com/users/${USER}/repos?type=owner&sort=pushed&per_page=100`;
+  const featuredBox = document.getElementById("projFeatured");
+  const moreBox = document.getElementById("projMore");
+  if (!featuredBox || !moreBox) return;
+  const COLORS = { "C++": "#f34b7d", C: "#555555", Python: "#3572A5", JavaScript: "#f1e05a", TypeScript: "#3178c6",
+    HTML: "#e34c26", CSS: "#563d7c", Java: "#b07219", "Jupyter Notebook": "#DA5B0B", Shell: "#89e051",
+    Rust: "#dea584", Go: "#00ADD8", "C#": "#178600", Astro: "#ff5a03", Svelte: "#ff3e00" };
+  const rtf = new Intl.RelativeTimeFormat("pt-BR", { numeric: "auto" });
+  const nf = new Intl.NumberFormat("pt-BR");
+  let overrides = {}, hidden = new Set(), base = null, live = null, etag = null;
+
+  function ago(iso) {
+    const s = (new Date(iso) - Date.now()) / 1000;
+    const steps = [[60, "second"], [3600, "minute"], [86400, "hour"], [2592000, "day"], [31536000, "month"], [Infinity, "year"]];
+    let prev = 1;
+    for (const [lim, unit] of steps) {
+      if (Math.abs(s) < lim) return rtf.format(Math.round(s / prev), unit);
+      prev = lim;
+    }
+  }
+  function el(tag, cls, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = String(text).slice(0, 400);
+    return e;
+  }
+  const safeColor = c => (/^#[0-9a-f]{6}$/i.test(c || "") ? c : null);
+  const safeRepoUrl = u => (/^https:\/\/github\.com\/WaynerMoraes12\/[\w.-]+$/.test(u || "") ? u : null);
+
+  function merged() {
+    const map = new Map();
+    for (const r of (base && base.repos) || []) map.set(r.name, { ...r });
+    for (const r of live || []) {
+      if (r.fork || r.private || r.archived) continue;
+      const cur = map.get(r.name) || { name: r.name };
+      map.set(r.name, { ...cur, url: r.html_url, description: r.description || cur.description,
+        language: r.language || cur.language, topics: r.topics || cur.topics || [],
+        stars: r.stargazers_count, pushed_at: r.pushed_at || cur.pushed_at });
+    }
+    return [...map.values()].filter(r => !hidden.has(r.name) && safeRepoUrl(r.url));
+  }
+
+  function textFor(r) {
+    const ov = overrides[r.name] || {};
+    return {
+      title: ov.titulo || r.name,
+      desc: ov.descricao || r.description || r.readme || `Repositório em ${r.language || "código"}.`,
+      tech: ov.tecnologias || [r.language, ...((r.topics || []).slice(0, 2))].filter(Boolean).join(", "),
+      metric: ov.destaque,
+    };
+  }
+
+  function card(r) {
+    const t = textFor(r);
+    const a = el("a", "proj");
+    a.href = safeRepoUrl(r.url); a.target = "_blank"; a.rel = "noopener noreferrer";
+    const lang = el("span", "lang");
+    const dot = el("i", "dot");
+    dot.style.background = safeColor(r.color) || COLORS[r.language] || "var(--violet)";
+    lang.append(dot, document.createTextNode(t.tech));
+    a.append(lang, el("h3", null, t.title), el("p", null, t.desc));
+    const m = el("div", "metric");
+    if (t.metric && t.metric.valor) {
+      m.append(el("b", null, t.metric.valor), el("span", null, t.metric.rotulo || ""));
+    } else if (Number.isFinite(r.commits)) {
+      m.append(el("b", null, nf.format(r.commits)), el("span", null, `commits, atualizado ${ago(r.pushed_at)}`));
+    } else {
+      m.append(el("span", null, `Atualizado ${ago(r.pushed_at)}`));
+    }
+    a.append(m, el("span", "open", "Ver repositório"));
+    return a;
+  }
+
+  function row(r) {
+    const t = textFor(r);
+    const a = el("a", "row");
+    a.href = safeRepoUrl(r.url); a.target = "_blank"; a.rel = "noopener noreferrer";
+    a.append(el("span", "row-name", t.title), el("span", "row-desc", t.desc), el("span", "row-tech", t.tech));
+    return a;
+  }
+
+  function render() {
+    const repos = merged().sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
+    if (!repos.length) return;  // sem dados: fica o conteúdo escrito no HTML
+    let pinned = ((base && base.pinned) || []).map(n => repos.find(r => r.name === n)).filter(Boolean);
+    if (!pinned.length) pinned = repos.slice(0, 3);
+    const rest = repos.filter(r => !pinned.includes(r)).slice(0, 8);
+    featuredBox.replaceChildren(...pinned.map(card));
+    if (rest.length) moreBox.replaceChildren(...rest.map(row));
+  }
+
+  async function loadLive() {
+    try {
+      const r = await fetch(REPOS, { headers: etag ? { "If-None-Match": etag } : {} });
+      if (r.status === 304 || !r.ok) return;
+      etag = r.headers.get("ETag");
+      const data = await r.json();
+      if (Array.isArray(data)) { live = data; render(); }
+    } catch (e) { /* sem rede: fica o que já está na tela */ }
+  }
+
+  document.addEventListener("portfolio:activity", e => {
+    if (e.detail && e.detail.projects) { base = e.detail.projects; render(); }
+  });
+  fetch("data/projects.json", { cache: "no-store" }).then(r => r.json()).then(d => {
+    overrides = d.projetos || {};
+    hidden = new Set(d.ocultar || []);
+    render();
+  }).catch(() => {}).finally(loadLive);
+  setInterval(() => { if (!document.hidden) loadLive(); }, 5 * 60 * 1000);
+})();
+
+/* ---------- Navegação do celular: marca a seção visível na barra inferior ---------- */
+(function () {
+  const links = [...document.querySelectorAll(".tabbar a")];
+  if (!links.length || !("IntersectionObserver" in window)) return;
+  const byId = new Map(links.map(a => [a.getAttribute("href").slice(1), a]));
+  const io = new IntersectionObserver(entries => {
+    for (const en of entries) {
+      if (!en.isIntersecting) continue;
+      links.forEach(a => a.removeAttribute("aria-current"));
+      const a = byId.get(en.target.id);
+      if (a) a.setAttribute("aria-current", "true");
+    }
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  byId.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
+})();
+
+/* ---------- "Ver mais" no celular: listas longas mostram o começo e abrem num toque ---------- */
+document.querySelectorAll("[data-more]").forEach(btn => {
+  const target = document.getElementById(btn.dataset.more);
+  if (!target) return;
+  const sync = () => {
+    const open = target.classList.contains("open");
+    btn.setAttribute("aria-expanded", String(open));
+    btn.textContent = open ? btn.dataset.less : btn.dataset.label;
+  };
+  btn.addEventListener("click", () => { target.classList.toggle("open"); sync(); });
+  sync();
+});
