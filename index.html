@@ -12,11 +12,20 @@
 <meta property="og:description" content="Sistemas multiagente com CrewAI, workflows com Temporal e integrações MCP com ERPs. Engenharia de Computação, FHO.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://waynermoraes12.github.io/">
+<meta property="og:image" content="https://waynermoraes12.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://waynermoraes12.github.io/">
+<meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#121018">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d0271d'/%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial' font-weight='900' font-size='34' text-anchor='middle' fill='%23fff'%3E12%3C/text%3E%3C/svg%3E">
 
+<link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Wayner Pires de Moraes", "alternateName": "Wayner Moraes", "url": "https://waynermoraes12.github.io/", "jobTitle": "Desenvolvedor C++, Python e full stack", "worksFor": {"@type": "Organization", "name": "Área Incrível"}, "alumniOf": {"@type": "CollegeOrUniversity", "name": "FHO"}, "address": {"@type": "PostalAddress", "addressLocality": "Araras", "addressRegion": "SP", "addressCountry": "BR"}, "sameAs": ["https://github.com/WaynerMoraes12", "https://www.linkedin.com/in/wayner-moraes-8494451a3/"]}</script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -35,6 +44,14 @@
     </nav>
   </div>
 </header>
+
+<nav class="tabbar" aria-label="Seções">
+  <a href="#agora">Agora</a>
+  <a href="#projetos">Projetos</a>
+  <a href="#maw">MAW</a>
+  <a href="#trajetoria">Trajetória</a>
+  <a href="#contato">Contato</a>
+</nav>
 
 <main id="conteudo">
   <div class="wrap hero" id="topo">
@@ -102,13 +119,14 @@
       <div class="deliv-grid">
         <article class="deliv">
           <header><h4>SIGESCON</h4><span>146 commits, 10 PRs</span></header>
-          <ul>
+          <ul id="delivSig">
             <li><b>Módulo de Solicitações.</b> Os 353 processos mapeados rodando pelo fluxo, com ficha editável, arquivos por etapa, apoio da IA no preenchimento e notificações.</li>
             <li><b>Integração com o Sankhya.</b> Quem responde cada solicitação passou a vir do cadastro oficial de pessoas, com dados reais do ERP no lugar do fluxo legado de Compras.</li>
             <li><b>Academia interna.</b> Mentoria por rodízio entre desenvolvedores, com regras de quem mentora e quem é mentorado.</li>
             <li><b>Servidor de arquivos.</b> Uma pasta por empresa, criada a partir do cadastro.</li>
             <li><b>Agentes e qualidade.</b> Troca do formato da conversa com o modelo para JSON, correção de rascunhos duplicados e manutenção das migrations do banco.</li>
           </ul>
+          <button class="more-btn" type="button" data-more="delivSig" data-label="Ver todas as entregas" data-less="Ver menos entregas">Ver todas as entregas</button>
         </article>
         <article class="deliv">
           <header><h4>SISCAPE</h4><span>4 commits, 4 PRs</span></header>
@@ -130,6 +148,7 @@
       </div>
       <div class="gh-stats" id="ghStats" hidden></div>
       <ol class="live-list" id="liveList"></ol>
+      <button class="more-btn" type="button" data-more="liveList" data-label="Ver mais atividade" data-less="Ver menos atividade">Ver mais atividade</button>
       <p class="note"><span id="ghStatsNote">Commits e pull requests dos meus repositórios públicos.</span> Atualiza sozinho enquanto a página está aberta. Mensagens que pareçam ter dados sensíveis viram um resumo genérico.</p>
     </div>
   </section>
@@ -138,10 +157,10 @@
   <section id="projetos" class="wrap">
     <div class="sec-head">
       <h2>Projetos</h2>
-      <p>Do C++ puro com concorrência a pipelines de IA com Docker. Todos têm código aberto no GitHub.</p>
+      <p>Do C++ puro com concorrência a pipelines de IA com Docker. Os fixados no meu GitHub ficam em destaque e o resto segue a ordem do que mexi por último, tudo direto do GitHub.</p>
     </div>
 
-    <div class="featured">
+    <div class="featured" id="projFeatured">
       <a class="proj" href="https://github.com/WaynerMoraes12/FastParse-CLI" target="_blank" rel="noopener noreferrer">
         <span class="lang"><i class="dot dot-cpp"></i>C++17</span>
         <h3>FastParse-CLI</h3>
@@ -165,7 +184,7 @@
       </a>
     </div>
 
-    <div class="more">
+    <div class="more" id="projMore">
       <a class="row" href="https://github.com/WaynerMoraes12/HighFreqTracker" target="_blank" rel="noopener noreferrer">
         <span class="row-name">HighFreqTracker</span>
         <span class="row-desc">Scanner assíncrono de mercado com asyncio e aiohttp. Várias requisições concorrentes à API do Steam Market em cerca de 295 ms.</span>
@@ -197,6 +216,7 @@
         <span class="row-tech">React, Vite, Tailwind</span>
       </a>
     </div>
+    <button class="more-btn" type="button" data-more="projMore" data-label="Ver mais projetos" data-less="Ver menos projetos">Ver mais projetos</button>
     <a class="gh-all" href="https://github.com/WaynerMoraes12?tab=repositories" target="_blank" rel="noopener noreferrer">Ver todos os repositórios no GitHub</a>
 
     <div class="sites" id="sites">
@@ -236,6 +256,7 @@
         <aside class="maw-recent" id="mawRecentBox" hidden>
           <h3>Últimas entregas</h3>
           <ol id="mawRecent"></ol>
+          <button class="more-btn" type="button" data-more="mawRecent" data-label="Ver todas as entregas" data-less="Ver menos entregas">Ver todas as entregas</button>
         </aside>
       </div>
     </div>
@@ -350,7 +371,7 @@
     </div>
     <div class="me">
       <figure>
-        <img src="foto.jpg" alt="Wayner Moraes sorrindo" width="400" height="400" loading="lazy">
+        <img src="foto.jpg" alt="Wayner Moraes sorrindo" width="400" height="400" loading="lazy" decoding="async">
         <figcaption>Araras, SP</figcaption>
       </figure>
       <div class="hobbies">

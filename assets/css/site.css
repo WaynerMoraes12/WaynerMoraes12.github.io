@@ -153,7 +153,7 @@ section { padding-block: clamp(72px, 10vw, 128px) 0; }
 @media (max-width: 480px) { .facts { grid-template-columns: 1fr 1fr; } .fact:last-child { grid-column: span 2; } }
 
 /* ---------- Projects ---------- */
-.featured { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.featured { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
 .proj {
   display: flex; flex-direction: column;
   background: var(--panel); border: 1px solid var(--rule); border-radius: 14px;
@@ -418,3 +418,63 @@ a.lv-row:hover .lv-title { color: var(--violet); }
 .seam svg .seam-bud { filter: drop-shadow(0 10px 12px rgba(0,0,0,.5)); }
 /* Se alguém embutir o site num iframe (clickjacking), nada aparece */
 html.framed body { display: none !important; }
+
+
+/* ---------- Otimização (skill adaptando-interfaces-de-referencia): sem mudar a estética ---------- */
+/* Áreas de toque: links pequenos ganham altura sem mudar de tamanho visual */
+.nav ul a, .site-foot ul a, .foot-bottom a, .gh-all { display: inline-block; padding: 8px 0; }
+.site-foot ul { gap: 0; }
+
+/* "Ver mais": só aparece no celular */
+.more-btn { display: none; margin-top: 14px; background: none; border: 1px solid var(--rule); color: var(--ink);
+  border-radius: 999px; padding: 11px 20px; font: inherit; font-size: .92rem; font-weight: 600; }
+.more-btn:hover { border-color: var(--violet); color: var(--violet); }
+.maw-recent .more-btn { border-color: #5b3aa0; color: #e4d8ff; }
+
+/* Barra inferior: navegação do celular, ao alcance do polegar */
+.tabbar { display: none; }
+@media (max-width: 720px) {
+  .tabbar {
+    display: grid; grid-template-columns: repeat(5, 1fr); position: fixed; z-index: 50; left: 0; right: 0; bottom: 0;
+    background: rgba(18,16,24,.94); backdrop-filter: blur(10px); border-top: 1px solid var(--rule);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .tabbar a { display: grid; place-items: center; min-height: 56px; color: var(--graphite); text-decoration: none;
+    font-size: .8rem; font-weight: 600; }
+  .tabbar a[aria-current="true"] { color: var(--violet); box-shadow: inset 0 2px 0 var(--violet); }
+  body { padding-bottom: calc(56px + env(safe-area-inset-bottom)); }
+  html { scroll-padding-bottom: 72px; }
+
+  /* listas longas mostram o começo; o resto abre num toque */
+  .more-btn { display: inline-block; }
+  #liveList:not(.open) > li:nth-child(n+5),
+  #mawRecent:not(.open) > li:nth-child(n+5) { display: none; }
+}
+
+/* Celular: o Stack vira duas colunas de itens, em vez de um por linha */
+@media (max-width: 560px) {
+  .stack ul { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .stack li { padding: 8px 10px; gap: 8px; font-size: .92rem; flex-wrap: wrap; }
+  .stack li small { margin-left: 0; width: 100%; font-size: .78rem; }
+  .stack .ic { width: 18px; height: 18px; }
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px 20px; padding-top: 44px; }
+  .foot-brand, .foot-biz { grid-column: 1 / -1; }
+}
+
+/* Seções longe do topo só são desenhadas quando chegam perto da tela */
+#stack, #trajetoria, #contato { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+
+/* Quem pediu menos movimento no sistema não recebe animação nenhuma */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Mais listas que abrem num toque no celular, e imagens menores nos cards de sites */
+@media (max-width: 720px) {
+  #projMore:not(.open) > a:nth-child(n+5),
+  #delivSig:not(.open) > li:nth-child(n+4),
+  #mawSummary:not(.open) > p:nth-of-type(n+2) { display: none; }
+  .site-card img { aspect-ratio: 16 / 8; }
+}
+@media (min-width: 721px) { .maw-more[data-desk="0"] { display: none; } }

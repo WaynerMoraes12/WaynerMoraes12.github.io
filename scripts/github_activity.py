@@ -14,6 +14,7 @@ O que faz:
      imports) e conta os usos. Ao atingir o limite (3 por padrão), a ferramenta
      entra nas competências do site.
   5. Conta commits (30 dias e ano), PRs abertas, PRs mergeadas e repositórios ativos.
+  6. Lista os repositórios públicos: os fixados no perfil viram o destaque do site.
 
 Uso: GH_TOKEN=... [GH_PRIVATE_TOKEN=...] [ACTIVITY_OUT=pasta] python scripts/github_activity.py
 Só usa a biblioteca padrão do Python.
@@ -250,6 +251,7 @@ def private_repos() -> list[dict]:
 
 
 def count(q: str, kind: str = "issues") -> int | None:
+    time.sleep(2.2)  # a busca do GitHub aceita ~30 consultas por minuto; espaçar evita o bloqueio
     res = gh(f"/search/{kind}", {"q": q, "per_page": 1}, token=PRIVATE_TOKEN or TOKEN)
     return res.get("total_count") if res else None
 
@@ -375,6 +377,99 @@ def showcase(state: dict) -> dict | None:
     return out
 
 
+def graphql(query: str, variables: dict) -> dict | None:
+    token = PRIVATE_TOKEN or TOKEN
+    if not token:
+        return None
+    body = json.dumps({"query": query, "variables": variables}).encode("utf-8")
+    for attempt in range(6):
+        try:
+            req = urllib.request.Request(API + "/graphql", data=body, method="POST", headers={
+                "Authorization": f"Bearer {token}", "Content-Type": "application/json",
+                "User-Agent": f"{USER}-portfolio-activity"})
+            with urllib.request.urlopen(req, timeout=40) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            return data.get("data")
+        except (urllib.error.URLError, TimeoutError, ConnectionError):
+            if attempt == 5:
+                raise
+            time.sleep(min(30, 3 + 4 * attempt))
+    return None
+
+
+PROJECTS_QUERY = """
+query($login: String!) {
+  user(login: $login) {
+    pinnedItems(first: 6, types: REPOSITORY) { nodes { ... on Repository { name isPrivate } } }
+    repositories(first: 40, privacy: PUBLIC, ownerAffiliations: OWNER, isFork: false,
+                 orderBy: {field: PUSHED_AT, direction: DESC}) {
+      nodes {
+        name description url homepageUrl pushedAt createdAt stargazerCount isArchived isPrivate
+        primaryLanguage { name color }
+        repositoryTopics(first: 6) { nodes { topic { name } } }
+        defaultBranchRef { target { ... on Commit { history { totalCount } } } }
+        readme: object(expression: "HEAD:README.md") { ... on Blob { text } }
+      }
+    }
+  }
+}"""
+
+
+def readme_excerpt(text: str | None) -> str | None:
+    """Primeiro parágrafo de texto do README (sem título, selo, imagem ou HTML)."""
+    if not text:
+        return None
+    para: list[str] = []
+    for line in text.splitlines():
+        s = line.strip()
+        if not s:
+            if para:
+                break
+            continue
+        is_list = re.match(r"^([-*+]\s|\d+\.\s)", s) is not None
+        only_links = re.fullmatch(r"(\[[^\]]*\]\([^)]*\)[\s·|,]*)+", s) is not None
+        if s.startswith(("#", "!", "<", "[!", "|", "```", "---", ">")) or is_list or only_links or "shields.io" in s:
+            if para:
+                break
+            continue
+        para.append(s)
+    out = plain(" ".join(para))
+    if not out or SAFE_TEXT_RE.search(out):
+        return None
+    return out if len(out) <= 240 else out[:237].rsplit(" ", 1)[0] + "..."
+
+
+def projects() -> dict | None:
+    """Repositórios públicos: os fixados no perfil (destaque) e os demais, do mais recente."""
+    data = graphql(PROJECTS_QUERY, {"login": USER})
+    user = (data or {}).get("user")
+    if not user:
+        return None
+    pinned = [n["name"] for n in user["pinnedItems"]["nodes"] if n and not n.get("isPrivate")]
+    repos = []
+    for r in user["repositories"]["nodes"]:
+        if not r or r.get("isPrivate") or r.get("isArchived"):
+            continue
+        if f"{USER}/{r['name']}".lower() in EXCLUDED:
+            continue
+        lang = r.get("primaryLanguage") or {}
+        color = lang.get("color") if re.fullmatch(r"#[0-9a-fA-F]{6}", lang.get("color") or "") else None
+        hist = ((r.get("defaultBranchRef") or {}).get("target") or {}).get("history") or {}
+        desc = r.get("description")
+        if desc and SAFE_TEXT_RE.search(desc):
+            desc = None
+        repos.append({
+            "name": r["name"], "url": r["url"],
+            "homepage": r["homepageUrl"] if (r.get("homepageUrl") or "").startswith("https://") else None,
+            "description": desc, "readme": readme_excerpt((r.get("readme") or {}).get("text")),
+            "language": lang.get("name"), "color": color,
+            "topics": [t["topic"]["name"] for t in r["repositoryTopics"]["nodes"]][:6],
+            "stars": r.get("stargazerCount", 0), "commits": hist.get("totalCount"),
+            "pushed_at": r.get("pushedAt"), "created_at": r.get("createdAt"),
+        })
+    return {"pinned": pinned, "repos": repos}
+
+
 def pr_item(pr: dict, full: str, private: bool, state_: str) -> dict:
     name = label(full, private)
     date = ((pr.get("pull_request") or {}).get("merged_at") or pr.get("closed_at")) if state_ == "merged" else pr.get("created_at")
@@ -393,7 +488,8 @@ def leak_guard(out: dict, state: dict, privates: list[dict]) -> None:
         if full in NAMED_PRIVATE:
             continue
         short = full.split("/")[1]
-        if full in text or f'"{short}"' in text:
+        # nome inteiro: "dono/ego" não pode casar dentro de "dono/ego-windows"
+        if re.search(rf"(?<![\w.-]){re.escape(full)}(?![\w.-])", text) or f'"{short}"' in text:
             problems.append("repositório privado citado no resultado")
     for item in out.get("feed", []):
         if item.get("private") and (item.get("url") or (item.get("repo") and
@@ -539,9 +635,25 @@ def main() -> int:
         "stats": stats(),
         "company": company_stats(),
         "showcase": showcase(state),
+        "projects": projects(),
         "feed": state["recent"][:FEED_SIZE],
         "skills": skills,
     }
+    # Se uma consulta falhar (limite da busca, rede), reaproveita o último valor publicado
+    # em vez de publicar campo vazio
+    if OUT_PATH.exists():
+        try:
+            prev = json.loads(OUT_PATH.read_text(encoding="utf-8"))
+        except ValueError:
+            prev = {}
+        for block in ("stats", "company"):
+            if isinstance(out.get(block), dict) and isinstance(prev.get(block), dict):
+                for k, v in out[block].items():
+                    if v is None and prev[block].get(k) is not None:
+                        out[block][k] = prev[block][k]
+        for block in ("company", "showcase", "projects"):
+            if not out.get(block) and prev.get(block):
+                out[block] = prev[block]
     leak_guard(out, state, privates)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")

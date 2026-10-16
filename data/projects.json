@@ -1,0 +1,118 @@
+{
+  "_como_usar": "Os projetos do site vêm sozinhos do GitHub: os fixados no seu perfil viram os cards em destaque, e os outros repositórios públicos entram na lista, do mais recente para o mais antigo. Este arquivo é opcional: serve para dar um título, um texto em português, as tecnologias e um número de destaque a um repositório. A chave é o nome do repositório. Repositório sem entrada aqui usa a descrição do GitHub ou o começo do README.",
+  "_exemplo": {
+    "nome-do-repositorio": {
+      "titulo": "Nome bonito",
+      "descricao": "Uma ou duas frases dizendo o que o projeto faz.",
+      "tecnologias": "C++20, Python",
+      "destaque": {
+        "valor": "~1,7 s",
+        "rotulo": "o que esse número significa"
+      }
+    }
+  },
+  "ocultar": [
+    "WaynerMoraes12.github.io",
+    "WaynerMoraes12"
+  ],
+  "projetos": {
+    "street-culture-engine": {
+      "titulo": "Street Culture Engine",
+      "descricao": "Basquete, tênis e hip-hop simulados do zero em C++20: sintetizador de beats, analisador de rimas bilíngue, motor de basquete e uma bolsa de sneakers, todos conectados.",
+      "tecnologias": "C++20, DSP, simulação",
+      "destaque": {
+        "valor": "0",
+        "rotulo": "dependências: só C++20 padrão"
+      }
+    },
+    "snailtrail": {
+      "titulo": "SnailTrail",
+      "descricao": "Lê o slow query log do MySQL, agrupa as consultas, ranqueia pelo tempo que custam e sugere o índice exato. Motor em C++20, dashboard em Python e laboratório em Docker.",
+      "tecnologias": "C++20, Python, MySQL",
+      "destaque": {
+        "valor": "~2 GB/s",
+        "rotulo": "de log analisado em paralelo num notebook"
+      }
+    },
+    "Roadie": {
+      "titulo": "Roadie",
+      "descricao": "O agente de testes da MAW: a cada sprint testa tudo de ponta a ponta, no main e em cada branch aberta, e entrega um PDF com os achados, sem nunca alterar a MAW.",
+      "tecnologias": "Python, agentes de IA",
+      "destaque": {
+        "valor": "100%",
+        "rotulo": "do catálogo de funcionalidades em cada relatório"
+      }
+    },
+    "mngt-rag-challenge": {
+      "titulo": "MNGT RAG Engine",
+      "descricao": "Consulta a contratos imobiliários em PDF por linguagem natural. Cada resposta aponta o trecho e o contrato de origem, sem inventar informação. FastAPI, banco vetorial, Gemini e Docker Compose.",
+      "tecnologias": "Python, RAG",
+      "destaque": {
+        "valor": "1",
+        "rotulo": "comando para subir tudo: docker compose up"
+      }
+    },
+    "FastParse-CLI": {
+      "titulo": "FastParse-CLI",
+      "descricao": "Ferramenta de linha de comando que varre diretórios grandes e extrai métricas de palavras-chave em paralelo, com std::async, std::mutex com RAII e std::string_view para evitar alocações.",
+      "tecnologias": "C++17",
+      "destaque": {
+        "valor": "~1,7 s",
+        "rotulo": "para processar milhares de ocorrências em vários arquivos"
+      }
+    },
+    "logistrack-ia": {
+      "titulo": "LogisTrack IA",
+      "descricao": "Pipeline orientado a eventos: telemetria de caminhões entra por webhook, passa pelo Redis Pub/Sub e um worker de IA em Python detecta anomalias e sugere ações. Dashboard em tempo real com Socket.io.",
+      "tecnologias": "Node.js, Python, Redis",
+      "destaque": {
+        "valor": "4",
+        "rotulo": "serviços desacoplados, do webhook ao dashboard"
+      }
+    },
+    "HighFreqTracker": {
+      "descricao": "Scanner assíncrono de mercado com asyncio e aiohttp. Várias requisições concorrentes à API do Steam Market em cerca de 295 ms.",
+      "tecnologias": "Python, asyncio"
+    },
+    "ecommerce-tracker-etl": {
+      "titulo": "E-commerce Tracker ETL",
+      "descricao": "Coleta preços de sites dinâmicos com Playwright, trata com Pandas, guarda histórico no PostgreSQL e mostra tudo num dashboard Streamlit.",
+      "tecnologias": "Python, Playwright, PostgreSQL"
+    },
+    "riot-analytics-api": {
+      "titulo": "Riot Analytics",
+      "descricao": "API em FastAPI que consome a Riot Games API e entrega estatísticas ranqueadas de jogadores para um dashboard interativo.",
+      "tecnologias": "FastAPI, HTTPX, Streamlit"
+    },
+    "GeradorDeTreinos-FitLang": {
+      "titulo": "FitLang",
+      "descricao": "Uma linguagem própria para escrever rotinas de treino, com analisador léxico, sintático e semântico, interface em Tkinter e exportação para PDF.",
+      "tecnologias": "Python, compiladores"
+    },
+    "AnaliseDeCashBack_ComBancoDeDados": {
+      "titulo": "Análise de Cashback",
+      "descricao": "Case técnico de performance de e-commerce: API em Express sobre SQL Server e dashboard em React com Recharts.",
+      "tecnologias": "React, Node.js, SQL Server"
+    },
+    "cls-outlet-v2": {
+      "titulo": "CLS Outlet",
+      "descricao": "Landing page mobile-first da loja em que trabalhei, com foco em levar o cliente direto ao Mercado Livre, às lojas físicas e ao WhatsApp.",
+      "tecnologias": "React, Vite, Tailwind"
+    },
+    "Site-oficial-MAW": {
+      "titulo": "Site oficial da MAW",
+      "descricao": "Página de apresentação e download da MAW, em três idiomas, com a interface real e o roadmap.",
+      "tecnologias": "Astro, TypeScript"
+    },
+    "ego-windows": {
+      "titulo": "EGO (site)",
+      "descricao": "Site e instalador do EGO, um centro de comando para Windows com tarefas, foco, notas, saúde, finanças e IA.",
+      "tecnologias": "HTML, CSS, JavaScript"
+    },
+    "clerk-estudo": {
+      "titulo": "Estudo de Clerk",
+      "descricao": "Estudo de autenticação com Clerk em Python: gestão de usuários pela API e webhooks verificados com Svix numa API FastAPI.",
+      "tecnologias": "Python, FastAPI, Clerk"
+    }
+  }
+}
