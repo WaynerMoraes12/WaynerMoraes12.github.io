@@ -208,11 +208,24 @@ def fresh_state() -> dict:
 
 def load_state() -> dict:
     if STATE_PATH.exists():
-        old = json.loads(STATE_PATH.read_text(encoding="utf-8"))
-        if old.get("version") == STATE_VERSION and old.get("catalog") == CATALOG_HASH:
+        try:
+            old = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+        except ValueError:
+            # Arquivo vazio ou cortado (o PC desligou no meio da gravação): sem isso o gerador
+            # quebraria em toda execução, para sempre. Recomeça a contagem.
+            print("Estado ilegível (arquivo vazio ou cortado): recontando tudo do zero.")
+            return fresh_state()
+        if isinstance(old, dict) and old.get("version") == STATE_VERSION and old.get("catalog") == CATALOG_HASH:
             return {**fresh_state(), **old}
         print("Catálogo de ferramentas mudou (ou estado antigo): recontando tudo do zero.")
     return fresh_state()
+
+
+def write_atomic(path: Path, text: str) -> None:
+    """Grava num arquivo temporário e troca de uma vez: o arquivo nunca fica pela metade."""
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
 
 
 def bump(state: dict, tech_ids: set[str], when: str, repo: str):
@@ -656,8 +669,8 @@ def main() -> int:
                 out[block] = prev[block]
     leak_guard(out, state, privates)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    OUT_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    write_atomic(STATE_PATH, json.dumps(state, ensure_ascii=False, indent=1) + "\n")
+    write_atomic(OUT_PATH, json.dumps(out, ensure_ascii=False, indent=1) + "\n")
     print(f"feed={len(out['feed'])} skills={len(skills)} promovidas={sum(s['promoted'] for s in skills)} "
           f"privados={len(privates)} detalhes_usados={MAX_DETAILS - budget} completo={done} stats={out['stats']}")
     return 0

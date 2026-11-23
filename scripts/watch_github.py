@@ -127,7 +127,12 @@ def check(force: bool = False) -> None:
         return
     LOCK.write_text(str(os.getpid()), encoding="utf-8")
     try:
-        state = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
+        try:
+            state = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
+        except ValueError:
+            state = {}  # arquivo cortado: publica de novo e regrava
+        if not isinstance(state, dict):
+            state = {}
         fp, now = fingerprint(), time.time()
         if not fp.strip("|"):
             log("sem resposta do GitHub (sem internet ou gh deslogado)")
@@ -144,7 +149,9 @@ def check(force: bool = False) -> None:
             state.update(content_key=key, published_at=now)
             log("publicado" + (" (novidade)" if changed else " (rotina)"))
         state["fingerprint"] = fp
-        STATE.write_text(json.dumps(state), encoding="utf-8")
+        tmp = STATE.with_name(STATE.name + ".tmp")
+        tmp.write_text(json.dumps(state), encoding="utf-8")
+        os.replace(tmp, STATE)  # troca de uma vez: o arquivo nunca fica pela metade
     except Exception as e:  # noqa: BLE001 - a tarefa agendada não pode quebrar
         log(f"erro: {type(e).__name__}: {str(e)[:200]}")
     finally:

@@ -340,7 +340,8 @@ section { padding-block: clamp(72px, 10vw, 128px) 0; }
 .delivered-head h3 { margin: 0; font-size: clamp(1.5rem, 2.4vw, 1.9rem); font-weight: 750; line-height: 1.15; }
 .delivered-head p { margin: 0; color: var(--graphite); }
 .delivered-head p b { color: var(--violet); }
-.deliv-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
+.deliv-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; align-items: start; }
+.deliv-side { display: grid; gap: 20px; }
 .deliv { background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; padding: 24px; }
 .deliv header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 6px; }
 .deliv h4 { margin: 0; font-size: 1.3rem; font-weight: 800; }

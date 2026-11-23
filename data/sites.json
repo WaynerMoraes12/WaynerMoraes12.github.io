@@ -45,6 +45,17 @@
         "JavaScript"
       ],
       "imagem": "assets/sites/ego.webp"
+    },
+    {
+      "nome": "Manda Currículo",
+      "url": "https://waynermoraes12.github.io/manda-curriculo/",
+      "descricao": "Site e instalador do Manda Currículo, um programa gratuito para Windows que procura vagas e se candidata por você todo dia, com o currículo ajustado para cada vaga e sem inventar nada.",
+      "tecnologias": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "imagem": "assets/sites/manda-curriculo.webp"
     }
   ]
 }
