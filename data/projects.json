@@ -109,6 +109,11 @@
       "descricao": "Site e instalador do EGO, um centro de comando para Windows com tarefas, foco, notas, saúde, finanças e IA.",
       "tecnologias": "HTML, CSS, JavaScript"
     },
+    "manda-curriculo": {
+      "titulo": "Manda Currículo (site)",
+      "descricao": "Site e instalador do Manda Currículo, um programa gratuito para Windows que se candidata às vagas pela pessoa, com o currículo ajustado para cada vaga e os dados só no PC.",
+      "tecnologias": "HTML, CSS, JavaScript"
+    },
     "clerk-estudo": {
       "titulo": "Estudo de Clerk",
       "descricao": "Estudo de autenticação com Clerk em Python: gestão de usuários pela API e webhooks verificados com Svix numa API FastAPI.",
